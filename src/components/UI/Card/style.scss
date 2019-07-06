@@ -1,0 +1,18 @@
+.cardWrapper {
+    background-color: white;
+    margin: 20px 0;
+    border-radius: 6px;
+    .title {
+        text-align: center;
+        padding: 20px 0;
+    }
+    
+    .content {
+        padding: 0px 16px;
+    }
+    .footer {
+        padding: 20px 0;
+        text-align: center;
+    }
+}
+

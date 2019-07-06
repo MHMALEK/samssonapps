@@ -1,13 +1,14 @@
 import { put, takeEvery, all, call } from "redux-saga/effects";
-import { delay } from "../../utils/SagaUtilsFunctions";
-import { getCards } from './HttpRequests'
+import { getCardsFromApi } from './HttpRequests'
+
+
 function* helloSaga() {
   console.log("Hello Sagas!");
 }
 
 function* incrementAsync(action) {
   try {
-    const response = yield call(getCards);
+    const response = yield call(getCardsFromApi);
     yield put({
       type: "ADD_USER_S"
     });

@@ -4,8 +4,25 @@ body {
   direction: rtl;
 }
 
+$primary-blue:  #0088CC;
+$black: #333333;
+
+// general
+
+.bold {
+  font-weight: bold;
+}
+
+
+.c-blue {
+  color: $primary-blue;
+}
+.c-black {
+  color: $black;
+}
 // ToDo: import reset CSS;
 // ToDo: better way to import CSS;
 @import "./components/UI/Container/style.scss";
+@import "./components/UI/Card/style.scss";
 
 @import "./components/pagesComponent/HomePage/style.scss";
