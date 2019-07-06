@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+}
+
+// ToDo: import reset CSS;
+// ToDo: better way to import CSS;
+@import "./components/UI/Container/style.scss";
+
+@import "./components/pagesComponent/HomePage/style.scss";
