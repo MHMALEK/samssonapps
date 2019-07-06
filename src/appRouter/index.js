@@ -10,6 +10,8 @@ function AppRouter() {
     <Router>
       <div>
         <Route path="/" exact component={HomePage} />
+        <Route path="/test" exact component={AboutPage} />
+
       </div>
     </Router>
   );

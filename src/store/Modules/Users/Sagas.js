@@ -1,15 +1,20 @@
-import { put, takeEvery, all } from "redux-saga/effects";
+import { put, takeEvery, all, call } from "redux-saga/effects";
 import { delay } from "../../utils/SagaUtilsFunctions";
-
+import { getCards } from './HttpRequests'
 function* helloSaga() {
   console.log("Hello Sagas!");
 }
 
 function* incrementAsync(action) {
-  yield delay(4000);
-  yield put({
-    type: "ADD_USER"
-  });
+  try {
+    const response = yield call(getCards);
+    yield put({
+      type: "ADD_USER_S"
+    });
+  }
+  catch (err) {
+    console.log(err)
+  }
 }
 
 function* watchIncrementAsync() {
@@ -17,5 +22,5 @@ function* watchIncrementAsync() {
 }
 
 export default function* rootSaga() {
-  yield all([helloSaga(), watchIncrementAsync()]);
+  yield all([watchIncrementAsync()]);
 }

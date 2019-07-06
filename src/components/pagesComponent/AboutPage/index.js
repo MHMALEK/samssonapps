@@ -5,7 +5,6 @@ import {addUserStoreAction} from '../../../store/Modules/Users/Actions';
 
 
 const _AboutPage = (props) => {
-    console.log(props)
     return <div onClick={() => props.addUserStoreAction()}>{props.isOpen ? <p>true</p> : <p>false</p> }</div>
 }
 

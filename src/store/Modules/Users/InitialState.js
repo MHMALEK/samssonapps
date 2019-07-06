@@ -1,5 +1,6 @@
 const InitialState = {
-    isOpen: true
+    isOpen: true,
+    isOpenSec: true
 }
 
 export default InitialState
