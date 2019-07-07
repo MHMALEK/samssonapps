@@ -2,27 +2,36 @@ import React from "react";
 import Header from "./header";
 import Container from "../../UI/Container";
 import Card from "../../UI/Card";
-const HomePage = () => {
+const HomePage = props => {
+  const navigateToCardPage = () => {
+    console.log(props);
+    props.history.push("/register-main");
+  };
   return (
     <div>
       <Header />
       <Container>
         <div className="registration-form">
-          <div class="registration-element">
+          <div
+            className="registration-element"
+            onClick={() => {
+              navigateToCardPage();
+            }}
+          >
             <p>سامانه‌های ثبت نام و انتخاب رشته</p>
-            <div class="icon-wrapper">
+            <div className="icon-wrapper">
               <img src="icons/ic_arrow_blue.svg" />
             </div>
           </div>
-          <div class="registration-element">
+          <div className="registration-element">
             <p>اعلام نتایج اولیه آزمون دکتری تخصصی سال ۹۸</p>
-            <div class="icon-wrapper">
+            <div className="icon-wrapper">
               <img src="icons/ic_arrow_blue.svg" />
             </div>
           </div>
-          <div class="registration-element">
+          <div className="registration-element">
             <p>سامانه ثبت نام مصاحبه آزمون دکتری تخصصی سال ۹۸</p>
-            <div class="icon-wrapper">
+            <div className="icon-wrapper">
               <img src="icons/ic_arrow_blue.svg" />
             </div>
           </div>
@@ -43,7 +52,7 @@ const HomePage = () => {
             <Card
               withOutShadow
               title="تماس تلفنی"
-              footer={<p class="c-blue bold">تلفن گویا:‌021- 4743</p>}
+              footer={<p className="c-blue bold">تلفن گویا:‌021- 4743</p>}
             >
               <p>
                 در صورت مواجه شدن با هرگونه مشکل، می‌توانید در روزهای شنبه تا
@@ -54,7 +63,7 @@ const HomePage = () => {
             <Card
               withOutShadow
               title="تماس تلفنی"
-              footer={<p class="c-blue bold">تلفن گویا:‌021- 4743</p>}
+              footer={<p className="c-blue bold">تلفن گویا:‌021- 4743</p>}
             >
               <p>
                 در صورت مواجه شدن با هرگونه مشکل، می‌توانید در روزهای شنبه تا
@@ -65,7 +74,7 @@ const HomePage = () => {
             <Card
               withOutShadow
               title="تماس تلفنی"
-              footer={<p class="c-blue bold">تلفن گویا:‌021- 4743</p>}
+              footer={<p className="c-blue bold">تلفن گویا:‌021- 4743</p>}
             >
               <p>
                 در صورت مواجه شدن با هرگونه مشکل، می‌توانید در روزهای شنبه تا

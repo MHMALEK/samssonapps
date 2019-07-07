@@ -4,7 +4,7 @@ body {
   direction: rtl;
 }
 
-$primary-blue:  #0088CC;
+$primary-blue: #0088cc;
 $black: #333333;
 
 // general
@@ -12,7 +12,6 @@ $black: #333333;
 .bold {
   font-weight: bold;
 }
-
 
 .c-blue {
   color: $primary-blue;
@@ -24,5 +23,7 @@ $black: #333333;
 // ToDo: better way to import CSS;
 @import "./components/UI/Container/style.scss";
 @import "./components/UI/Card/style.scss";
+@import "./components/UI/Button/style.scss";
 
 @import "./components/pagesComponent/HomePage/style.scss";
+@import "./components/pagesComponent/RegisterationMainPage/style.scss";
