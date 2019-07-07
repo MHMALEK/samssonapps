@@ -1,25 +1,21 @@
-import { ADD_USER } from "./ActionTypes";
+import {
+  ADD_USER,
+  ADD_USER_S
+} from "./ActionTypes";
 import initialState from './InitialState'
 
-const UsersReducer = function(state = initialState, action) {
+const UsersReducer = function (state = initialState, action) {
   switch (action.type) {
-    case ADD_USER: {
-      const { id, content } = action.payload;
+    case ADD_USER_S: {
       return {
         ...state,
-        allIds: [...state.allIds, id],
-        byIds: {
-          ...state.byIds,
-          [id]: {
-            content,
-            completed: false
-          }
-        }
-      };
+        isOpen: !state.isOpen,
+      }
     }
     default:
       return state;
   }
 }
+
 
 export default UsersReducer;

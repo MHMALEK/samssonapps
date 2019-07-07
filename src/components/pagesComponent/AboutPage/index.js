@@ -1,27 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import {addUserStoreAction} from '../../../store/Modules/Users/Actions';
+
 
 
 const _AboutPage = (props) => {
-    console.log(props)
-    return <p>salam</p>
+    return <div onClick={() => props.addUserStoreAction()}>{props.isOpen ? <p>true</p> : <p>false</p> }</div>
 }
 
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state.Users.isOpen)
     return {
         isOpen: state.Users.isOpen
     }
 }
   
   const mapDispatchToProps = {
-    // ... normally is an object full of action creators
+    addUserStoreAction,
   }
   
 
   // We normally do both in one step, like this:
-
   const AboutPage = connect(
     mapStateToProps,
     mapDispatchToProps
