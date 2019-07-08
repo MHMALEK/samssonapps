@@ -1,7 +1,7 @@
 import React from "react";
 
 const Title = props => (
-  <p className={`title ${props.blue ? "c-blue " : " "}`} />
+  <h2 className={`title ${props.blue ? "c-blue " : " "}`}>{props.children} </h2>
 );
 
 export default Title;
