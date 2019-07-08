@@ -6,6 +6,7 @@ body {
 
 $primary-blue: #0088cc;
 $black: #333333;
+$red: #cc0022;
 
 // general
 
@@ -19,11 +20,15 @@ $black: #333333;
 .c-black {
   color: $black;
 }
+.c-red {
+  color: $red;
+}
 // ToDo: import reset CSS;
 // ToDo: better way to import CSS;
 @import "./components/UI/Container/style.scss";
 @import "./components/UI/Card/style.scss";
 @import "./components/UI/Button/style.scss";
+@import "./components/UI/Title/style.scss";
 
 @import "./components/pagesComponent/HomePage/style.scss";
-@import "./components/pagesComponent/RegisterationMainPage/style.scss";
+@import "./components/pagesComponent/RegisterCardPage/style.scss";
