@@ -1,0 +1,17 @@
+.inputs-wrapper {
+  display: flex;
+  margin-bottom: 20px;
+  .input-wrapper {
+    width: 50%;
+    &:last-child {
+      margin-right: 10px;
+    }
+  }
+}
+.call-to-actions {
+  display: flex;
+  margin-bottom: 20px;
+  button {
+    margin-right: 10px;
+  }
+}

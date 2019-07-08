@@ -1,13 +1,11 @@
 import React from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 
 import Header from "../HomePage/header";
 import Container from "../../UI/Container";
 import Card from "../../UI/Card";
 import Button from "../../UI/Button";
 
-class RegisterationMainPage extends React.Component {
+class RegisterCardPagePresentation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -17,9 +15,12 @@ class RegisterationMainPage extends React.Component {
       <div>
         <Header />
         <Container>
-          <div class="first-form-wrapper">
+          <div className="first-form-wrapper">
             <Card title="خرید کارت اعتباری ثبت‌نام">
-              <div className="button-wrapper">
+              <div
+                className="button-wrapper"
+                onClick={() => this.props.history.push("/card/buy")}
+              >
                 <Button blueBg>خرید کارت اعتباری ثبت‌نام </Button>
               </div>
               <div className="button-wrapper">
@@ -41,10 +42,10 @@ class RegisterationMainPage extends React.Component {
         </Container>
         <div className="bottom-register">
         <Container>
-              <div class="section-title c-white">
+              <div className="section-title c-white">
                 ارتباط با ما
               </div>
-              <p class="c-white">
+              <p className="c-white">
               داوطلبان گرامی در صورتی که سوالات شما در ارتباط با مرکز سنجش و پذیرش دانشگاه آزاد اسلامی است، می‌توانید از روش‌های ذیل به منظور اخذ پاسخ سوالات خود اقدام نمایید:
               </p>
               <Card title="تماس تلفنی" footer={<p className="c-blue">تلفن گویا: ۴۷۴۳ - ۰۲۱</p>}>
@@ -73,14 +74,4 @@ class RegisterationMainPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state);
-};
-
-const mapDispatchToProps = () => {};
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(RegisterationMainPage)
-);
+export default RegisterCardPagePresentation;

@@ -2,10 +2,9 @@ import React from "react";
 import Header from "./header";
 import Container from "../../UI/Container";
 import Card from "../../UI/Card";
-const HomePage = props => {
+const HomePagePresentation = props => {
   const navigateToCardPage = () => {
-    console.log(props);
-    props.history.push("/register-main");
+    props.history.push("/card/register");
   };
   return (
     <div>
@@ -89,4 +88,4 @@ const HomePage = props => {
   );
 };
 
-export default HomePage;
+export default HomePagePresentation;
