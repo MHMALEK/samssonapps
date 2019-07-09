@@ -1,16 +1,16 @@
-import React from 'react';
-import AppRouter from '../appRouter'
-import { Provider } from 'react-redux'
-import store from '../store'
+import React from "react";
+import AppRouter from "../appRouter";
+import { Provider } from "react-redux";
+import store from "../store";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-     <Provider store={store}>
+      <Provider store={store}>
         <AppRouter />
-     </Provider>
+      </Provider>
     </div>
   );
-}
+};
 
 export default App;

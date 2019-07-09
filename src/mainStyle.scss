@@ -2,23 +2,44 @@ body {
   margin: 0;
   padding: 0;
   direction: rtl;
+  font-family: IRANSans;
+}
+
+button {
+  font-family: IRANSans;
 }
 
 $primary-blue: #0088cc;
+<<<<<<< HEAD
 $primary-gray: #36434D;
 $black: #333333;
 $white: #ffff;
+=======
+$light-gray: #666666;
+$dark-gray: #333333;
+$red: #cc0022;
+
+>>>>>>> feature/MainPage
 // general
 
 .bold {
   font-weight: bold;
 }
 
+.center {
+  text-align: center;
+}
 .c-blue {
   color: $primary-blue;
 }
 .c-black {
-  color: $black;
+  color: $dark-gray;
+}
+.c-light-gray {
+  color: $light-gray;
+}
+.c-red {
+  color: $red;
 }
 .c-white {
   color: $white;
@@ -28,6 +49,9 @@ $white: #ffff;
 @import "./components/UI/Container/style.scss";
 @import "./components/UI/Card/style.scss";
 @import "./components/UI/Button/style.scss";
+@import "./components/UI/Title/style.scss";
+@import "./components/UI/Select/style.scss";
+@import "./components/UI/Input/style.scss";
 
 @import "./components/pagesComponent/HomePage/style.scss";
-@import "./components/pagesComponent/RegisterationMainPage/style.scss";
+@import "./components/pagesComponent/RegisterCardPage/style.scss";
