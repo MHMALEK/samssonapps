@@ -12,6 +12,7 @@ button {
 
 $primary-blue: #0088cc;
 $primary-gray: #36434D;
+$black: #333333;
 $white: #ffff;
 $light-gray: #666666;
 $dark-gray: #333333;
@@ -53,7 +54,12 @@ $gray: #97A3A8;
 @import "./components/UI/Select/style.scss";
 @import "./components/UI/Input/style.scss";
 @import "./components/UI/NavBar/style.scss";
+@import "./components/UI/Logo/style.scss";
+@import "./components/UI/RadioButton/style.scss";
 
 @import "./components/pagesComponent/HomePage/style.scss";
 @import "./components/pagesComponent/RegisterCardPage/style.scss";
 @import "./components/pagesComponent/SubmitInformationPage/style.scss";
+
+
+

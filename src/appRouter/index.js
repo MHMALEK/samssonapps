@@ -6,6 +6,7 @@ import HomePage from "../components/pagesComponent/HomePage/HomePage.container";
 import RegisterCardPage from "../components/pagesComponent/RegisterCardPage/RegisterCardPage.container";
 import BuyCardPage from "../components/pagesComponent/BuyCardPage/BuyCardPage.container";
 import SubmitInformationPage from "../components/pagesComponent/SubmitInformationPage/SubmitInformationPage.container";
+import LoginPage from "../components/pagesComponent/LoginPage/LoginPage.container";
 
 import AboutPage from "../components/pagesComponent/AboutPage";
 
@@ -17,7 +18,7 @@ function AppRouter() {
         <Route path="/card/register" component={RegisterCardPage} />
         <Route path="/card/buy" exact component={BuyCardPage} />
         <Route path="/card/user-info" exact component={SubmitInformationPage} />
-
+        <Route path="/register" exact component={LoginPage} />
         <Route path="/test" exact component={AboutPage} />
       </div>
     </Router>
