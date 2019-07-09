@@ -1,3 +1,6 @@
 node_modules
 package-json.lock
 yarn.lock
+build
+build.zip
+.DS_Store
