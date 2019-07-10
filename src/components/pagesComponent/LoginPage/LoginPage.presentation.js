@@ -5,13 +5,11 @@ import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import Container from "../../UI/Container";
 import RadioButton from "../../UI/RadioButton";
-import Camera from "../../Utils/Camera";
 
 const LoginPagePresentation = props => {
   return (
     <>
       <div className="bg-pattern-light" />
-      <Camera />
       <Container>
         <div className="signup-page-wrapper">
           <Card>
