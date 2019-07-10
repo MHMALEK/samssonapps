@@ -1,15 +1,11 @@
 import React from "react";
 import HomePagePresentation from "./HomePage.presentation";
-import { connect, dispatch } from "react-redux";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { startApp } from "../../../store/Modules/App/Actions";
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
-  }
-  componentDidMount() {
-    this.props.startApp();
   }
   render() {
     const { history } = this.props;
@@ -17,15 +13,10 @@ class HomePage extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  startApp: (currentPassword, password, passwordConfirmation) => {
-    dispatch(startApp());
-  }
-});
-
+const mapStateToProps = state => {};
 export default withRouter(
   connect(
-    null,
-    mapDispatchToProps
+    mapStateToProps,
+    null
   )(HomePage)
 );

@@ -9,12 +9,10 @@ import {
 function* getCardsRequest(action) {
   try {
     const response = yield call(getCardsFromServer);
-    console.log(response);
     yield put({
       type: "GET_CARD_SUCCESS"
     });
   } catch (err) {
-    console.log(err);
     yield put({
       type: "GET_CARD_FAILD"
     });

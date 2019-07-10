@@ -1,4 +1,3 @@
-
 body {
   margin: 0;
   padding: 0;
@@ -10,15 +9,21 @@ button {
   font-family: IRANSans;
 }
 
+a {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 $primary-blue: #0088cc;
-$primary-gray: #36434D;
+$primary-gray: #36434d;
 $black: #333333;
 $white: #ffff;
 $light-gray: #666666;
 $dark-gray: #333333;
 $red: #cc0022;
-$orange: #E6402E;
-$gray: #97A3A8;
+$orange: #e6402e;
+$gray: #97a3a8;
 
 // general
 
@@ -53,13 +58,14 @@ $gray: #97A3A8;
 @import "./components/UI/Title/style.scss";
 @import "./components/UI/Select/style.scss";
 @import "./components/UI/Input/style.scss";
-@import "./components/UI/NavBar/style.scss";
 @import "./components/UI/Logo/style.scss";
 @import "./components/UI/RadioButton/style.scss";
 
-@import "./components/pagesComponent/HomePage/style.scss";
-@import "./components/pagesComponent/RegisterCardPage/style.scss";
-@import "./components/pagesComponent/SubmitInformationPage/style.scss";
+@import "./components/Layout/Header/style.scss";
+@import "./components/Layout/Footer/style.scss";
+@import "./components/Layout/NavBar/style.scss";
+@import "./components/Layout/Splash/style.scss";
 
-
-
+@import "./components/Pages/HomePage/style.scss";
+@import "./components/Pages/RegisterCardPage/style.scss";
+@import "./components/Pages/SubmitInformationPage/style.scss";

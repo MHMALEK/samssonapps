@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  background-image: url("/backgrounds/bg_pattern_light_blue_half.png");
+  background-size: cover;
+  .logo {
+    margin-bottom: 20px;
+    img {
+      width: 70px;
+    }
+  }
+  .slogan {
+    text-align: center;
+    color: white;
+  }
+}

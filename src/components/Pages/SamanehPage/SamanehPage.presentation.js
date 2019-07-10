@@ -1,21 +1,20 @@
 import React from "react";
 
-import Header from "../HomePage/header";
 import Container from "../../UI/Container";
 import Card from "../../UI/Card";
 import Button from "../../UI/Button";
 import Title from "../../UI/Title";
 import Select from "../../UI/Select";
+import MainLayout from "../../Layout/MainLayout";
 
-class BuyCardPagePresentation extends React.Component {
+class SamanehPagePresentation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
   render() {
     return (
-      <div>
-        <Header />
+      <MainLayout>
         <Container>
           <div className="first-form-wrapper">
             <Card title="توجه">
@@ -59,9 +58,9 @@ class BuyCardPagePresentation extends React.Component {
             </Card>
           </div>
         </Container>
-      </div>
+      </MainLayout>
     );
   }
 }
 
-export default BuyCardPagePresentation;
+export default SamanehPagePresentation;

@@ -1,20 +1,28 @@
-import { put, takeEvery, all, call } from "redux-saga/effects";
+import { put, takeEvery, call, delay } from "redux-saga/effects";
 import { getGeneralSettings } from "./HttpRequests";
-import { START_APP } from "./ActionTypes";
+import { configSelector } from "./Selector";
+import {
+  START_APP,
+  GET_SETTING_STARTED,
+  GET_SETTINGS_SUCCEED,
+  GET_SETTINGS_FAILD
+} from "./ActionTypes";
 
 function* startAppSaga(action) {
-  try {
-    const response = yield call(getGeneralSettings);
-    console.log(response);
-    yield put({
-      type: "GET_SETTING_SUCCESS"
-    });
-  } catch (err) {
-    console.log(err);
-    yield put({
-      type: "GET_SETTING_FAILD"
-    });
-  }
+  yield call(getConfig);
+}
+
+function* getConfig() {
+  // const responseReal = yield call(getGeneralSettings);
+  const _response = require("../MockResponses/generalLight.json");
+  const response = configSelector(_response);
+  yield put({
+    type: GET_SETTING_STARTED
+  });
+  yield put({
+    type: GET_SETTINGS_SUCCEED,
+    payload: response
+  });
 }
 
 export default [takeEvery(START_APP, startAppSaga)];

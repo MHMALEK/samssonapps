@@ -4,7 +4,6 @@ class _HttpClient {
   constructor() {
     this.token = "token";
     this.baseUrl = "http://auportal.parshooshmand.com/api/v1.0";
-    // this.baseUrl = 'http://dummy.restapiexample.com/api/v1'; // this is for my own Test and will he removed on production
   }
   get(path, params) {
     return axios.get(this.baseUrl + path, {

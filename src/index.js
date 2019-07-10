@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./rootComponent/App";
+import App from "./App";
 
-const mainStyle = require("./mainStyle.scss");
-const mainStyleSec = require("./style.css");
+const MainStyle = require("./mainStyle.scss");
 
 ReactDOM.render(<App />, document.getElementById("root"));

@@ -1,0 +1,19 @@
+.registration-form {
+  border-radius: 6px;
+  margin-top: -85px;
+  background: white;
+  box-shadow: 2px 2px 13px #c7c7c7;
+  .registration-element {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 16px;
+    border-bottom: 1px solid #e6e6e6;
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

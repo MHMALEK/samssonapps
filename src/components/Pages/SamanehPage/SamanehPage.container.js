@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import BuyCardPagePresentation from "./BuyCardPage.presentation";
+import SamanehPagePresentation from "./SamanehPage.presentation";
 import { getCardsAction } from "../../../store/Modules/Cards/Actions";
 
-class BuyCardPage extends React.Component {
+class SamanehPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -15,7 +15,7 @@ class BuyCardPage extends React.Component {
   }
   render() {
     const { getCards } = this.props;
-    return <BuyCardPagePresentation />;
+    return <SamanehPagePresentation />;
   }
 }
 
@@ -33,5 +33,5 @@ export default withRouter(
   connect(
     null,
     mapDispatchToProps
-  )(BuyCardPage)
+  )(SamanehPage)
 );
