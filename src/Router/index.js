@@ -16,7 +16,7 @@ function AppRouter() {
     <Router>
       <>
         <Route path="/" exact component={HomePage} />
-        <Route path="/card/register" component={RegisterCardPage} />
+        <Route path="/cards/list" component={RegisterCardPage} />
         <Route path="/card/buy" exact component={SamanehPage} />
         <Route path="/card/user-info" exact component={SubmitInformationPage} />
         <Route path="/register" exact component={LoginPage} />

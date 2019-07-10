@@ -5,7 +5,7 @@ import Container from "../../UI/Container";
 
 const HomePagePresentation = props => {
   const navigateToCardPage = () => {
-    props.history.push("/card/register");
+    props.history.push("/cards/list");
   };
   return (
     <MainLayout>
