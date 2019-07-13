@@ -6,8 +6,8 @@
   "data": [
     {
       "id": 1,
-      "title": "scheme 1",
-      "description": "",
+      "title": "کارشناسی پیوسته",
+      "description": "صرفا بر اساس سوابق تحصیلی",
       "begin_date": "2019-06-20 00:00:00",
       "expire_date": "2019-06-27 00:00:00",
       "with_examination": 1,
@@ -17,14 +17,14 @@
       "with_examination_text": "با آزمون",
       "files": [
         {
-          "name": "عکس اول",
-          "type": "image/*",
-          "url": "http://azad-uni/uploads/scheme/pp-6186.png"
+          "name": "دفترچه راهنمای ثبت\u200cنام",
+          "type": "pdf/*",
+          "url": "http://auportaldev.parshooshmand.com/uploads/scheme/file1.pdf"
         },
         {
-          "name": "عکس دوم",
-          "type": "image/*",
-          "url": "http://azad-uni/uploads/scheme/pp-1200.png"
+          "name": "دفترچه انتخاب رشته",
+          "type": "pdf/*",
+          "url": "http://auportaldev.parshooshmand.com/uploads/scheme/file1.pdf"
         }
       ],
       "teaching_institution": [
@@ -43,22 +43,30 @@
             "scheme_id": 1,
             "teaching_institution_id": 2
           }
-        }
-      ],
-      "cards": [
-        {
-          "id": 1,
-          "title": "card1",
-          "price": "250000",
-          "scheme_id": 1,
-          "expire_date": "2019-06-13 00:00:00"
         },
         {
-          "id": 2,
-          "title": "card2",
-          "price": "200000",
-          "scheme_id": 1,
-          "expire_date": "2019-06-13 00:00:00"
+          "id": 3,
+          "name": "علوم انسانی",
+          "pivot": {
+            "scheme_id": 1,
+            "teaching_institution_id": 3
+          }
+        },
+        {
+          "id": 4,
+          "name": "هنر",
+          "pivot": {
+            "scheme_id": 1,
+            "teaching_institution_id": 4
+          }
+        },
+        {
+          "id": 5,
+          "name": "زبان\u200cهای خارجی",
+          "pivot": {
+            "scheme_id": 1,
+            "teaching_institution_id": 5
+          }
         }
       ],
       "education_system": [
@@ -78,12 +86,21 @@
             "education_system_id": 2
           }
         }
+      ],
+      "cards": [
+        {
+          "id": 1,
+          "title": "ثبت نام و انتخاب رشته دوره کارشناسی پیوسته ( صرفا بر اساس سوابق تحصیلی)",
+          "price": "\t460000",
+          "scheme_id": 1,
+          "expire_date": "2019-06-13 00:00:00"
+        }
       ]
     },
     {
       "id": 2,
-      "title": "scheme 2",
-      "description": "",
+      "title": "کارشناسی ناپیوسته",
+      "description": "صرفا بر اساس سوابق تحصیلی",
       "begin_date": "2019-06-20 00:00:00",
       "expire_date": "2019-06-27 00:00:00",
       "with_examination": 1,
@@ -91,9 +108,273 @@
       "editable": 1,
       "with_card_text": "با کارت",
       "with_examination_text": "با آزمون",
-      "files": [],
-      "teaching_institution": [],
-      "education_system": []
+      "files": [
+        {
+          "name": "دفترچه راهنمای ثبت\u200cنام",
+          "type": "pdf/*",
+          "url": "http://auportaldev.parshooshmand.com/uploads/scheme/file1.pdf"
+        },
+        {
+          "name": "دفترچه انتخاب رشته",
+          "type": "pdf/*",
+          "url": "http://auportaldev.parshooshmand.com/uploads/scheme/file1.pdf"
+        }
+      ],
+      "teaching_institution": [
+        {
+          "id": 1,
+          "name": "علوم ریاضی و فنی",
+          "pivot": {
+            "scheme_id": 2,
+            "teaching_institution_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "علوم تجربی",
+          "pivot": {
+            "scheme_id": 2,
+            "teaching_institution_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "علوم انسانی",
+          "pivot": {
+            "scheme_id": 2,
+            "teaching_institution_id": 3
+          }
+        },
+        {
+          "id": 4,
+          "name": "هنر",
+          "pivot": {
+            "scheme_id": 2,
+            "teaching_institution_id": 4
+          }
+        },
+        {
+          "id": 5,
+          "name": "زبان\u200cهای خارجی",
+          "pivot": {
+            "scheme_id": 2,
+            "teaching_institution_id": 5
+          }
+        }
+      ],
+      "education_system": [
+        {
+          "id": 1,
+          "name": "تمام وقت",
+          "pivot": {
+            "scheme_id": 2,
+            "education_system_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "پاره وقت",
+          "pivot": {
+            "scheme_id": 2,
+            "education_system_id": 2
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": 2,
+          "title": "ثبت نام و انتخاب رشته دوره کارشناسی ناپیوسته (صرفا بر اساس سوابق تحصیلی)",
+          "price": "\t460000",
+          "scheme_id": 2,
+          "expire_date": "2019-06-13 00:00:00"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "کاردانی پیوسته",
+      "description": "صرفا بر اساس سوابق تحصیلی",
+      "begin_date": "2019-06-20 00:00:00",
+      "expire_date": "2019-06-27 00:00:00",
+      "with_examination": 1,
+      "with_card": 1,
+      "editable": 1,
+      "with_card_text": "با کارت",
+      "with_examination_text": "با آزمون",
+      "files": [
+        {
+          "name": "دفترچه راهنمای ثبت\u200cنام",
+          "type": "pdf/*",
+          "url": "http://auportaldev.parshooshmand.com/uploads/scheme/file1.pdf"
+        },
+        {
+          "name": "دفترچه انتخاب رشته",
+          "type": "pdf/*",
+          "url": "http://auportaldev.parshooshmand.com/uploads/scheme/file1.pdf"
+        }
+      ],
+      "teaching_institution": [
+        {
+          "id": 1,
+          "name": "علوم ریاضی و فنی",
+          "pivot": {
+            "scheme_id": 3,
+            "teaching_institution_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "علوم تجربی",
+          "pivot": {
+            "scheme_id": 3,
+            "teaching_institution_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "علوم انسانی",
+          "pivot": {
+            "scheme_id": 3,
+            "teaching_institution_id": 3
+          }
+        },
+        {
+          "id": 4,
+          "name": "هنر",
+          "pivot": {
+            "scheme_id": 3,
+            "teaching_institution_id": 4
+          }
+        },
+        {
+          "id": 5,
+          "name": "زبان\u200cهای خارجی",
+          "pivot": {
+            "scheme_id": 3,
+            "teaching_institution_id": 5
+          }
+        }
+      ],
+      "education_system": [
+        {
+          "id": 1,
+          "name": "تمام وقت",
+          "pivot": {
+            "scheme_id": 3,
+            "education_system_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "پاره وقت",
+          "pivot": {
+            "scheme_id": 3,
+            "education_system_id": 2
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": 3,
+          "title": "ثبت نام و انتخاب رشته دوره کاردانی پیوسته (صرفا بر اساس سوابق تحصیلی)",
+          "price": "440000",
+          "scheme_id": 3,
+          "expire_date": "2019-06-13 00:00:00"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "کاردانی ناپیوسته",
+      "description": "صرفا بر اساس سوابق تحصیلی",
+      "begin_date": "2019-06-20 00:00:00",
+      "expire_date": "2019-06-27 00:00:00",
+      "with_examination": 1,
+      "with_card": 1,
+      "editable": 1,
+      "with_card_text": "با کارت",
+      "with_examination_text": "با آزمون",
+      "files": [
+        {
+          "name": "دفترچه راهنمای ثبت\u200cنام",
+          "type": "pdf/*",
+          "url": "http://auportaldev.parshooshmand.com/uploads/scheme/file1.pdf"
+        },
+        {
+          "name": "دفترچه انتخاب رشته",
+          "type": "pdf/*",
+          "url": "http://auportaldev.parshooshmand.com/uploads/scheme/file1.pdf"
+        }
+      ],
+      "teaching_institution": [
+        {
+          "id": 1,
+          "name": "علوم ریاضی و فنی",
+          "pivot": {
+            "scheme_id": 4,
+            "teaching_institution_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "علوم تجربی",
+          "pivot": {
+            "scheme_id": 4,
+            "teaching_institution_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "علوم انسانی",
+          "pivot": {
+            "scheme_id": 4,
+            "teaching_institution_id": 3
+          }
+        },
+        {
+          "id": 4,
+          "name": "هنر",
+          "pivot": {
+            "scheme_id": 4,
+            "teaching_institution_id": 4
+          }
+        },
+        {
+          "id": 5,
+          "name": "زبان\u200cهای خارجی",
+          "pivot": {
+            "scheme_id": 4,
+            "teaching_institution_id": 5
+          }
+        }
+      ],
+      "education_system": [
+        {
+          "id": 1,
+          "name": "تمام وقت",
+          "pivot": {
+            "scheme_id": 4,
+            "education_system_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "پاره وقت",
+          "pivot": {
+            "scheme_id": 4,
+            "education_system_id": 2
+          }
+        }
+      ],
+      "cards": [
+        {
+          "id": 4,
+          "title": "ثبت نام و انتخاب رشته دوره کاردانی ناپیوسته (صرفا بر اساس سوابق تحصیلی)",
+          "price": "440000",
+          "scheme_id": 4,
+          "expire_date": "2019-06-13 00:00:00"
+        }
+      ]
     }
   ]
 }

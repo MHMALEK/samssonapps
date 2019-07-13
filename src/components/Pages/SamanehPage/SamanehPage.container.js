@@ -25,7 +25,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getCards: () => {
-    dispatch(getCardsAction());
+    // dispatch(getCardsAction());
   }
 });
 

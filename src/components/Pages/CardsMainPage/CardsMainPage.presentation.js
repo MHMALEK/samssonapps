@@ -5,7 +5,7 @@ import Card from "../../UI/Card";
 import Button from "../../UI/Button";
 import MainLayout from "../../Layout/MainLayout";
 
-class RegisterCardPagePresentation extends React.Component {
+class CardsMainPagePresentation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -42,4 +42,4 @@ class RegisterCardPagePresentation extends React.Component {
   }
 }
 
-export default RegisterCardPagePresentation;
+export default CardsMainPagePresentation;

@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import RegisterCardPagePresentation from "./RegisterCardPage.presentation";
+import CardsMainPagePresentation from "./CardsMainPage.presentation";
 import { getCardsAction } from "../../../store/Modules/Cards/Actions";
 
-class RegisterCardPage extends React.Component {
+class CardsMainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -15,7 +15,7 @@ class RegisterCardPage extends React.Component {
   }
   render() {
     const { history } = this.props;
-    return <RegisterCardPagePresentation history={history} />;
+    return <CardsMainPagePresentation history={history} />;
   }
 }
 
@@ -33,5 +33,5 @@ export default withRouter(
   connect(
     null,
     mapDispatchToProps
-  )(RegisterCardPage)
+  )(CardsMainPage)
 );

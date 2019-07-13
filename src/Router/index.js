@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import HomePage from "../components/Pages/HomePage/HomePage.container";
 import SamanehPage from "../components/Pages/SamanehPage/SamanehPage.container";
 
-import RegisterCardPage from "../components/Pages/RegisterCardPage/RegisterCardPage.container";
+import CardsMainPage from "../components/Pages/CardsMainPage/CardsMainPage.container";
 import SubmitInformationPage from "../components/Pages/SubmitInformationPage/SubmitInformationPage.container";
 import LoginPage from "../components/Pages/LoginPage/LoginPage.container";
 
@@ -16,7 +16,7 @@ function AppRouter() {
     <Router>
       <>
         <Route path="/" exact component={HomePage} />
-        <Route path="/cards/list" component={RegisterCardPage} />
+        <Route path="/cards/list" component={CardsMainPage} />
         <Route path="/card/buy" exact component={SamanehPage} />
         <Route path="/card/user-info" exact component={SubmitInformationPage} />
         <Route path="/register" exact component={LoginPage} />
