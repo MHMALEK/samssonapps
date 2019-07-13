@@ -1,21 +1,46 @@
 import {
-  GET_CARD_STARTED,
-  GET_CARD_SUCCESS,
-  GET_CARD_FAILD
+  GET_CARDS_STARTED,
+  GET_CARDS_SUCCEED,
+  GET_CARDS_FAILD,
+  GO_TO_CARD_LIST_ACTION,
+  GO_TO_CARD_LIST_SUCCEED,
 } from "./ActionTypes";
 import initialState from "./InitialState";
 
-const CardReducer = function(state = initialState, action) {
+const CardsReducer = function(state = initialState, action) {
   switch (action.type) {
-    case GET_CARD_STARTED: {
+    case GET_CARDS_STARTED: {
       return {
-        loadingToGetCards: true,
-        ...state
+        ...state,
+        loadingGetCards: true,
       };
+    }
+    case GET_CARDS_SUCCEED: {
+      return {
+        ...state,
+        loadingGetCards: false,
+        cardsList: action.payload,
+      }
+    }
+    case GET_CARDS_FAILD: {
+      return {
+        ...state,
+        loadingGetCards: false,
+      }
+    }
+    case GO_TO_CARD_LIST_ACTION: {
+      return {
+        ...state,
+      }
+    }
+    case GO_TO_CARD_LIST_SUCCEED: {
+      return {
+        ...state,
+      }
     }
     default:
       return state;
   }
 };
 
-export default CardReducer;
+export default CardsReducer;

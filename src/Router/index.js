@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 // import page componentes;
 import HomePage from "../components/Pages/HomePage/HomePage.container";
-import SamanehPage from "../components/Pages/SamanehPage/SamanehPage.container";
+import BuyCardMainPage from "../components/Pages/BuyCardMainPage/BuyCardMainPage.container";
 
 import CardsMainPage from "../components/Pages/CardsMainPage/CardsMainPage.container";
 import SubmitInformationPage from "../components/Pages/SubmitInformationPage/SubmitInformationPage.container";
@@ -17,7 +17,7 @@ function AppRouter() {
       <>
         <Route path="/" exact component={HomePage} />
         <Route path="/cards/list" component={CardsMainPage} />
-        <Route path="/card/buy" exact component={SamanehPage} />
+        <Route path="/card/buy" exact component={BuyCardMainPage} />
         <Route path="/card/user-info" exact component={SubmitInformationPage} />
         <Route path="/register" exact component={LoginPage} />
         <Route path="/test" exact component={AboutPage} />

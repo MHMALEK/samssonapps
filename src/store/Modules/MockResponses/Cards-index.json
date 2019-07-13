@@ -35,39 +35,8 @@
             "scheme_id": 1,
             "teaching_institution_id": 1
           }
-        },
-        {
-          "id": 2,
-          "name": "علوم تجربی",
-          "pivot": {
-            "scheme_id": 1,
-            "teaching_institution_id": 2
-          }
-        },
-        {
-          "id": 3,
-          "name": "علوم انسانی",
-          "pivot": {
-            "scheme_id": 1,
-            "teaching_institution_id": 3
-          }
-        },
-        {
-          "id": 4,
-          "name": "هنر",
-          "pivot": {
-            "scheme_id": 1,
-            "teaching_institution_id": 4
-          }
-        },
-        {
-          "id": 5,
-          "name": "زبان\u200cهای خارجی",
-          "pivot": {
-            "scheme_id": 1,
-            "teaching_institution_id": 5
-          }
         }
+      
       ],
       "education_system": [
         {

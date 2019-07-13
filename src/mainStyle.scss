@@ -34,6 +34,11 @@ $gray: #97a3a8;
 .center {
   text-align: center;
 }
+
+.text-center {
+  text-align: center;
+    
+}
 .c-blue {
   color: $primary-blue;
 }
@@ -59,6 +64,7 @@ $gray: #97a3a8;
 @import "./components/UI/Select/style.scss";
 @import "./components/UI/Input/style.scss";
 @import "./components/UI/Logo/style.scss";
+@import "./components/UI/SelectWithOutOption/style.scss";
 @import "./components/UI/RadioButton/style.scss";
 
 @import "./components/Layout/Header/style.scss";
@@ -67,5 +73,7 @@ $gray: #97a3a8;
 @import "./components/Layout/Splash/style.scss";
 
 @import "./components/Pages/HomePage/style.scss";
-@import "./components/Pages/RegisterCardPage/style.scss";
+@import "./components/Pages/CardsMainPage/style.scss";
 @import "./components/Pages/SubmitInformationPage/style.scss";
+@import "./components/Pages/BuyCardMainPage/style.scss";
+

@@ -1,15 +1,20 @@
 import {
-  GET_CARD_ACTION,
-  GET_CARD_STARTED,
-  GET_CARD_SUCCESS,
-  GET_CARD_FAILD
+  GET_CARDS_ACTION,
+  GO_TO_CARD_LIST_ACTION
 } from "./ActionTypes";
 
 export const getCardsAction = content => {
   return {
-    type: GET_CARD_ACTION,
+    type: GET_CARDS_ACTION,
     payload: {
       lodingToGetCards: true
     }
   };
 };
+
+
+export const goToCardListAction = content => {
+  return {
+    type: GO_TO_CARD_LIST_ACTION,
+  }
+}

@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import SamanehPagePresentation from "./SamanehPage.presentation";
+import BuyCardMainPagePresentation from "./BuyCardMainPage.presentation";
 import { getCardsAction } from "../../../store/Modules/Cards/Actions";
 
-class SamanehPage extends React.Component {
+class BuyCardMainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -14,13 +14,16 @@ class SamanehPage extends React.Component {
     getCards();
   }
   render() {
-    const { getCards } = this.props;
-    return <SamanehPagePresentation />;
+    const { cardsList } = this.props;
+    return <BuyCardMainPagePresentation cardsList={cardsList} />;
   }
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
+  console.log(state)
+   return {
+     cardsList: state.Cards.cardsList
+   }
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -31,7 +34,7 @@ const mapDispatchToProps = dispatch => ({
 
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
-  )(SamanehPage)
+  )(BuyCardMainPage)
 );

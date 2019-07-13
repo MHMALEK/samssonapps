@@ -3,12 +3,18 @@ const cardSelector = state => {
   //     return !todo.completed;
   //   });
   const data = state.data;
-  console.log(data);
-  // const config = {
-  //   contactUs: data.contact_us,
-  //   forms: data.forms
-  // };
-  return data;
+  const CardsList = data.map((item) => {
+    return {
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      price: item.cards[0].price,
+      files: item.files,
+      educationSystem: item.education_system,
+      teachingInstitution: item.teaching_institution,
+    };
+  })
+  return CardsList;
 };
 
 export { cardSelector };

@@ -1,5 +1,6 @@
 const InitialState = {
-  loadingToGetCards: false
+  loadingGetCards: false,
+  cardsList: [],
 };
 
 export default InitialState;
