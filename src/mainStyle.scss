@@ -37,7 +37,6 @@ $gray: #97a3a8;
 
 .text-center {
   text-align: center;
-    
 }
 .c-blue {
   color: $primary-blue;
@@ -66,6 +65,7 @@ $gray: #97a3a8;
 @import "./components/UI/Logo/style.scss";
 @import "./components/UI/SelectWithOutOption/style.scss";
 @import "./components/UI/RadioButton/style.scss";
+@import "./components/UI/Modal/style.scss";
 
 @import "./components/Layout/Header/style.scss";
 @import "./components/Layout/Footer/style.scss";
@@ -76,4 +76,3 @@ $gray: #97a3a8;
 @import "./components/Pages/CardsMainPage/style.scss";
 @import "./components/Pages/SubmitInformationPage/style.scss";
 @import "./components/Pages/BuyCardMainPage/style.scss";
-
