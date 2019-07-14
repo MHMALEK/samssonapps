@@ -10,12 +10,13 @@ import CardsMainPage from "../components/Pages/CardsMainPage/CardsMainPage.conta
 import SubmitInformationPage from "../components/Pages/SubmitInformationPage/SubmitInformationPage.container";
 import RestoreCardsPage from "../components/Pages/RestoreCardsPage/RestoreCardsPage.container";
 import SignInSSO from "../components/Pages/SSO/SignIn/SignIn.container";
-
+import SSOVerify from "../components/Pages/SSO/Verify/Verify.container";
 function AppRouter(props) {
   const history = createBrowserHistory();
   return (
     <Router history={history}>
       <Route path="/sso" exact component={SignInSSO} />
+      <Route path="/sso/verify" exact component={SSOVerify} />
 
       <Route path="/" exact component={HomePage} />
       <Route path="/cards/list" component={CardsMainPage} />

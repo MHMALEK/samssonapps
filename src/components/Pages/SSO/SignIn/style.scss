@@ -2,5 +2,20 @@
   background: white;
   margin-top: -30px;
   border-radius: 6px;
-  height: 40vh;
+  position: relative;
+  padding-top: 170px;
+  padding-right: 20px;
+  padding-left: 20px;
+  box-shadow: 1px 1px 14px #d0d0d0;
+  div.logo {
+    position: absolute;
+    top: -18px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .sign-in-input-wrapper {
+    margin: 20px 0;
+  }
 }

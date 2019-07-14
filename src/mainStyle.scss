@@ -9,6 +9,8 @@ $dark-gray: #333333;
 $red: #cc0022;
 $orange: #e6402e;
 $gray: #97a3a8;
+$gray-font: #999999;
+$bg-color: #f1f3f3;
 
 body {
   margin: 0;
@@ -16,6 +18,7 @@ body {
   direction: rtl;
   font-family: IRANSans;
   font-size: $default-font-size;
+  background-color: $bg-color;
 }
 
 button {
@@ -26,6 +29,10 @@ a {
   &:hover {
     cursor: pointer;
   }
+}
+
+img {
+  max-width: 100%;
 }
 
 // general
@@ -55,6 +62,9 @@ a {
 }
 .c-white {
   color: $white;
+}
+.c-gray {
+  color: $gray-font;
 }
 
 .layout-wrapper {
@@ -88,3 +98,4 @@ a {
 @import "./components/Pages/BuyCardMainPage/style.scss";
 
 @import "./components/Pages/SSO/SignIn/style.scss";
+@import "./components/Pages/SSO/Verify/style.scss";
