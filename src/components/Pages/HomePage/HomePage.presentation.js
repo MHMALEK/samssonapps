@@ -8,7 +8,7 @@ const HomePagePresentation = props => {
     props.history.push("/cards/list");
   };
   return (
-    <MainLayout>
+    <MainLayout history={props.history}>
       <Container>
         <div className="registration-form">
           <div

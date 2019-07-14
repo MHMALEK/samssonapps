@@ -8,7 +8,7 @@ import Price from "../../UI/Price";
 import MainLayout from "../../Layout/MainLayout";
 import ModalComponent from "../../UI/Modal";
 import SelectWithOutOption from "../../UI/SelectWithOutOption";
-
+import RadioButton from "../../UI/RadioButton";
 class BuyCardMainPagePresentation extends React.Component {
   constructor(props) {
     super(props);
@@ -20,15 +20,14 @@ class BuyCardMainPagePresentation extends React.Component {
 
   openModal(modalId, type) {
     const modalUniqState = modalId + "modalIsOpen" + type;
-    console.log(modalUniqState);
     this.setState({
       [modalUniqState]: true
     });
   }
   render() {
-    const { cardsList } = this.props;
+    const { cardsList, history } = this.props;
     return (
-      <MainLayout>
+      <MainLayout history={history} title="خرید کارت اعتباری ثبت‌نام">
         <div className="buy-card-main-page">
           <Container>
             <div className="first-form-wrapper">
@@ -39,12 +38,12 @@ class BuyCardMainPagePresentation extends React.Component {
                 </p>
                 <div className="button-wrapper">
                   <Button blueBorder>
-                    فهرست رشته‌های مقطع کارشناسی پیوسته{" "}
+                    فهرست رشته‌های مقطع کارشناسی پیوسته
                   </Button>
                 </div>
                 <div className="button-wrapper">
                   <Button blueBorder>
-                    فهرست رشته‌های مقطع کاردانی ناپیوسته{" "}
+                    فهرست رشته‌های مقطع کاردانی ناپیوسته
                   </Button>
                 </div>
               </Card>
@@ -82,9 +81,16 @@ class BuyCardMainPagePresentation extends React.Component {
                                     {card.educationSystem.map(
                                       (educationSystem, index) => {
                                         return (
-                                          <p key={index}>
+                                          <RadioButton
+                                            key={index}
+                                            name="eductaionSystem"
+                                            value={educationSystem.id}
+                                            defaultChecked={
+                                              educationSystem.id === 1
+                                            }
+                                          >
                                             {educationSystem.name}
-                                          </p>
+                                          </RadioButton>
                                         );
                                       }
                                     )}
@@ -112,9 +118,16 @@ class BuyCardMainPagePresentation extends React.Component {
                                     {card.teachingInstitution.map(
                                       (teachingInstitution, index) => {
                                         return (
-                                          <p key={index}>
+                                          <RadioButton
+                                            key={index}
+                                            name="teachingInstitution"
+                                            value={teachingInstitution.id}
+                                            defaultChecked={
+                                              teachingInstitution.id === 2
+                                            }
+                                          >
                                             {teachingInstitution.name}
-                                          </p>
+                                          </RadioButton>
                                         );
                                       }
                                     )}

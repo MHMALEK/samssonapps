@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import createBrowserHistory from "history/createBrowserHistory";
 
 // import page componentes;
 import HomePage from "../components/Pages/HomePage/HomePage.container";
@@ -10,18 +11,18 @@ import SubmitInformationPage from "../components/Pages/SubmitInformationPage/Sub
 import LoginPage from "../components/Pages/LoginPage/LoginPage.container";
 
 import AboutPage from "../components/Pages/AboutPage";
+import MainLayout from "../components/Layout/MainLayout";
 
-function AppRouter() {
+function AppRouter(props) {
+  const history = createBrowserHistory();
   return (
-    <Router>
-      <>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/cards/list" component={CardsMainPage} />
-        <Route path="/card/buy" exact component={BuyCardMainPage} />
-        <Route path="/card/user-info" exact component={SubmitInformationPage} />
-        <Route path="/register" exact component={LoginPage} />
-        <Route path="/test" exact component={AboutPage} />
-      </>
+    <Router history={history}>
+      <Route path="/" exact component={HomePage} />
+      <Route path="/cards/list" component={CardsMainPage} />
+      <Route path="/card/buy" exact component={BuyCardMainPage} />
+      <Route path="/card/user-info" exact component={SubmitInformationPage} />
+      <Route path="/register" exact component={LoginPage} />
+      <Route path="/test" exact component={AboutPage} />
     </Router>
   );
 }

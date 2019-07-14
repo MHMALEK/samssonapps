@@ -1,9 +1,19 @@
 .nav-bar {
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding-right: 20px;
-    color: white;
-    font-size: 13px;
-    background-color: #36434d;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 20px;
+  color: white;
+  font-size: 13px;
+  background-color: #36434d;
+  box-shadow: 1px 1px 6px grey;
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  .back-button {
+    padding-top: 10px;
+  }
 }

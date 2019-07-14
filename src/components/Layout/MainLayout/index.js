@@ -6,11 +6,11 @@ import Footer from "../Footer";
 import NavBar from "../NavBar";
 
 const MainLayout = props => {
-  const { children, contactInformation } = props;
+  const { children, contactInformation, history, title } = props;
   return (
     <div className="main-app-layout">
       <Header />
-      {/* <NavBar /> */}
+      <NavBar title={title} history={history} />
       {children}
       <Footer content={contactInformation} />
     </div>

@@ -14,16 +14,18 @@ class BuyCardMainPage extends React.Component {
     getCards();
   }
   render() {
-    const { cardsList } = this.props;
-    return <BuyCardMainPagePresentation cardsList={cardsList} />;
+    const { cardsList, history } = this.props;
+    return (
+      <BuyCardMainPagePresentation history={history} cardsList={cardsList} />
+    );
   }
 }
 
 const mapStateToProps = state => {
-  console.log(state)
-   return {
-     cardsList: state.Cards.cardsList
-   }
+  console.log(state);
+  return {
+    cardsList: state.Cards.cardsList
+  };
 };
 
 const mapDispatchToProps = dispatch => ({

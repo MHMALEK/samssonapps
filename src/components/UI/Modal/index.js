@@ -59,7 +59,7 @@ class ModalComponent extends React.Component {
           overlayClassName="Modal-overlay"
         >
           <>
-            <div class="modal-title">
+            <div className="modal-title">
               <span>{title}</span>
               <img
                 src="/icons/ic_close_white.svg"

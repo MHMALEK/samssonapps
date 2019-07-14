@@ -11,16 +11,13 @@ class CardsMainPagePresentation extends React.Component {
     this.state = {};
   }
   render() {
-    const { cardsList, goTobuyCardPageHandler} = this.props;
+    const { cardsList, goTobuyCardPageHandler, history } = this.props;
     return (
-      <MainLayout>
+      <MainLayout history={history} title="سامانه‌های ثبت‌نام و انتخاب رشته">
         <Container>
           <div className="first-form-wrapper">
             <Card title="خرید کارت اعتباری ثبت‌نام">
-              <div
-                className="button-wrapper"
-                onClick={goTobuyCardPageHandler}
-              >
+              <div className="button-wrapper" onClick={goTobuyCardPageHandler}>
                 <Button blueBg>خرید کارت اعتباری ثبت‌نام </Button>
               </div>
               <div className="button-wrapper">
@@ -29,41 +26,38 @@ class CardsMainPagePresentation extends React.Component {
             </Card>
           </div>
           <div className="section-title c-blue">ثبت نام و انتخاب رشته</div>
-          {cardsList && cardsList.map((card) => {
-            return  (
-              <Card key={card.id} title={card.title}>
-                <p>{card.description}</p>
-                <div className="button-wrapper">
-                  <Button blueBg> ثبت نام و انتخاب رشته</Button>
-                </div>
-                {card.files && card.files.map((file, index) => {
-                  return  (
-                    <a key={index} href={file.url}>
-                      <div className="button-wrapper">
-                        <Button blueBorder>{file.name}</Button>
-                      </div>
-                    </a>
-                 )
-                })}
-              
-            </Card>
-            )
-          })}
-         <div className="section-title c-blue">دکتری تخصصی سال ۹۸</div>
-             <Card title="اعلام نتایج اولیه آزمون دکتری تخصصی سال ۹۸">
-                <div
-                className="button-wrapper"
-                 >
-                <Button blueBg>ورود به سامانه</Button>
-              </div>
-            </Card>
-             <Card title="ثبت‌نام مصاحبه آزمون دکتری تخصصی سال ۹۸">
-                <div
-                className="button-wrapper"
-                 >
-                <Button blueBg>ورود به سامانه</Button>
-              </div>
-            </Card>
+          {cardsList &&
+            cardsList.map(card => {
+              return (
+                <Card key={card.id} title={card.title}>
+                  <p>{card.description}</p>
+                  <div className="button-wrapper">
+                    <Button blueBg> ثبت نام و انتخاب رشته</Button>
+                  </div>
+                  {card.files &&
+                    card.files.map((file, index) => {
+                      return (
+                        <a key={index} href={file.url}>
+                          <div className="button-wrapper">
+                            <Button blueBorder>{file.name}</Button>
+                          </div>
+                        </a>
+                      );
+                    })}
+                </Card>
+              );
+            })}
+          <div className="section-title c-blue">دکتری تخصصی سال ۹۸</div>
+          <Card title="اعلام نتایج اولیه آزمون دکتری تخصصی سال ۹۸">
+            <div className="button-wrapper">
+              <Button blueBg>ورود به سامانه</Button>
+            </div>
+          </Card>
+          <Card title="ثبت‌نام مصاحبه آزمون دکتری تخصصی سال ۹۸">
+            <div className="button-wrapper">
+              <Button blueBg>ورود به سامانه</Button>
+            </div>
+          </Card>
         </Container>
       </MainLayout>
     );

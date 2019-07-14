@@ -1,24 +1,20 @@
 import React from "react";
 
 const RadioButton = props => {
+  const { children, name, value, defaultChecked } = props;
   return (
-    <div>
-      <label htmlFor="malek" className="radio-button">
-        One
-        <input type="radio" name="malek" />
+    <>
+      <label className="radio-button">
+        {children}
+        <input
+          type="radio"
+          name={name}
+          value={value}
+          defaultChecked={defaultChecked}
+        />
         <span className="checkmark" />
       </label>
-      <label htmlFor="malek" className="radio-button">
-        Two
-        <input type="radio" name="malek" />
-        <span className="checkmark" />
-      </label>
-      <label htmlFor="malek" className="radio-button">
-        Three
-        <input type="radio" name="malek" />
-        <span className="checkmark" />
-      </label>
-    </div>
+    </>
   );
 };
 
