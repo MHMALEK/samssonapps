@@ -1,14 +1,15 @@
 import React from "react";
-import NavBar from "../../Layout/NavBar";
 import Container from "../../UI/Container";
 import Accordion from "../../UI/Accordion";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
+import MultiStepNavBar from "../../UI/MultiStepNavBar";
 
 const SubmitInformationPagePresentation = props => {
+  const { navBarSteps } = props;
   return (
-    <div>
-      <NavBar />
+    <div className="layout-wrapper">
+      <MultiStepNavBar steps={navBarSteps} />
       <Container>
         <Accordion title="کارت اعتباری">
           <p className="c-red">

@@ -1,0 +1,25 @@
+.multi-step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+
+  .step-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .step-icon {
+    margin-left: 10px;
+  }
+  .step-icon-circle {
+    background: rgba(255, 255, 255, 0.2);
+    // padding: 10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

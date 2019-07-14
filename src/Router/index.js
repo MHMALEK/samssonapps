@@ -11,7 +11,7 @@ import SubmitInformationPage from "../components/Pages/SubmitInformationPage/Sub
 import LoginPage from "../components/Pages/LoginPage/LoginPage.container";
 
 import AboutPage from "../components/Pages/AboutPage";
-import MainLayout from "../components/Layout/MainLayout";
+import RestoreCardsPage from "../components/Pages/RestoreCardsPage/RestoreCardsPage.container";
 
 function AppRouter(props) {
   const history = createBrowserHistory();
@@ -21,6 +21,8 @@ function AppRouter(props) {
       <Route path="/cards/list" component={CardsMainPage} />
       <Route path="/card/buy" exact component={BuyCardMainPage} />
       <Route path="/card/user-info" exact component={SubmitInformationPage} />
+      <Route path="/card/my-cards" exact component={RestoreCardsPage} />
+
       <Route path="/register" exact component={LoginPage} />
       <Route path="/test" exact component={AboutPage} />
     </Router>

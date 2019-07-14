@@ -1,6 +1,11 @@
 .inputs-wrapper {
   display: flex;
   margin-bottom: 20px;
+  &.full-width {
+    .input-wrapper {
+      width: 100%;
+    }
+  }
   .input-wrapper {
     width: 50%;
     &:last-child {

@@ -1,8 +1,21 @@
+$default-font-size: 13px;
+
+$primary-blue: #0088cc;
+$primary-gray: #36434d;
+$black: #333333;
+$white: #ffff;
+$light-gray: #666666;
+$dark-gray: #333333;
+$red: #cc0022;
+$orange: #e6402e;
+$gray: #97a3a8;
+
 body {
   margin: 0;
   padding: 0;
   direction: rtl;
   font-family: IRANSans;
+  font-size: $default-font-size;
 }
 
 button {
@@ -14,16 +27,6 @@ a {
     cursor: pointer;
   }
 }
-
-$primary-blue: #0088cc;
-$primary-gray: #36434d;
-$black: #333333;
-$white: #ffff;
-$light-gray: #666666;
-$dark-gray: #333333;
-$red: #cc0022;
-$orange: #e6402e;
-$gray: #97a3a8;
 
 // general
 
@@ -52,6 +55,10 @@ $gray: #97a3a8;
 }
 .c-white {
   color: $white;
+}
+
+.layout-wrapper {
+  margin-top: 60px;
 }
 // ToDo: import reset CSS;
 // ToDo: better way to import CSS;

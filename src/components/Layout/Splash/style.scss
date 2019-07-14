@@ -2,4 +2,22 @@
   height: 100vh;
   background-image: url("/backgrounds/bg_pattern_light_blue.png");
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.splash-icon {
+  background-color: white;
+  box-shadow: 1px 1px 14px gray;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-width: 100%;
+    width: 60px;
+  }
 }
