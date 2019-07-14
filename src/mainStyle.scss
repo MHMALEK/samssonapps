@@ -75,6 +75,8 @@ a {
 @import "./components/UI/Modal/style.scss";
 @import "./components/UI/MultiStepNavBar/style.scss";
 
+@import "./components/Layout/AuthLayout/style.scss";
+@import "./components/Layout/AuthHeader/style.scss";
 @import "./components/Layout/Header/style.scss";
 @import "./components/Layout/Footer/style.scss";
 @import "./components/Layout/NavBar/style.scss";
@@ -84,3 +86,5 @@ a {
 @import "./components/Pages/CardsMainPage/style.scss";
 @import "./components/Pages/SubmitInformationPage/style.scss";
 @import "./components/Pages/BuyCardMainPage/style.scss";
+
+@import "./components/Pages/SSO/SignIn/style.scss";

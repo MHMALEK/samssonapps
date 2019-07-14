@@ -16,7 +16,7 @@ function* getConfig() {
   // const responseReal = yield call(getGeneralSettings);
   const _response = require("../MockResponses/generalLight.json");
   const response = configSelector(_response);
-  yield delay(4000);
+  yield delay(2000);
   yield put({
     type: GET_SETTING_STARTED
   });
