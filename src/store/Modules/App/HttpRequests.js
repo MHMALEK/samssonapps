@@ -1,7 +1,6 @@
-import HttpClient from "../../../utils/httpClient";
-
-const GET_GENERAL_SETTINGS = "/settings/general";
+import { BuyerApiCall } from "../../../utils/httpClient";
+import { GENERAL_SETTINGS_REQUEST } from "../../../utils/endPoints";
 
 export const getGeneralSettings = () => {
-  return HttpClient.get(GET_GENERAL_SETTINGS);
+  return BuyerApiCall.get(GENERAL_SETTINGS_REQUEST);
 };

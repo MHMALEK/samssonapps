@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import createBrowserHistory from "history/createBrowserHistory";
 
 // import page componentes;
@@ -15,7 +15,7 @@ function AppRouter(props) {
   const history = createBrowserHistory();
   return (
     <Router history={history}>
-      <Route path="/sso" exact component={SignInSSO} />
+      <Route path="/sso/signin" exact component={SignInSSO} />
       <Route path="/sso/verify" exact component={SSOVerify} />
 
       <Route path="/" exact component={HomePage} />

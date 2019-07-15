@@ -1,7 +1,5 @@
-import HttpClient from "../../../utils/httpClient";
-
-const GET_CARDS_FROM_SERVER = "/card";
-
+import { BuyerApiCall } from "../../../utils/httpClient";
+import { CARDS_INDEX_REQUEST } from "../../../utils/endPoints";
 export const getCardsFromServer = () => {
-  return HttpClient.get(GET_CARDS_FROM_SERVER);
+  return BuyerApiCall.get(CARDS_INDEX_REQUEST);
 };

@@ -14,10 +14,7 @@ function* startAppSaga(action) {
 
 function* getConfig() {
   const _response = yield call(getGeneralSettings);
-  // const _response = require("../MockResponses/generalLight.json");
-  console.log(_response)
   const response = configSelector(_response);
-  yield delay(100);
   yield put({
     type: GET_SETTING_STARTED
   });

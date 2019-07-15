@@ -1,7 +1,5 @@
-import HttpClient from '../../../utils/httpClient';
-
-const GET_CARDS = '/employees';
+import { BuyerApiCall } from "../../../utils/httpClient";
 
 export const getCardsFromApi = () => {
-    return HttpClient.get(GET_CARDS)
-}
+  return BuyerApiCall.get();
+};

@@ -1,0 +1,11 @@
+const GENERAL_SETTINGS_REQUEST = "/settings/general";
+const SIGN_IN_WITH_PHONE_REQUEST = "/sso/check-operator";
+const VERIFY_WITH_PHONE_REQUEST = "/sso/verify";
+const CARDS_INDEX_REQUEST = "/card";
+
+export {
+  GENERAL_SETTINGS_REQUEST,
+  SIGN_IN_WITH_PHONE_REQUEST,
+  CARDS_INDEX_REQUEST,
+  VERIFY_WITH_PHONE_REQUEST
+};

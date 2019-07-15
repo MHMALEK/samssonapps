@@ -2,8 +2,9 @@ const cardSelector = state => {
   //   return state.todos.filter(todo => {
   //     return !todo.completed;
   //   });
-  const data = state.data;
-  const CardsList = data.map((item) => {
+  const data = state.data.data;
+  console.log(state, data);
+  const CardsList = data.map(item => {
     return {
       id: item.id,
       title: item.title,
@@ -11,9 +12,9 @@ const cardSelector = state => {
       price: item.cards[0].price,
       files: item.files,
       educationSystem: item.education_system,
-      teachingInstitution: item.teaching_institution,
+      teachingInstitution: item.teaching_institution
     };
-  })
+  });
   return CardsList;
 };
 

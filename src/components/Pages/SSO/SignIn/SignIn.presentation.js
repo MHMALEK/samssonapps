@@ -6,20 +6,27 @@ import Container from "../../../UI/Container";
 import Logo from "../../../UI/Logo";
 
 const SignInSSOPresentation = props => {
+  const { signInAction, history, phoneNumberHandler, phoneNumberValue } = props;
   return (
-    <AuthLayout history={props.history}>
+    <AuthLayout history={history}>
       <Container>
         <div className="sign-in-box">
           <div className="logo">
             <Logo />
             <p className="c-blue">ورود به سامانه دانشگاه آزاد اسلامی</p>
           </div>
-          <div className="login-content">
+          <div className="signIn-content">
             <p>برای دریافت کد ورود، شماره همراه خود را وارد کنید.</p>
             <div className="sign-in-input-wrapper">
-              <Input title="شماره تلفن همراه" />
+              <Input
+                title="شماره تلفن همراه"
+                onChange={event => phoneNumberHandler(event)}
+                value={phoneNumberValue}
+              />
             </div>
-            <Button blueBg>ورود</Button>
+            <Button blueBg onClick={() => signInAction}>
+              ورود
+            </Button>
           </div>
         </div>
       </Container>

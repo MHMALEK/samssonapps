@@ -11,8 +11,7 @@ import {
 } from "./ActionTypes";
 
 function* getCardsRequest() {
-  // const responseReal = yield call(getGeneralSettings);
-  const _response = require("../MockResponses/Cards-index.json");
+  const _response = yield call(getCardsFromServer);
   const response = cardSelector(_response);
   yield put({
     type: GET_CARDS_STARTED
@@ -23,10 +22,13 @@ function* getCardsRequest() {
   });
 }
 
-function* goToCardList() { 
+function* goToCardList() {
   yield put({
-    type: GO_TO_CARD_LIST_SUCCEED,
+    type: GO_TO_CARD_LIST_SUCCEED
   });
 }
 
-export default [takeLatest(GET_CARDS_ACTION, getCardsRequest), takeEvery(GO_TO_CARD_LIST_ACTION, goToCardList)];
+export default [
+  takeLatest(GET_CARDS_ACTION, getCardsRequest),
+  takeEvery(GO_TO_CARD_LIST_ACTION, goToCardList)
+];
