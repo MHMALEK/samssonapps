@@ -24,9 +24,9 @@ class SignInSSO extends React.Component {
     const { signInAction, showVerify } = this.props;
     return !showVerify ? (
       <SignInSSOPresentation
-        signInAction={() => signInAction(this.state.phoneNumber)}
         phoneNumberHandler={this.phoneNumberHandler}
         phoneNumberValue={this.state.phoneNumber}
+        signInAction={signInAction(this.state.phoneNumber)}
       />
     ) : (
       <Redirect to="/sso/verify" />
@@ -34,7 +34,6 @@ class SignInSSO extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  console.log(state);
   return {
     loadingSubmitPhoneNumber: state.AuthSSO.loadingSubmitPhoneNumber,
     showVerify: state.AuthSSO.showVerify,

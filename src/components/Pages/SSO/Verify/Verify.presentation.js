@@ -36,15 +36,7 @@ const VerifySSOPresentation = props => {
                 value={verifyCodeValue}
               />
             </div>
-            <Button
-              blueBg
-              onClick={() =>
-                verifyAction({
-                  phoneNumber: props.phoneNumber,
-                  verifyCode: verifyCodeValue
-                })
-              }
-            >
+            <Button blueBg onClick={verifyAction(verifyCodeValue)}>
               ورود
             </Button>
             <div className="verify-footer">

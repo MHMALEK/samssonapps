@@ -19,7 +19,7 @@ class VerifySSO extends React.Component {
     });
   }
   render() {
-    const { showTimer, verifyAction, phoneNumber } = this.props;
+    const { showTimer, verifyAction } = this.props;
     const { verifyCode } = this.state.verifyCode;
     return (
       <VerifySSOPresentation
@@ -27,7 +27,6 @@ class VerifySSO extends React.Component {
         verifyCodeHandler={this.verifyCodeHandler}
         verifyCodeValue={verifyCode}
         verifyAction={verifyAction}
-        phoneNumber={phoneNumber}
       />
     );
   }
@@ -42,8 +41,8 @@ const mapStateToProps = state => {
 
 const MapDispatchToProps = dispatch => {
   return {
-    verifyAction: (phoneNumber, verifyCode) => {
-      dispatch(verifyWithPhoneSSOAction(phoneNumber, verifyCode));
+    verifyAction: verifyCode => {
+      dispatch(verifyWithPhoneSSOAction(verifyCode));
     }
   };
 };

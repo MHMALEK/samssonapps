@@ -24,7 +24,7 @@ const SignInSSOPresentation = props => {
                 value={phoneNumberValue}
               />
             </div>
-            <Button blueBg onClick={() => signInAction}>
+            <Button blueBg onClick={() => signInAction()}>
               ورود
             </Button>
           </div>
