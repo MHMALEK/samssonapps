@@ -11,17 +11,7 @@ class ModalComponent extends React.Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-
-  // componentWillReceiveProps(props) {
-  //     if(props.openModal && props.openModal !== undefined) {
-  //         this.setState({
-  //             modalIsOpen: true
-  //         })
-  //     }
-  // }
-
   afterOpenModal() {
-    // references are now sync'd and can be accessed.
     //   this.subtitle.style.color = '#f00';
   }
 
@@ -30,15 +20,12 @@ class ModalComponent extends React.Component {
   }
 
   render() {
-    const { title, children, showModal, onCloseClick } = this.props;
+    const { title, children, openModal, onCloseClick } = this.props;
     return (
       <div>
         <Modal
-          isOpen={showModal}
-          onAfterOpen={this.afterOpenModal}
-          onRequestClose={this.closeModal}
+          isOpen={openModal}
           contentLabel={title}
-          shouldCloseOnOverlayClick={true}
           className="Modal"
           overlayClassName="Modal-overlay"
         >

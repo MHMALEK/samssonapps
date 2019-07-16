@@ -28,8 +28,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  selectCardToBuyAction: () => {
-    dispatch(selectCardToBuyAction());
+  selectCardToBuyAction: (cardId, educationSystem, teachingInstitution) => {
+    dispatch(selectCardToBuyAction(cardId, educationSystem, teachingInstitution));
   }
 });
 

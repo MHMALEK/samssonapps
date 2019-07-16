@@ -14,16 +14,29 @@ class BuyCardMainPagePresentation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      educationSystem: null,
+      teachingInstitution: null
     };
     this.selectCardToBuyAction = this.selectCardToBuyAction.bind(this);
+    this.getEductaionSystemValue = this.getEductaionSystemValue.bind(this);
+    this.getTeachingInstitutionValue = this.getTeachingInstitutionValue.bind(this)
   }
 
-  selectCardToBuyAction(cardId) {
+  selectCardToBuyAction(cardId, educationSystem, teachingInstitution) {
     const { selectCardToBuyAction, history } = this.props;
-    console.log(cardId);
-    selectCardToBuyAction();
+    selectCardToBuyAction(cardId, educationSystem, teachingInstitution);
     history.push("/card/user-info");
+  }
+  getEductaionSystemValue(value) {
+    this.setState({
+      educationSystem: value
+    })
+  }
+  getTeachingInstitutionValue(value) {
+    this.setState({
+      teachingInstitution: value
+    })
   }
   render() {
     const { cardsList, history } = this.props;
@@ -50,19 +63,19 @@ class BuyCardMainPagePresentation extends React.Component {
                         <div className="select-wrapper">
                           {card.educationSystem &&
                             card.educationSystem.length > 0 && (
-                              <EducationalModalList card={card} />
+                              <EducationalModalList card={card} getEductaionSystemValue={(value) => this.getEductaionSystemValue(value)} />
                             )}
                         </div>
                         <div className="select-wrapper">
                           {card.teachingInstitution &&
                             card.teachingInstitution.length > 0 && (
-                              <TeachingInstitutionModalList card={card} />
+                              <TeachingInstitutionModalList card={card} getTeachingInstitutionValue={(value) => this.getTeachingInstitutionValue(value)} />
                             )}
                         </div>
                         <div className="button-wrapper">
                           <Button
                             blueBg
-                            onClick={() => this.selectCardToBuyAction(card.id)}
+                            onClick={() => this.selectCardToBuyAction(card.id, this.state.educationSystem, this.state.teachingInstitution)}
                           >
                             خرید کارت
                           </Button>
