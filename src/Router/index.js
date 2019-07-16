@@ -4,10 +4,10 @@ import createBrowserHistory from "history/createBrowserHistory";
 
 // import page componentes;
 import HomePage from "../components/Pages/HomePage/HomePage.container";
-import BuyCardMainPage from "../components/Pages/BuyCardMainPage/BuyCardMainPage.container";
+import BuyCardMainPage from "../components/Pages/BuyCard/BuyCardMainPage/BuyCardMainPage.container";
 
 import CardsMainPage from "../components/Pages/CardsMainPage/CardsMainPage.container";
-import SubmitInformationPage from "../components/Pages/SubmitInformationPage/SubmitInformationPage.container";
+import SubmitInformationPage from "../components/Pages/BuyCard/SubmitInformationPage/SubmitInformationPage.container";
 import RestoreCardsPage from "../components/Pages/RestoreCardsPage/RestoreCardsPage.container";
 import SignInSSO from "../components/Pages/SSO/SignIn/SignIn.container";
 import SSOVerify from "../components/Pages/SSO/Verify/Verify.container";

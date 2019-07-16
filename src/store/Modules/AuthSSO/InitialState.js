@@ -5,7 +5,11 @@ const InitialState = {
   exist: false,
   phoneNumber: "",
   operator: "",
-  wait: false
+  wait: false,
+  loadingVerifyPhoneNumber: false,
+  userId: "",
+  token: "",
+  mobileServiceProvider: ""
 };
 
 export default InitialState;

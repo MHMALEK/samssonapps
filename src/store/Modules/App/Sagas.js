@@ -8,7 +8,7 @@ import {
   GET_SETTINGS_FAILD
 } from "./ActionTypes";
 
-function* startAppSaga(action) {
+function* startAppSaga() {
   yield call(getConfig);
 }
 

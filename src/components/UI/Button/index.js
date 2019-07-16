@@ -2,7 +2,6 @@ import React from "react";
 
 const Button = props => {
   const { blueBg, blueBorder, children, onClick } = props;
-  console.log(onClick);
   return (
     <button
       className={`button 

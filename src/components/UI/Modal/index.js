@@ -1,28 +1,12 @@
 import React from "react";
 import Modal from "react-modal";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    zIndex: 231231
-  }
-};
-
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
 
 class ModalComponent extends React.Component {
   constructor() {
     super();
-
-    this.state = {
-      modalIsOpen: true
-    };
 
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -42,15 +26,15 @@ class ModalComponent extends React.Component {
   }
 
   closeModal() {
-    this.setState({ modalIsOpen: false });
+    // this.setState({ modalIsOpen: false });
   }
 
   render() {
-    const { title, children } = this.props;
+    const { title, children, showModal, onCloseClick } = this.props;
     return (
       <div>
         <Modal
-          isOpen={this.state.modalIsOpen}
+          isOpen={showModal}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           contentLabel={title}
@@ -64,7 +48,7 @@ class ModalComponent extends React.Component {
               <img
                 src="/icons/ic_close_white.svg"
                 alt="close icon"
-                onClick={() => this.closeModal()}
+                onClick={() => onCloseClick()}
               />
             </div>
             <div className="modal-content">{children}</div>

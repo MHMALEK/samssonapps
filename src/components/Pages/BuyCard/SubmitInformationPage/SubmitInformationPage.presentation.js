@@ -1,12 +1,21 @@
 import React from "react";
-import Container from "../../UI/Container";
-import Accordion from "../../UI/Accordion";
-import Input from "../../UI/Input";
-import Button from "../../UI/Button";
-import MultiStepNavBar from "../../UI/MultiStepNavBar";
+import Container from "../../../UI/Container";
+import Accordion from "../../../UI/Accordion";
+import Input from "../../../UI/Input";
+import Button from "../../../UI/Button";
+import MultiStepNavBar from "../../../UI/MultiStepNavBar";
 
 const SubmitInformationPagePresentation = props => {
-  const { navBarSteps } = props;
+  const {
+    navBarSteps,
+    handleNameChange,
+    handleFamilyChange,
+    handleCertificateIdChange,
+    handleNationalityChange,
+    handleNationalityIdChange,
+    phoneNumberChange
+  } = props;
+
   return (
     <div className="layout-wrapper">
       <MultiStepNavBar steps={navBarSteps} />
@@ -25,16 +34,36 @@ const SubmitInformationPagePresentation = props => {
 
         <Accordion title="اطلاعات فردی و شناسنامه‌ای">
           <div className="inputs-wrapper">
-            <Input bgGray title="نام" />
-            <Input bgGray title="نام خانوادگی" />
+            <Input onChange={e => handleNameChange(e)} bgGray title="نام" />
+            <Input
+              onChange={e => handleFamilyChange(e)}
+              bgGray
+              title="نام خانوادگی"
+            />
           </div>
           <div className="inputs-wrapper">
-            <Input bgGray title="شماره شناسنامه" />
-            <Input bgGray title="تابعیت" />
+            <Input
+              onChange={e => handleCertificateIdChange(e)}
+              bgGray
+              title="شماره شناسنامه"
+            />
+            <Input
+              onChange={e => handleNationalityChange(e)}
+              bgGray
+              title="تابعیت"
+            />
           </div>
           <div className="inputs-wrapper">
-            <Input bgGray title="کد ملی" />
-            <Input bgGray title="شماره تلفن همراه" />
+            <Input
+              onChange={e => handleNationalityIdChange(e)}
+              bgGray
+              title="کد ملی"
+            />
+            <Input
+              onChange={e => phoneNumberChange(e)}
+              bgGray
+              title="شماره تلفن همراه"
+            />
           </div>
         </Accordion>
         <div className="call-to-actions">

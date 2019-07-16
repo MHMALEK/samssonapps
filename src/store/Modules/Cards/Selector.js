@@ -3,7 +3,6 @@ const cardSelector = state => {
   //     return !todo.completed;
   //   });
   const data = state.data.data;
-  console.log(state, data);
   const CardsList = data.map(item => {
     return {
       id: item.id,

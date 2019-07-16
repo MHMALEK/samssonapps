@@ -11,7 +11,6 @@ class AuthHttpClient {
     });
   }
   post(path, params) {
-    console.log(path, params);
     return this.axiosInstance.post(this.baseUrl + path, params);
   }
 }

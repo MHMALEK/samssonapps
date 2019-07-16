@@ -17,7 +17,7 @@ export const verifyWithPhoneSSOAction = content => {
   return {
     type: VERIFY_WITH_PHONE_SSO_ACTION,
     payload: {
-      verifyCode: content.verifyCode
+      verifyCode: content
     }
   };
 };

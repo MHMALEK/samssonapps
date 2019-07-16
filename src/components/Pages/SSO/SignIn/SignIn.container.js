@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signInWithPhoneSSOAction } from "../../../../store/Modules/AuthSSO/Actions";
 import { changePhoneNumberHandlerAction } from "../../../../store/Modules/UI/Actions";
-import SignInSSOPresentation from "./SignIn.presentation";
+import AuthLayout from "../../../Layout/AuthLayout";
+import Input from "../../../UI/Input";
+import Button from "../../../UI/Button";
+import Container from "../../../UI/Container";
+import Logo from "../../../UI/Logo";
 
 class SignInSSO extends React.Component {
   constructor(props) {
@@ -21,13 +25,32 @@ class SignInSSO extends React.Component {
   }
 
   render() {
-    const { signInAction, showVerify } = this.props;
+    const { signInAction, showVerify, history } = this.props;
+    const { phoneNumber } = this.state;
     return !showVerify ? (
-      <SignInSSOPresentation
-        phoneNumberHandler={this.phoneNumberHandler}
-        phoneNumberValue={this.state.phoneNumber}
-        signInAction={signInAction(this.state.phoneNumber)}
-      />
+      <AuthLayout history={history}>
+        <Container>
+          <div className="sign-in-box">
+            <div className="logo">
+              <Logo />
+              <p className="c-blue">ورود به سامانه دانشگاه آزاد اسلامی</p>
+            </div>
+            <div className="signIn-content">
+              <p>برای دریافت کد ورود، شماره همراه خود را وارد کنید.</p>
+              <div className="sign-in-input-wrapper">
+                <Input
+                  title="شماره تلفن همراه"
+                  onChange={event => this.phoneNumberHandler(event)}
+                  value={phoneNumber}
+                />
+              </div>
+              <Button blueBg onClick={() => signInAction(phoneNumber)}>
+                ورود
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </AuthLayout>
     ) : (
       <Redirect to="/sso/verify" />
     );
