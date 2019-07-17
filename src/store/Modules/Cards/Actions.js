@@ -42,7 +42,15 @@ export const selectCardToBuyAction = (
   };
 };
 
-export const submitInformationHandlerAction = payload => {
+export const submitInformationHandlerAction = (data) => {
+  const payload = {
+    nationality_id: data.NationalityValue,
+    id_certificate: data.certificateIdValue,
+    last_name: data.familyValue,
+    name: data.nameValue,
+    national_code: data.nationalityIdValue,
+    cell_phone: data.phoneNumberValue
+  }
   return {
     type: SUBMIT_INFORMATION_ACTION,
     payload

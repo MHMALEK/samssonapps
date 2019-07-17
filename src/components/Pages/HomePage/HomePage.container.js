@@ -13,10 +13,9 @@ class HomePage extends React.Component {
   }
 }
 
-const mapStateToProps = state => {};
 export default withRouter(
   connect(
-    mapStateToProps,
+    null,
     null
   )(HomePage)
 );

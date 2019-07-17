@@ -1,7 +1,8 @@
 import { put, call, select, takeLatest } from "redux-saga/effects";
 import {
   getCardsFromServer,
-  confirmInformationFromServer
+  confirmInformationFromServer,
+  submitInformationFromServer
 } from "./HttpRequests";
 import { cardSelector, getCardDataSelector } from "./Selector";
 import {
@@ -17,7 +18,8 @@ import {
   CONFIRM_CARD_FAILD,
   SUBMIT_INFORMATION_ACTION,
   SUBMIT_INFORMATION_SUCCEED,
-  SUBMIT_INFORMATION_FAILD
+  SUBMIT_INFORMATION_FAILD,
+  SUBMIT_INFORMATION_STARTED
 } from "./ActionTypes";
 
 function* getCardsRequest() {
@@ -38,15 +40,46 @@ function* goToCardList() {
   });
 }
 
-function* confirmInformationSaga() {
+
+function* submitInformationSaga(data) {
+  console.log(data)
   const cardData = yield select(getCardDataSelector);
+  const params = {
+    name: data.payload.name,
+    last_name: data.payload.last_name,
+    id_certificate: data.payload.id_certificate,
+    national_code: data.payload.national_code,
+    cell_phone: data.payload.cell_phone,
+    nationality_id: Number(data.payload.nationality_id),
+    card_id: cardData.card_id,
+    education_system_id: cardData.education_system_id,
+    teaching_institution_id: cardData.teaching_institution_id
+  }
+  yield put({
+    type: SUBMIT_INFORMATION_STARTED,
+  });
   try {
-    const _response = yield call(confirmInformationFromServer, cardData);
+    const _response = yield call(submitInformationFromServer, params);
     const payload = _response.data.data;
     yield put({
-      type: CONFIRM_CARD_STARTED,
+      type: SUBMIT_INFORMATION_SUCCEED,
       payload
     });
+  } catch {
+    yield put({
+      type: SUBMIT_INFORMATION_FAILD
+    });
+  }
+}
+
+
+function* confirmInformationSaga() {
+  yield put({
+    type: CONFIRM_CARD_STARTED,
+  });
+  try {
+    const _response = yield call(confirmInformationFromServer);
+    const payload = _response.data.data;
     yield put({
       type: CONFIRM_CARD_SUCCEED,
       payload
@@ -58,7 +91,6 @@ function* confirmInformationSaga() {
   }
 }
 
-function* submitInformationSaga() {}
 
 export default [
   takeLatest(GET_CARDS_ACTION, getCardsRequest),

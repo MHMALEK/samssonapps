@@ -1,7 +1,5 @@
 import React from "react";
 import { Router, Route } from "react-router-dom";
-import createBrowserHistory from "history/createBrowserHistory";
-
 // import page componentes;
 import HomePage from "../components/Pages/HomePage/HomePage.container";
 import BuyCardMainPage from "../components/Pages/BuyCard/BuyCardMainPage";
@@ -12,6 +10,9 @@ import ConfirmInformationPage from "../components/Pages/BuyCard/ConfirmInformati
 import RestoreCardsPage from "../components/Pages/RestoreCardsPage/RestoreCardsPage.container";
 import SignInSSO from "../components/Pages/SSO/SignIn/SignIn.container";
 import SSOVerify from "../components/Pages/SSO/Verify/Verify.container";
+
+const createBrowserHistory = require("history").createBrowserHistory;
+
 function AppRouter(props) {
   const history = createBrowserHistory();
   return (
