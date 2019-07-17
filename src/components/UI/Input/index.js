@@ -1,7 +1,7 @@
 import React from "react";
 
 const Input = props => {
-  const { name, title, bgGray, onChange, value, placeHolder } = props;
+  const { name, title, bgGray, onChange, value, placeHolder, disabled } = props;
   return (
     <div className="input-wrapper">
       <label htmlFor={name} className="input-lable">
@@ -14,6 +14,7 @@ const Input = props => {
         onChange={e => onChange(e)}
         value={value}
         placeholder={placeHolder}
+        disabled={disabled}
       />
     </div>
   );

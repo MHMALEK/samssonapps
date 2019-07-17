@@ -84,7 +84,6 @@ function* verifyWithPhoneSSOSAGA(action) {
     };
 
     localStorage.setItem("verify", JSON.stringify(payload));
-    console.log(JSON.parse(localStorage.getItem("verify")));
     yield put({
       type: VERIFY_WITH_PHONE_SSO_SUCCEED,
       payload

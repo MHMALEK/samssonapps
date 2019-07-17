@@ -1,7 +1,15 @@
 import {
   GET_CARDS_ACTION,
   GO_TO_CARD_LIST_ACTION,
-  SELECT_CARD_TO_BUY_ACTION
+  SELECT_CARD_TO_BUY_ACTION,
+  SUBMIT_INFORMATION_ACTION,
+  SUBMIT_INFORMATION_STARTED,
+  SUBMIT_INFORMATION_SUCCEED,
+  SUBMIT_INFORMATION_FAILD,
+  CONFIRM_INFORMATION_ACTION,
+  CONFIRM_INFORMATION_STARTED,
+  CONFIRM_INFORMATION_FAILD,
+  CONFIRM_INFORMATION_SUCCESS
 } from "./ActionTypes";
 
 export const getCardsAction = () => {
@@ -19,15 +27,30 @@ export const goToCardListAction = () => {
   };
 };
 
-export const selectCardToBuyAction = (selectedCardId, educationSystem, teachingInstitution) => {
-  console.log(selectedCardId, educationSystem, teachingInstitution)
+export const selectCardToBuyAction = (
+  selectedCardId,
+  educationSystemId,
+  teachingInstitutionId
+) => {
   return {
     type: SELECT_CARD_TO_BUY_ACTION,
     payload: {
       selectedCardId,
-      educationSystem,
-      teachingInstitution,
+      educationSystemId,
+      teachingInstitutionId
     }
   };
 };
 
+export const submitInformationHandlerAction = payload => {
+  return {
+    type: SUBMIT_INFORMATION_ACTION,
+    payload
+  };
+};
+
+export const confirmInformationHandlerAction = () => {
+  return {
+    type: CONFIRM_INFORMATION_ACTION
+  };
+};

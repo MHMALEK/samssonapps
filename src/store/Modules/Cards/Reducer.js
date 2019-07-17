@@ -4,6 +4,8 @@ import {
   GET_CARDS_FAILD,
   GO_TO_CARD_LIST_ACTION,
   GO_TO_CARD_LIST_SUCCEED,
+  SELECT_CARD_TO_BUY_ACTION,
+  SUBMIT_INFORMATION_ACTION
 } from "./ActionTypes";
 import initialState from "./InitialState";
 
@@ -12,31 +14,43 @@ const CardsReducer = function(state = initialState, action) {
     case GET_CARDS_STARTED: {
       return {
         ...state,
-        loadingGetCards: true,
+        loadingGetCards: true
       };
     }
     case GET_CARDS_SUCCEED: {
       return {
         ...state,
         loadingGetCards: false,
-        cardsList: action.payload,
-      }
+        cardsList: action.payload
+      };
     }
     case GET_CARDS_FAILD: {
       return {
         ...state,
-        loadingGetCards: false,
-      }
+        loadingGetCards: false
+      };
     }
     case GO_TO_CARD_LIST_ACTION: {
       return {
-        ...state,
-      }
+        ...state
+      };
     }
     case GO_TO_CARD_LIST_SUCCEED: {
       return {
+        ...state
+      };
+    }
+    case SELECT_CARD_TO_BUY_ACTION: {
+      return {
         ...state,
-      }
+        selectedCardData: action.payload
+      };
+    }
+    case SUBMIT_INFORMATION_ACTION: {
+      return {
+        ...state,
+        submitedInformationOnForm: action.payload
+      };
     }
     default:
       return state;

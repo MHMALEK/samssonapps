@@ -3,6 +3,7 @@ import SubmitInformationPagePresentation from "./SubmitInformationPage.presentat
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
+import { submitInformationHandlerAction } from "../../../../store/Modules/Cards/Actions";
 class SubmitInformationPage extends React.Component {
   constructor(props) {
     super(props);
@@ -22,25 +23,37 @@ class SubmitInformationPage extends React.Component {
     this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
   }
   handleNameChange(e) {
-    console.log(e.target.value);
+    this.setState({
+      nameValue: e.target.value
+    });
   }
   handleFamilyChange(e) {
-    console.log(e.target.value);
+    this.setState({
+      familyValue: e.target.value
+    });
   }
   handleCertificateIdChange(e) {
-    console.log(e.target.value);
+    this.setState({
+      certificateIdValue: e.target.value
+    });
   }
   handleNationalityChange(e) {
-    console.log(e.target.value);
+    this.setState({
+      NationalityValue: e.target.value
+    });
   }
   handleNationalityIdChange(e) {
-    console.log(e.target.value);
+    this.setState({
+      nationalityIdValue: e.target.value
+    });
   }
   handlePhoneNumberChange(e) {
-    console.log(e.target.value);
+    this.setState({
+      phoneNumberValue: e.target.value
+    });
   }
   render() {
-    const { history } = this.props;
+    const { history, submitInformationHandlerAction } = this.props;
     const navBarStepsData = [
       {
         id: 1,
@@ -87,14 +100,21 @@ class SubmitInformationPage extends React.Component {
         nationalityIdValue={nationalityIdValue}
         phoneNumberChange={e => this.handlePhoneNumberChange(e)}
         phoneNumberValue={phoneNumberValue}
+        submitInformationHandlerAction={submitInformationHandlerAction}
       />
     );
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  submitInformationHandlerAction: formData => {
+    dispatch(submitInformationHandlerAction(formData));
+  }
+});
+
 export default withRouter(
   connect(
     null,
-    null
+    mapDispatchToProps
   )(SubmitInformationPage)
 );

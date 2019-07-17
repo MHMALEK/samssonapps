@@ -5,15 +5,9 @@ import Input from "../../../UI/Input";
 import Button from "../../../UI/Button";
 import MultiStepNavBar from "../../../UI/MultiStepNavBar";
 
-const SubmitInformationPagePresentation = props => {
+const ConfirmInformationPagePresentation = props => {
   const {
     navBarSteps,
-    handleNameChange,
-    handleFamilyChange,
-    handleCertificateIdChange,
-    handleNationalityChange,
-    handleNationalityIdChange,
-    phoneNumberChange,
     nameValue,
     familyValue,
     certificateIdValue,
@@ -22,27 +16,9 @@ const SubmitInformationPagePresentation = props => {
     phoneNumberValue
   } = props;
 
-  const submitInformationHandler = () => {
-    const {
-      submitInformationHandlerAction,
-      nameValue,
-      familyValue,
-      certificateIdValue,
-      NationalityValue,
-      nationalityIdValue,
-      phoneNumberValue,
-      history
-    } = props;
-    const formData = {
-      nameValue,
-      familyValue,
-      certificateIdValue,
-      NationalityValue,
-      nationalityIdValue,
-      phoneNumberValue
-    };
-    submitInformationHandlerAction(formData);
-    history.push("/card/confirm-info");
+  const confirmInformationHandler = () => {
+    const { confirmInformationHandlerAction } = props;
+    confirmInformationHandlerAction();
   };
 
   return (
@@ -63,51 +39,31 @@ const SubmitInformationPagePresentation = props => {
 
         <Accordion title="اطلاعات فردی و شناسنامه‌ای">
           <div className="inputs-wrapper">
-            <Input
-              onChange={e => handleNameChange(e)}
-              bgGray
-              title="نام"
-              value={nameValue}
-            />
-            <Input
-              onChange={e => handleFamilyChange(e)}
-              bgGray
-              title="نام خانوادگی"
-              value={familyValue}
-            />
+            <Input bgGray title="نام" value={nameValue} disabled />
+            <Input bgGray title="نام خانوادگی" value={familyValue} disabled />
           </div>
           <div className="inputs-wrapper">
             <Input
-              onChange={e => handleCertificateIdChange(e)}
               bgGray
               title="شماره شناسنامه"
               value={certificateIdValue}
+              disabled
             />
-            <Input
-              onChange={e => handleNationalityChange(e)}
-              bgGray
-              title="تابعیت"
-              value={NationalityValue}
-            />
+            <Input bgGray title="تابعیت" value={NationalityValue} disabled />
           </div>
           <div className="inputs-wrapper">
+            <Input bgGray title="کد ملی" value={nationalityIdValue} disabled />
             <Input
-              onChange={e => handleNationalityIdChange(e)}
-              bgGray
-              title="کد ملی"
-              value={nationalityIdValue}
-            />
-            <Input
-              onChange={e => phoneNumberChange(e)}
               bgGray
               title="شماره تلفن همراه"
               value={phoneNumberValue}
+              disabled
             />
           </div>
         </Accordion>
         <div className="call-to-actions">
-          <Button blueBg onClick={() => submitInformationHandler()}>
-            مرحله بعد
+          <Button blueBg onClick={() => confirmInformationHandler()}>
+            پرداخت
           </Button>
           <Button blueBorder>مرحله قبل</Button>
         </div>
@@ -116,4 +72,4 @@ const SubmitInformationPagePresentation = props => {
   );
 };
 
-export default SubmitInformationPagePresentation;
+export default ConfirmInformationPagePresentation;
