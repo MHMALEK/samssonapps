@@ -70,6 +70,7 @@ function* submitInformationSaga(data) {
       type: SUBMIT_INFORMATION_FAILD
     });
   }
+  console.log('ss')
 }
 
 
