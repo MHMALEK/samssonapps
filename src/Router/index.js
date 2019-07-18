@@ -20,7 +20,6 @@ function AppRouter(props) {
     <Router history={history}>
       <Route path="/sso/signin" exact component={SignInSSO} />
       <Route path="/sso/verify" exact component={SSOVerify} />
-
       <Route path="/" exact component={HomePage} />
       <Route path="/cards/list" component={CardsMainPage} />
       <Route path="/card/buy" exact component={BuyCardMainPage} />
