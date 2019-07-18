@@ -1,3 +1,5 @@
+
+
 const cardSelector = state => {
   const data = state.data.data;
   const CardsList = data.map(item => {
@@ -58,5 +60,5 @@ export {
   cardSelector,
   getCardDataSelector,
   getPurchasedCardId,
-  createCardDataSelector
+  createCardDataSelector,
 };

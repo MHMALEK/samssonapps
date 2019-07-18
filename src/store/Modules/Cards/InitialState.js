@@ -5,6 +5,7 @@ const InitialState = {
   submitedInformationOnForm: {},
   boughtCard: {},
   IPGBankUrl: "",
+  hasSelectedAnyCard: false,
   purchasedCardInfo: {
     userName: "",
     password: ""

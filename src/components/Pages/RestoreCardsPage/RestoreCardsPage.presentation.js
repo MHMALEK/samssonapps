@@ -7,9 +7,7 @@ import Button from "../../UI/Button";
 import MultiStepNavBar from "../../UI/MultiStepNavBar";
 
 const RestoreCardsPagePresentation = props => {
-  const navigateToCardPage = () => {
-    props.history.push("/cards/list");
-  };
+
   const { navBarSteps } = props;
   return (
     <div className="layout-wrapper">

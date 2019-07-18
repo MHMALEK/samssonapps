@@ -3,23 +3,17 @@ import React from "react";
 import Card from "../../../../../UI/Card";
 import Price from "../../../../../UI/Price";
 import Button from "../../../../../UI/Button";
-
-import EducationalModalList from "../../Components/EducationalModalList";
-import TeachingInstitutionModalList from "../../Components/TeachingInstitutionModalList";
+import ListWithModal from "../ListWithModal";
 
 class BuyCardItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       modalIsOpen: false,
-      eductaionSystem: null,
+      educationSystem: null,
       teachingInstitution: null
     };
     this.selectCardToBuyAction = this.selectCardToBuyAction.bind(this);
-    this.getEductaionSystemValue = this.getEductaionSystemValue.bind(this);
-    this.getTeachingInstitutionValue = this.getTeachingInstitutionValue.bind(
-      this
-    );
   }
 
   selectCardToBuyAction(cardId) {
@@ -33,15 +27,11 @@ class BuyCardItem extends React.Component {
     );
     history.push("/card/user-info");
   }
-  getEductaionSystemValue(value) {
+
+  getSelectedValue(value,name) {
     this.setState({
-      eductaionSystem: value
-    });
-  }
-  getTeachingInstitutionValue(value) {
-    this.setState({
-      teachingInstitution: value
-    });
+      name: value
+    })
   }
 
   render() {
@@ -51,16 +41,15 @@ class BuyCardItem extends React.Component {
         <div className="text-center">
           <p> ثبت نام و انتخاب رشته دوره {cardData.title} </p>
           <p>({cardData.description})</p>
-          <div className="price-wrapper">
             <Price>{cardData.price}</Price>
-          </div>
           <div className="select-wrapper">
             {cardData.educationSystem &&
               cardData.educationSystem.length > 0 && (
-                <EducationalModalList
-                  card={cardData}
-                  getEductaionSystemValue={value =>
-                    this.getEductaionSystemValue(value)
+                <ListWithModal
+                  data={cardData}
+                  name="educationSystem"
+                  getSelectedValue={value =>
+                    this.getSelectedValue(value, "educationSystem")
                   }
                 />
               )}
@@ -68,10 +57,11 @@ class BuyCardItem extends React.Component {
           <div className="select-wrapper">
             {cardData.teachingInstitution &&
               cardData.teachingInstitution.length > 0 && (
-                <TeachingInstitutionModalList
-                  card={cardData}
-                  getTeachingInstitutionValue={value =>
-                    this.getTeachingInstitutionValue(value)
+                <ListWithModal
+                  data={cardData}
+                  name="teachingInstitution"
+                  getSelectedValue={value =>
+                    this.getSelectedValue(value, "teachingInstitution")
                   }
                 />
               )}

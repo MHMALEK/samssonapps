@@ -16,7 +16,6 @@ const ConfirmInformationPagePresentation = props => {
     confirmInformationHandlerAction();
   };
 
-  console.log(data)
 
   return (
     <div className="layout-wrapper">

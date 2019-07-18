@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import Container from "../../../UI/Container";
 import Accordion from "../../../UI/Accordion";
 import Input from "../../../UI/Input";
@@ -42,7 +43,7 @@ const SubmitInformationPagePresentation = props => {
       phoneNumberValue
     };
     submitInformationHandlerAction(formData);
-    history.push("/card/confirm-info");
+    // history.push("/card/confirm-info");
   };
 
   return (
@@ -109,7 +110,10 @@ const SubmitInformationPagePresentation = props => {
           <Button blueBg onClick={() => submitInformationHandler()}>
             مرحله بعد
           </Button>
-          <Button blueBorder>مرحله قبل</Button>
+          <Link to="/card/buy" >
+            <Button blueBorder>مرحله قبل</Button>
+          </Link>
+          
         </div>
       </Container>
     </div>

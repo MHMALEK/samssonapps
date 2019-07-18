@@ -28,6 +28,7 @@ class ModalComponent extends React.Component {
           contentLabel={title}
           className="Modal"
           overlayClassName="Modal-overlay"
+          shouldCloseOnOverlayClick={true}
         >
           <>
             <div className="modal-title">

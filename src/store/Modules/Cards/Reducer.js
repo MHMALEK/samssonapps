@@ -29,7 +29,8 @@ const CardsReducer = function(state = initialState, action) {
       return {
         ...state,
         loadingGetCards: false,
-        cardsList: action.payload
+        cardsList: action.payload,
+        hasSelectedAnyCard: true
       };
     }
     case GET_CARDS_FAILD: {
@@ -51,7 +52,7 @@ const CardsReducer = function(state = initialState, action) {
     case SELECT_CARD_TO_BUY_ACTION: {
       return {
         ...state,
-        selectedCardData: action.payload
+        selectedCardData: action.payload,
       };
     }
     case SUBMIT_INFORMATION_ACTION: {
@@ -102,7 +103,7 @@ const CardsReducer = function(state = initialState, action) {
         loadingGetPurchasedCard: false,
         purchasedCardInfo: {
           userName: action.payload.username,
-          password: action.payload.password
+          password: action.payload.password,
         }
       }
 

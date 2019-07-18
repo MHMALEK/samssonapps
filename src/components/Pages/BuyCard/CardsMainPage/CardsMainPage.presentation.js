@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Link } from 'react-router-dom';
 import Container from "../../../UI/Container";
 import Card from "../../../UI/Card";
 import Button from "../../../UI/Button";
@@ -11,15 +11,15 @@ class CardsMainPagePresentation extends React.Component {
     this.state = {};
   }
   render() {
-    const { cardsList, goTobuyCardPageHandler, history } = this.props;
+    const { cardsList, history } = this.props;
     return (
       <MainLayout history={history} title="سامانه‌های ثبت‌نام و انتخاب رشته">
         <Container>
           <div className="first-form-wrapper">
             <Card title="خرید کارت اعتباری ثبت‌نام">
-              <div className="button-wrapper" onClick={goTobuyCardPageHandler}>
+              <Link to="/card/buy" className="button-wrapper">
                 <Button blueBg>خرید کارت اعتباری ثبت‌نام </Button>
-              </div>
+              </Link>
               <div className="button-wrapper">
                 <Button blueBorder>بازیابی اطلاعات کارت خریداری شده</Button>
               </div>

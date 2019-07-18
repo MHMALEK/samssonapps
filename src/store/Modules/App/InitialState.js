@@ -1,7 +1,7 @@
 const InitialState = {
   appStarted: false,
   getSettingsLoading: false,
-  showSplash: false
+  showSplash: true
 };
 
 export default InitialState;

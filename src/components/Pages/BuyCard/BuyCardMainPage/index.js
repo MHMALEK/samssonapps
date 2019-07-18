@@ -13,6 +13,7 @@ class BuyCardMainPage extends React.Component {
     super(props);
     this.state = {};
   }
+
   render() {
     const { cardsList, history, selectCardToBuyAction } = this.props;
     return (

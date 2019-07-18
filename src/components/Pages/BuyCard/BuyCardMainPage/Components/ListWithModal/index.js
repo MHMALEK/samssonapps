@@ -4,14 +4,15 @@ import ModalComponent from "../../../../../UI/Modal";
 import SelectWithOutOption from "../../../../../UI/SelectWithOutOption";
 import RadioButton from "../../../../../UI/RadioButton";
 
-class TeachingInstitutionModalList extends React.Component {
+class ListWithModal extends React.Component {
   constructor(props) {
     super(props);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.handleTeachingInstitutionChange = this.handleTeachingInstitutionChange.bind(this);
+    this.handleListChange = this.handleListChange.bind(this);
     this.state = {
-      isModalOpen: false
+      isModalOpen: false,
+      selectedElementName: null
     };
   }
   openModal() {
@@ -26,34 +27,39 @@ class TeachingInstitutionModalList extends React.Component {
       });
     }, 10)
   }
-  handleTeachingInstitutionChange(e) {
-    const {getTeachingInstitutionValue} = this.props;
+  handleListChange(e, selectedElementName) {
+    const {getSelectedValue} = this.props;
     const value = e.target.value;
-    getTeachingInstitutionValue(value)
+    this.setState({
+      selectedElementName: selectedElementName
+    })
+    getSelectedValue(value)
   }
+
+
   render() {
-    const { card } = this.props;
+    const { data, name } = this.props;
     const { isModalOpen } = this.state;
     return (
       <div onClick={() => this.openModal()}>
         <p className="select-without-option-lable">نظام آموزشی</p>
-        <SelectWithOutOption />
+        <SelectWithOutOption placeHolder={this.state.selectedElementName}/>
         {
           <ModalComponent
             title="نظام آموزشی"
             openModal={isModalOpen}
-            onCloseClick={this.closeModal}
+            onCloseClick={() => this.closeModal()}
           >
-            {card.teachingInstitution.map((teachingInstitution, index) => {
+            {data[name].map((item, index) => {
               return (
                 <RadioButton
                   key={index}
                   name="eductaionSystem"
-                  value={teachingInstitution.id}
-                  defaultChecked={teachingInstitution.id === 1}
-                  onChange={value => this.handleTeachingInstitutionChange(value)}
+                  value={item.id}
+                  defaultChecked={index === 0}
+                  onChange={(e,itemName) => this.handleListChange(e, itemName)}
                 >
-                  {teachingInstitution.name}
+                  {item.name}
                 </RadioButton>
               );
             })}
@@ -64,4 +70,4 @@ class TeachingInstitutionModalList extends React.Component {
   }
 }
 
-export default TeachingInstitutionModalList;
+export default ListWithModal;

@@ -1,4 +1,4 @@
-import { put, call, select, takeLatest } from "redux-saga/effects";
+import { put, call, select, takeLatest, delay } from "redux-saga/effects";
 import {
   getCardsFromServer,
   confirmInformationFromServer,
@@ -29,16 +29,17 @@ import {
 } from "./ActionTypes";
 
 function* getCardsRequest() {
-  const _response = yield call(getCardsFromServer);
-  const response = cardSelector(_response);
-  yield put({
-    type: GET_CARDS_STARTED
-  });
-  yield put({
-    type: GET_CARDS_SUCCEED,
-    payload: response
-  });
-}
+    const _response = yield call(getCardsFromServer);
+    const response = cardSelector(_response);
+    yield put({
+      type: GET_CARDS_STARTED
+    });
+    yield put({
+      type: GET_CARDS_SUCCEED,
+      payload: response
+    });
+  }
+
 
 function* goToCardList() {
   yield put({

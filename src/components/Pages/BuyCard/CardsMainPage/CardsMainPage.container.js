@@ -18,8 +18,7 @@ class CardsMainPage extends React.Component {
     getCards();
   }
   goTobuyCardPage() {
-    const { history, goToCardsList } = this.props;
-    history.push("/card/buy");
+    const {  goToCardsList } = this.props;
     goToCardsList();
   }
   render() {

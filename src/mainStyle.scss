@@ -70,6 +70,16 @@ img {
 .layout-wrapper {
   margin-top: 60px;
 }
+
+
+.fade-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
 // ToDo: import reset CSS;
 // ToDo: better way to import CSS;
 @import "./components/UI/Container/style.scss";

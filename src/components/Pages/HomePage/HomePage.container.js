@@ -7,6 +7,7 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     const { history } = this.props;
     return <HomePagePresentation history={history} />;
