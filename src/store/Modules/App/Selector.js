@@ -1,8 +1,7 @@
-const configSelector = state => {
+const configSelector = data => {
   //   return state.todos.filter(todo => {
   //     return !todo.completed;
   //   });
-  const data = state.data;
   const config = {
     contactUs: data.contact_us,
     forms: data.forms

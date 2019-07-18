@@ -14,7 +14,7 @@ function* startAppSaga() {
 
 function* getConfig() {
   const _response = yield call(getGeneralSettings);
-  const response = configSelector(_response);
+  const response = configSelector(_response.data.data);
   yield put({
     type: GET_SETTING_STARTED
   });

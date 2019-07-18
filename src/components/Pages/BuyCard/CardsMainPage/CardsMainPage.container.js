@@ -5,7 +5,7 @@ import CardsMainPagePresentation from "./CardsMainPage.presentation";
 import {
   getCardsAction,
   goToCardListAction
-} from "../../../store/Modules/Cards/Actions";
+} from "../../../../store/Modules/Cards/Actions";
 
 class CardsMainPage extends React.Component {
   constructor(props) {

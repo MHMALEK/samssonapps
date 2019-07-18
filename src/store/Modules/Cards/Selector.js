@@ -23,4 +23,40 @@ const getCardDataSelector = state => {
   return cardData;
 };
 
-export { cardSelector, getCardDataSelector };
+const getPurchasedCardId = state => {
+  return state.Cards.boughtCard.card.id
+}
+
+const createCardDataSelector = (data) => {
+  const dataToSaveInReduxStore = {
+    educationSystemId: data.education_system_id,
+    teachingInstitutionId: data.teaching_institution_id,
+    userName: data.username,
+    password: data.password,
+    card: {
+      id: data.card.id,
+      title: data.card.title,
+    },
+    buyer: {
+      id: data.buyer.id,
+      name: data.buyer.name,
+      lastName: data.buyer.last_name,
+      certificateId: data.buyer.id_certificate,
+      nationalityId: data.buyer.nationality_id,
+      nationalCode: data.buyer.national_code,
+      foreignersCode: data.buyer.foreigners_code,
+      phoneNumber: data.buyer.cell_phone,
+      confirm: data.buyer.confirm,
+      active: data.buyer.active
+    },
+
+  }
+  return dataToSaveInReduxStore
+}
+
+export {
+  cardSelector,
+  getCardDataSelector,
+  getPurchasedCardId,
+  createCardDataSelector
+};

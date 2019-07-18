@@ -9,7 +9,8 @@ import {
   CONFIRM_INFORMATION_ACTION,
   CONFIRM_INFORMATION_STARTED,
   CONFIRM_INFORMATION_FAILD,
-  CONFIRM_INFORMATION_SUCCESS
+  CONFIRM_INFORMATION_SUCCESS,
+  GET_PURCHASED_CARD_DATA_ACTION
 } from "./ActionTypes";
 
 export const getCardsAction = () => {
@@ -62,3 +63,11 @@ export const confirmInformationHandlerAction = () => {
     type: CONFIRM_INFORMATION_ACTION
   };
 };
+
+
+export const inquryPurchasedCardAction = (transactionId) => {
+  return {
+    type: GET_PURCHASED_CARD_DATA_ACTION,
+    payload: transactionId
+  };
+}

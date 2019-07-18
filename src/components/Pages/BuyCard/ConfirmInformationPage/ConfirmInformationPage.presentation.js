@@ -8,18 +8,15 @@ import MultiStepNavBar from "../../../UI/MultiStepNavBar";
 const ConfirmInformationPagePresentation = props => {
   const {
     navBarSteps,
-    nameValue,
-    familyValue,
-    certificateIdValue,
-    NationalityValue,
-    nationalityIdValue,
-    phoneNumberValue
+      data
   } = props;
 
   const confirmInformationHandler = () => {
     const { confirmInformationHandlerAction } = props;
     confirmInformationHandlerAction();
   };
+
+  console.log(data)
 
   return (
     <div className="layout-wrapper">
@@ -39,24 +36,24 @@ const ConfirmInformationPagePresentation = props => {
 
         <Accordion title="اطلاعات فردی و شناسنامه‌ای">
           <div className="inputs-wrapper">
-            <Input bgGray title="نام" value={nameValue} disabled />
-            <Input bgGray title="نام خانوادگی" value={familyValue} disabled />
+            <Input bgGray title="نام" value={data ? data.name : null} disabled />
+            <Input bgGray title="نام خانوادگی" value={data ?  data.lastName : null} disabled />
           </div>
           <div className="inputs-wrapper">
             <Input
               bgGray
               title="شماره شناسنامه"
-              value={certificateIdValue}
+              value={data ? data.certificateId : null}
               disabled
             />
-            <Input bgGray title="تابعیت" value={NationalityValue} disabled />
+            <Input bgGray title="تابعیت" value={data ? data.nationalityId : null} disabled />
           </div>
           <div className="inputs-wrapper">
-            <Input bgGray title="کد ملی" value={nationalityIdValue} disabled />
+            <Input bgGray title="کد ملی" value={data ? data.nationalCode : null} disabled />
             <Input
               bgGray
               title="شماره تلفن همراه"
-              value={phoneNumberValue}
+              value={data ? data.phoneNumber : null}
               disabled
             />
           </div>

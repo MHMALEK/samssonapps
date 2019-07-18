@@ -84,16 +84,17 @@ img {
 @import "./components/UI/RadioButton/style.scss";
 @import "./components/UI/Modal/style.scss";
 @import "./components/UI/MultiStepNavBar/style.scss";
+@import "./components/UI/Loading/style.scss";
+@import "./components/UI/Header/style.scss";
+@import "./components/UI/Footer/style.scss";
 
 @import "./components/Layout/AuthLayout/style.scss";
-@import "./components/Layout/AuthHeader/style.scss";
-@import "./components/Layout/Header/style.scss";
-@import "./components/Layout/Footer/style.scss";
+@import "./components/Layout/AuthLayout/AuthHeader/style.scss";
 @import "./components/Layout/NavBar/style.scss";
 @import "./components/Layout/Splash/style.scss";
 
 @import "./components/Pages/HomePage/style.scss";
-@import "./components/Pages/CardsMainPage/style.scss";
+@import "./components/Pages/BuyCard/CardsMainPage/style.scss";
 @import "./components/Pages/BuyCard/SubmitInformationPage/style.scss";
 @import "./components/Pages/BuyCard/BuyCardMainPage/style.scss";
 

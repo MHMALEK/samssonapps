@@ -28,39 +28,28 @@ const ConfirmInformationPage = props => {
   ];
 
   const {
-    nameValue,
-    familyValue,
-    certificateIdValue,
-    NationalityValue,
-    nationalityIdValue,
-    phoneNumberValue
+      data,
+      redirectToIpg,
+      redirectToIpgUrl
   } = props;
 
   return (
+    !redirectToIpg ? (
     <ConfirmInformationPagePresentation
       navBarSteps={navBarStepsData}
       history={history}
-      nameValue={nameValue}
-      familyValue={familyValue}
-      certificateIdValue={certificateIdValue}
-      NationalityValue={NationalityValue}
-      nationalityIdValue={nationalityIdValue}
-      phoneNumberValue={phoneNumberValue}
+      data={data}
       confirmInformationHandlerAction={confirmInformationHandlerAction}
-    />
+    />) : 
+    window.location.href = redirectToIpgUrl
   );
 };
 
 const mapStateToProps = state => {
   return {
-    nameValue: state.Cards.submitedInformationOnForm.nameValue,
-    familyValue: state.Cards.submitedInformationOnForm.familyValue,
-    certificateIdValue:
-      state.Cards.submitedInformationOnForm.certificateIdValue,
-    NationalityValue: state.Cards.submitedInformationOnForm.NationalityValue,
-    nationalityIdValue:
-      state.Cards.submitedInformationOnForm.nationalityIdValue,
-    phoneNumberValue: state.Cards.submitedInformationOnForm.phoneNumberValue
+    data: state.Cards.boughtCard.buyer,
+    redirectToIpg: state.Cards.IPGBankUrl === "" ? false : true,
+    redirectToIpgUrl: state.Cards.IPGBankUrl
   };
 };
 

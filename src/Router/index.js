@@ -4,12 +4,13 @@ import { Router, Route } from "react-router-dom";
 import HomePage from "../components/Pages/HomePage/HomePage.container";
 import BuyCardMainPage from "../components/Pages/BuyCard/BuyCardMainPage";
 
-import CardsMainPage from "../components/Pages/CardsMainPage/CardsMainPage.container";
+import CardsMainPage from "../components/Pages/BuyCard/CardsMainPage/CardsMainPage.container";
 import SubmitInformationPage from "../components/Pages/BuyCard/SubmitInformationPage/SubmitInformationPage.container";
 import ConfirmInformationPage from "../components/Pages/BuyCard/ConfirmInformationPage/ConfirmInformationPage.container";
 import RestoreCardsPage from "../components/Pages/RestoreCardsPage/RestoreCardsPage.container";
 import SignInSSO from "../components/Pages/SSO/SignIn/SignIn.container";
 import SSOVerify from "../components/Pages/SSO/Verify/Verify.container";
+import PurchasedCardPage from "../components/Pages/BuyCard/PurchasedCardPage";
 
 const createBrowserHistory = require("history").createBrowserHistory;
 
@@ -28,6 +29,11 @@ function AppRouter(props) {
         path="/card/confirm-info"
         exact
         component={ConfirmInformationPage}
+      />
+       <Route
+        path="/card/success"
+        exact
+        component={PurchasedCardPage}
       />
       <Route path="/card/my-cards" exact component={RestoreCardsPage} />
     </Router>

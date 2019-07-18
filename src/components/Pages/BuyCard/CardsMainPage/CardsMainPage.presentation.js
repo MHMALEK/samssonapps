@@ -1,9 +1,9 @@
 import React from "react";
 
-import Container from "../../UI/Container";
-import Card from "../../UI/Card";
-import Button from "../../UI/Button";
-import MainLayout from "../../Layout/MainLayout";
+import Container from "../../../UI/Container";
+import Card from "../../../UI/Card";
+import Button from "../../../UI/Button";
+import MainLayout from "../../../Layout/MainLayout";
 
 class CardsMainPagePresentation extends React.Component {
   constructor(props) {

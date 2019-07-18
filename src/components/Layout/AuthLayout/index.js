@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import NavBar from "../NavBar";
-import AuthHeader from "../AuthHeader";
+import AuthHeader from "./AuthHeader";
 
 const AuthLayout = props => {
   const { children, history, title } = props;
