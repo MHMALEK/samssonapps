@@ -43,15 +43,15 @@ export const selectCardToBuyAction = (
   };
 };
 
-export const submitInformationHandlerAction = (data) => {
+export const submitInformationHandlerAction = data => {
   const payload = {
-    nationality_id: data.NationalityValue,
+    nationality_id: data.nationalityValue,
     id_certificate: data.certificateIdValue,
     last_name: data.familyValue,
     name: data.nameValue,
     national_code: data.nationalityIdValue,
     cell_phone: data.phoneNumberValue
-  }
+  };
   return {
     type: SUBMIT_INFORMATION_ACTION,
     payload
@@ -64,10 +64,9 @@ export const confirmInformationHandlerAction = () => {
   };
 };
 
-
-export const inquryPurchasedCardAction = (transactionId) => {
+export const inquryPurchasedCardAction = transactionId => {
   return {
     type: GET_PURCHASED_CARD_DATA_ACTION,
     payload: transactionId
   };
-}
+};

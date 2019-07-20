@@ -5,7 +5,12 @@ import {
   submitInformationFromServer,
   getPurchasedCardDataFromServer
 } from "./HttpRequests";
-import { cardSelector, getCardDataSelector, getPurchasedCardId, createCardDataSelector } from "./Selector";
+import {
+  cardSelector,
+  getCardDataSelector,
+  getPurchasedCardId,
+  createCardDataSelector
+} from "./Selector";
 import {
   GET_CARDS_ACTION,
   GET_CARDS_STARTED,
@@ -25,28 +30,25 @@ import {
   GET_PURCHASED_CARD_DATA_STARTED,
   GET_PURCHASED_CARD_DATA_SUCCESS,
   GET_PURCHASED_CARD_DATA_FAILD
-
 } from "./ActionTypes";
 
 function* getCardsRequest() {
-    const _response = yield call(getCardsFromServer);
-    const response = cardSelector(_response);
-    yield put({
-      type: GET_CARDS_STARTED
-    });
-    yield put({
-      type: GET_CARDS_SUCCEED,
-      payload: response
-    });
-  }
-
+  const _response = yield call(getCardsFromServer);
+  const response = cardSelector(_response);
+  yield put({
+    type: GET_CARDS_STARTED
+  });
+  yield put({
+    type: GET_CARDS_SUCCEED,
+    payload: response
+  });
+}
 
 function* goToCardList() {
   yield put({
     type: GO_TO_CARD_LIST_SUCCEED
   });
 }
-
 
 function* submitInformationSaga(data) {
   const cardData = yield select(getCardDataSelector);
@@ -56,13 +58,13 @@ function* submitInformationSaga(data) {
     id_certificate: data.payload.id_certificate,
     national_code: data.payload.national_code,
     cell_phone: data.payload.cell_phone,
-    nationality_id: 313123313,
+    nationality_id: Number(data.payload.nationality_id),
     card_id: cardData.card_id,
-    education_system_id: cardData.education_system_id,
-    teaching_institution_id: cardData.teaching_institution_id
-  }
+    education_system_id: Number(cardData.education_system_id),
+    teaching_institution_id: Number(cardData.teaching_institution_id)
+  };
   yield put({
-    type: SUBMIT_INFORMATION_STARTED,
+    type: SUBMIT_INFORMATION_STARTED
   });
   try {
     const response = yield call(submitInformationFromServer, params);
@@ -78,15 +80,16 @@ function* submitInformationSaga(data) {
   }
 }
 
-
 function* confirmInformationSaga() {
   yield put({
-    type: CONFIRM_CARD_STARTED,
+    type: CONFIRM_CARD_STARTED
   });
   const cardId = yield select(getPurchasedCardId);
 
   try {
-    const response = yield call(confirmInformationFromServer, {card_purchased_id: cardId});
+    const response = yield call(confirmInformationFromServer, {
+      card_purchased_id: cardId
+    });
     const payload = response.data.data.ipg_url;
     yield put({
       type: CONFIRM_CARD_SUCCEED,
@@ -100,10 +103,12 @@ function* confirmInformationSaga() {
 }
 function* getPurchasedCardDataSaga(transactionId) {
   yield put({
-    type:GET_PURCHASED_CARD_DATA_STARTED
-  })
+    type: GET_PURCHASED_CARD_DATA_STARTED
+  });
   try {
-    const response = yield call(getPurchasedCardDataFromServer, {transaction_id	: transactionId});
+    const response = yield call(getPurchasedCardDataFromServer, {
+      transaction_id: transactionId
+    });
     const payload = response.data.data;
     yield put({
       type: GET_PURCHASED_CARD_DATA_SUCCESS,

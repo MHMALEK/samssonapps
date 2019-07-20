@@ -124,7 +124,7 @@ class SubmitInformationPagePresentation extends React.Component {
                 type="tel"
                 title="کد ملی"
                 validation="nationalityIdValidation"
-                name="NationalityValue"
+                name="nationalityIdValue"
                 getValidatedValue={this.getValidatedValue}
               />
               <Input
