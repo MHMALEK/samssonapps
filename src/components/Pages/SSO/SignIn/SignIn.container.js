@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signInWithPhoneSSOAction } from "../../../../store/Modules/AuthSSO/Actions";
-import { changePhoneNumberHandlerAction } from "../../../../store/Modules/UI/Actions";
 import AuthLayout from "../../../Layout/AuthLayout";
 import Input from "../../../UI/Input";
 import Button from "../../../UI/Button";
@@ -68,9 +67,6 @@ const mapDispatchToProps = dispatch => {
   return {
     signInAction: phoneNumber => {
       dispatch(signInWithPhoneSSOAction(phoneNumber));
-    },
-    phoneNumberHandlerAction: phoneNumber => {
-      dispatch(changePhoneNumberHandlerAction(phoneNumber));
     }
   };
 };

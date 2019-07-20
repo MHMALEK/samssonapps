@@ -20,7 +20,7 @@ class ModalComponent extends React.Component {
   }
 
   render() {
-    const { title, children, openModal, onCloseClick } = this.props;
+    const { title, children, footer, openModal, onCloseClick } = this.props;
     return (
       <div>
         <Modal
@@ -40,6 +40,7 @@ class ModalComponent extends React.Component {
               />
             </div>
             <div className="modal-content">{children}</div>
+            <div className="modal-footer">{footer}</div>
           </>
         </Modal>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import {Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Container from "../../../UI/Container";
 import Card from "../../../UI/Card";
 import Button from "../../../UI/Button";
@@ -17,9 +17,11 @@ class CardsMainPagePresentation extends React.Component {
         <Container>
           <div className="first-form-wrapper">
             <Card title="خرید کارت اعتباری ثبت‌نام">
-              <Link to="/card/buy" className="button-wrapper">
-                <Button blueBg>خرید کارت اعتباری ثبت‌نام </Button>
-              </Link>
+              <div className="button-wrapper">
+                <Link to="/card/buy">
+                  <Button blueBg>خرید کارت اعتباری ثبت‌نام </Button>
+                </Link>
+              </div>
               <div className="button-wrapper">
                 <Button blueBorder>بازیابی اطلاعات کارت خریداری شده</Button>
               </div>

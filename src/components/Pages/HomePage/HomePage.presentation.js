@@ -1,37 +1,32 @@
 import React from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 // import Layout
 import MainLayout from "../../Layout/MainLayout";
 import Container from "../../UI/Container";
-
 const HomePagePresentation = props => {
   return (
     <MainLayout>
       <Container>
         <div className="registration-form">
-          <Link to="/card/list">
-            <div
-              className="registration-element"
-            >
-              <p>سامانه‌های ثبت نام و انتخاب رشته</p>
-              <div className="icon-wrapper">
-                <img src="icons/ic_arrow_blue.svg" />
-              </div>
+          <Link className="registration-element" to="/card/list">
+            <p>سامانه‌های ثبت نام و انتخاب رشته</p>
+            <div className="icon-wrapper">
+              <img src="icons/ic_arrow_blue.svg" alt="right-arrow-icon" />
             </div>
           </Link>
 
-          <div className="registration-element">
+          <Link className="registration-element" to="/card/confirm">
             <p>اعلام نتایج اولیه آزمون دکتری تخصصی سال ۹۸</p>
             <div className="icon-wrapper">
               <img src="icons/ic_arrow_blue.svg" />
             </div>
-          </div>
-          <div className="registration-element">
+          </Link>
+          <Link className="registration-element" to="/card/user-info">
             <p>سامانه ثبت نام مصاحبه آزمون دکتری تخصصی سال ۹۸</p>
             <div className="icon-wrapper">
               <img src="icons/ic_arrow_blue.svg" />
             </div>
-          </div>
+          </Link>
         </div>
       </Container>
     </MainLayout>

@@ -1,9 +1,9 @@
-import { CHANGE_PHONE_NUMBER_HANDLER_ACTION } from "./ActionTypes";
-export const changePhoneNumberHandlerAction = content => {
+import { SHOW_NOTIFICATION_ACTION } from "./ActionTypes";
+export const showNotificationAction = content => {
   return {
-    type: CHANGE_PHONE_NUMBER_HANDLER_ACTION,
+    type: SHOW_NOTIFICATION_ACTION,
     payload: {
-      phoneNumber: content.phoneNumber
+      text: content
     }
   };
 };

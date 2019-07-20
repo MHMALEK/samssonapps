@@ -26,6 +26,8 @@ button {
 }
 
 a {
+  text-decoration: none;
+  color: inherit;
   &:hover {
     cursor: pointer;
   }
@@ -37,7 +39,7 @@ img {
 
 // general
 
-.bold {
+.text-bold {
   font-weight: bold;
 }
 
@@ -71,7 +73,6 @@ img {
   margin-top: 60px;
 }
 
-
 .fade-enter {
   opacity: 0;
   z-index: 1;
@@ -81,7 +82,10 @@ img {
   transition: opacity 250ms ease-in;
 }
 // ToDo: import reset CSS;
+
 // ToDo: better way to import CSS;
+@import "../node_modules/react-toastify/dist/ReactToastify.min.css";
+
 @import "./components/UI/Container/style.scss";
 @import "./components/UI/Card/style.scss";
 @import "./components/UI/Button/style.scss";
@@ -107,6 +111,7 @@ img {
 @import "./components/Pages/BuyCard/CardsMainPage/style.scss";
 @import "./components/Pages/BuyCard/SubmitInformationPage/style.scss";
 @import "./components/Pages/BuyCard/BuyCardMainPage/style.scss";
+@import "./components/Pages/BuyCard/ConfirmInformationPage/style.scss";
 
 @import "./components/Pages/SSO/SignIn/style.scss";
 @import "./components/Pages/SSO/Verify/style.scss";

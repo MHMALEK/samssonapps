@@ -1,5 +1,3 @@
-const InitialState = {
-  phoneNumber: false
-};
+const InitialState = {};
 
 export default InitialState;

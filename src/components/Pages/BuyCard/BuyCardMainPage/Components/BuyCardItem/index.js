@@ -13,25 +13,25 @@ class BuyCardItem extends React.Component {
       educationSystem: null,
       teachingInstitution: null
     };
-    this.selectCardToBuyAction = this.selectCardToBuyAction.bind(this);
+    this.selectCardToBuy = this.selectCardToBuy.bind(this);
+    this.getSelectedValue = this.getSelectedValue.bind(this);
   }
 
-  selectCardToBuyAction(cardId) {
-    const { selectCardToBuyAction, history } = this.props;
+  selectCardToBuy(cardId) {
+    const { selectCardToBuy, history, onErrorCallBack } = this.props;
     const { eductaionSystem, teachingInstitution } = this.state;
-
-    selectCardToBuyAction(
-      cardId,
-      Number(eductaionSystem),
-      Number(teachingInstitution)
-    );
-    history.push("/card/user-info");
+    if (eductaionSystem && teachingInstitution) {
+      selectCardToBuy(cardId, eductaionSystem, teachingInstitution);
+      history.push("/card/user-info");
+    } else {
+      onErrorCallBack("malekkkk");
+    }
   }
 
-  getSelectedValue(value,name) {
+  getSelectedValue(value, name) {
     this.setState({
-      name: value
-    })
+      [name]: value
+    });
   }
 
   render() {
@@ -41,16 +41,17 @@ class BuyCardItem extends React.Component {
         <div className="text-center">
           <p> ثبت نام و انتخاب رشته دوره {cardData.title} </p>
           <p>({cardData.description})</p>
-            <Price>{cardData.price}</Price>
+          <div className="text-bold">
+            {cardData.price && <Price>{cardData.price}</Price>}
+          </div>
           <div className="select-wrapper">
             {cardData.educationSystem &&
               cardData.educationSystem.length > 0 && (
                 <ListWithModal
-                  data={cardData}
-                  name="educationSystem"
-                  getSelectedValue={value =>
-                    this.getSelectedValue(value, "educationSystem")
-                  }
+                  systemName="eductaionSystem"
+                  name="نظام آموزشی"
+                  data={cardData.educationSystem}
+                  getSelectedValue={this.getSelectedValue}
                 />
               )}
           </div>
@@ -58,19 +59,15 @@ class BuyCardItem extends React.Component {
             {cardData.teachingInstitution &&
               cardData.teachingInstitution.length > 0 && (
                 <ListWithModal
-                  data={cardData}
-                  name="teachingInstitution"
-                  getSelectedValue={value =>
-                    this.getSelectedValue(value, "teachingInstitution")
-                  }
+                  systemName="teachingInstitution"
+                  name="مجموعه آزمایشی"
+                  data={cardData.teachingInstitution}
+                  getSelectedValue={this.getSelectedValue}
                 />
               )}
           </div>
           <div className="button-wrapper">
-            <Button
-              blueBg
-              onClick={() => this.selectCardToBuyAction(cardData.id)}
-            >
+            <Button blueBg onClick={() => this.selectCardToBuy(cardData.id)}>
               خرید کارت
             </Button>
           </div>

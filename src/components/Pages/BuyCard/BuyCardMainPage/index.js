@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { selectCardToBuyAction } from "../../../../store/Modules/Cards/Actions";
+import { showNotificationAction } from "../../../../store/Modules/UI/Actions";
 import MainLayout from "../../../Layout/MainLayout";
 import Container from "../../../UI/Container";
 import TopHeader from "./Components/TopHeader";
@@ -12,10 +13,15 @@ class BuyCardMainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+    this.selectCardToBuy = this.selectCardToBuy.bind(this);
   }
 
+  selectCardToBuy(cardId, educationSystem, teachingInstitution) {
+    const { selectCardToBuy } = this.props;
+    selectCardToBuy(cardId, educationSystem, teachingInstitution);
+  }
   render() {
-    const { cardsList, history, selectCardToBuyAction } = this.props;
+    const { cardsList, history, showNotificationAction } = this.props;
     return (
       <MainLayout history={history} title="خرید کارت اعتباری ثبت‌نام">
         <div className="buy-card-main-page">
@@ -33,7 +39,8 @@ class BuyCardMainPage extends React.Component {
                       cardData={card}
                       key={index}
                       history={history}
-                      selectCardToBuyAction={selectCardToBuyAction}
+                      selectCardToBuy={this.selectCardToBuy}
+                      onErrorCallBack={showNotificationAction}
                     />
                   );
                 })}
@@ -55,10 +62,13 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  selectCardToBuyAction: (cardId, educationSystem, teachingInstitution) => {
+  selectCardToBuy: (cardId, educationSystem, teachingInstitution) => {
     dispatch(
       selectCardToBuyAction(cardId, educationSystem, teachingInstitution)
     );
+  },
+  showNotificationAction: text => {
+    dispatch(showNotificationAction(text));
   }
 });
 

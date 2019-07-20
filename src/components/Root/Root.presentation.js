@@ -6,7 +6,13 @@ import AppRouter from "../../Router";
 import ErrorBoundary from "../Layout/ErrorBundaries";
 
 const RootPresentation = props => {
-  return props.splash ? <Splash /> : <ErrorBoundary> <AppRouter/> </ErrorBoundary>;
+  return props.splash ? (
+    <Splash />
+  ) : (
+    <ErrorBoundary>
+      <AppRouter />
+    </ErrorBoundary>
+  );
 };
 
 export default RootPresentation;
