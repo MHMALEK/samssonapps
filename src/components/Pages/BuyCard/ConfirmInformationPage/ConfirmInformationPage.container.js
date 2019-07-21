@@ -15,13 +15,11 @@ const ConfirmInformationPage = props => {
     redirectToIpgUrl,
     backFromConfirmInformation,
     history,
-    confirmInformationHandlerAction,
-    navBarSteps
+    confirmInformationHandlerAction
   } = props;
 
   return !redirectToIpg ? (
     <ConfirmInformationPagePresentation
-      navBarSteps={navBarSteps}
       history={history}
       data={data}
       confirmInformationHandlerAction={confirmInformationHandlerAction}
