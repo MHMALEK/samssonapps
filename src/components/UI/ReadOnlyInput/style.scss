@@ -1,0 +1,15 @@
+.readonly-input {
+  border: 1px solid $border-color;
+  border-radius: $default-border-radius;
+  padding: 15px 0;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  .readonly-input-title {
+    color: $gray-font;
+    padding-right: 10px;
+  }
+  .readonly-input-content {
+    padding-left: 10px;
+  }
+}

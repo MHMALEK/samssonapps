@@ -64,7 +64,7 @@ function AppRouter(props) {
                 <Route
                   path="/card/success"
                   exact
-                  ComponentName={PurchasedCardPage}
+                  component={PurchasedCardPage}
                 />
                 <PrivateRoute
                   path="/card/my-cards"

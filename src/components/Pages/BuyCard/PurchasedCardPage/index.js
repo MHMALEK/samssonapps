@@ -7,6 +7,7 @@ import Input from "../../../UI/Input";
 import Button from "../../../UI/Button";
 import { inquryPurchasedCardAction } from "../../../../store/Modules/Cards/Actions";
 import NavBarWithSteps from "../../../Layout/\u0654NavBarWithSteps";
+import ReadOnlyInput from "../../../UI/ReadOnlyInput";
 
 class PurchasedCardPage extends React.Component {
   constructor(props) {
@@ -14,6 +15,7 @@ class PurchasedCardPage extends React.Component {
     console.log("sadasdasd");
   }
   componentDidMount() {
+    console.log("sda");
     const { inquryPurchasedCard, match } = this.props;
     const transActionId = match.params.transaction_id;
     inquryPurchasedCard(transActionId);
@@ -30,20 +32,12 @@ class PurchasedCardPage extends React.Component {
               ثبت‌نام و انتخاب رشته دوره دکتری تخصصی بدون آزمون (ویژه
               استعداد‌های درخشان) سال ۱۳۹۸
             </p>
-            <div className="inputs-wrapper">
-              <Input
-                bgGray
-                title="نام کاربری "
-                value={userName ? userName : ""}
-                disabled
-              />
-              <Input
-                bgGray
-                title="رمز عبور"
-                value={password ? password : ""}
-                disabled
-              />
-            </div>
+            <ReadOnlyInput title="نام کاربری ">
+              {userName ? userName : ""}
+            </ReadOnlyInput>
+            <ReadOnlyInput title="رمز عبور">
+              {password ? password : ""}
+            </ReadOnlyInput>
           </Accordion>
           <div className="call-to-actions">
             <Button blueBg>دریافت کارت اعتباری</Button>
@@ -54,9 +48,10 @@ class PurchasedCardPage extends React.Component {
   }
 }
 const mapStateToProps = state => {
+  console.log(state.Cards);
   return {
-    userName: state.Cards.purchasedCardData.userName,
-    password: state.Cards.purchasedCardData.password
+    userName: state.Cards.purchasedCardInfo.userName,
+    password: state.Cards.purchasedCardInfo.password
   };
 };
 const mapDipatchToProps = dispatch => {
