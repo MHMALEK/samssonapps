@@ -3,7 +3,7 @@ const InitialState = {
   cardsList: [],
   selectedCardData: {},
   submitedInformationOnForm: {},
-  boughtCard: {},
+  purchasedCard: {},
   IPGBankUrl: "",
   hasSelectedAnyCard: false,
   purchasedCardInfo: {

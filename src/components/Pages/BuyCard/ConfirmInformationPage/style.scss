@@ -16,8 +16,8 @@
 .call-to-actions {
   display: flex;
   margin-bottom: 20px;
-  .call-to-action-button-wrapper {
-    flex: 1;
+  div.call-to-action-button {
+    width: 50%;
     &:last-child {
       margin-right: 10px;
     }

@@ -1,0 +1,13 @@
+.input-place-holder {
+  width: 100%;
+  border-radius: 6px;
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  &:first-child {
+    margin-left: 10px;
+  }
+  .input-place-holder-title {
+    color: $gray-font;
+    font-size: 0.7rem;
+  }
+}

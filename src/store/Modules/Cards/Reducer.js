@@ -13,7 +13,8 @@ import {
   CONFIRM_CARD_FAILD,
   GET_PURCHASED_CARD_DATA_STARTED,
   GET_PURCHASED_CARD_DATA_SUCCESS,
-  GET_PURCHASED_CARD_DATA_FAILD
+  GET_PURCHASED_CARD_DATA_FAILD,
+  BACK_FROM_CONFIRM_INFORMATION
 } from "./ActionTypes";
 import initialState from "./InitialState";
 
@@ -52,7 +53,7 @@ const CardsReducer = function(state = initialState, action) {
     case SELECT_CARD_TO_BUY_ACTION: {
       return {
         ...state,
-        selectedCardData: action.payload,
+        selectedCardData: action.payload
       };
     }
     case SUBMIT_INFORMATION_ACTION: {
@@ -64,38 +65,38 @@ const CardsReducer = function(state = initialState, action) {
     case SUBMIT_INFORMATION_SUCCEED: {
       return {
         ...state,
-        boughtCard: action.payload
+        purchasedCard: action.payload
       };
     }
     case SUBMIT_INFORMATION_FAILD: {
       return {
-        ...state,
+        ...state
       };
     }
     case CONFIRM_CARD_STARTED: {
       return {
         ...state,
         loadingConfirmCard: true
-      }
+      };
     }
     case CONFIRM_CARD_SUCCEED: {
       return {
         ...state,
         loadingConfirmCard: false,
         IPGBankUrl: action.payload
-      }
+      };
     }
     case CONFIRM_CARD_FAILD: {
       return {
         ...state,
         loadingConfirmCard: false
-      }
+      };
     }
     case GET_PURCHASED_CARD_DATA_STARTED: {
-        return {
-          ...state,
-          loadingGetPurchasedCard: true
-        }
+      return {
+        ...state,
+        loadingGetPurchasedCard: true
+      };
     }
     case GET_PURCHASED_CARD_DATA_SUCCESS: {
       return {
@@ -103,18 +104,20 @@ const CardsReducer = function(state = initialState, action) {
         loadingGetPurchasedCard: false,
         purchasedCardInfo: {
           userName: action.payload.username,
-          password: action.payload.password,
+          password: action.payload.password
         }
-      }
-
+      };
     }
     case GET_PURCHASED_CARD_DATA_FAILD: {
       return {
         ...state,
         loadingGetPurchasedCard: false
-
-      }
-
+      };
+    }
+    case BACK_FROM_CONFIRM_INFORMATION: {
+      return {
+        ...state
+      };
     }
 
     default:

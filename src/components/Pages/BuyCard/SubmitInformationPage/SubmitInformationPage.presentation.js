@@ -4,7 +4,7 @@ import Container from "../../../UI/Container";
 import Accordion from "../../../UI/Accordion";
 import Input from "../../../UI/Input";
 import Button from "../../../UI/Button";
-import MultiStepNavBar from "../../../UI/MultiStepNavBar";
+import NavBarWithSteps from "../../../Layout/\u0654NavBarWithSteps";
 
 class SubmitInformationPagePresentation extends React.Component {
   constructor(props) {
@@ -24,8 +24,7 @@ class SubmitInformationPagePresentation extends React.Component {
   submitInformationHandler = () => {
     const {
       submitInformationHandlerAction,
-
-      history
+      submitedInformationOnForm
     } = this.props;
     const {
       nameValue,
@@ -37,15 +36,17 @@ class SubmitInformationPagePresentation extends React.Component {
     } = this.state;
 
     const formData = {
-      nameValue,
-      familyValue,
-      certificateIdValue,
-      nationalityValue,
-      nationalityIdValue,
-      phoneNumberValue
+      nameValue: nameValue || submitedInformationOnForm.name,
+      familyValue: familyValue || submitedInformationOnForm.last_name,
+      certificateIdValue:
+        certificateIdValue || submitedInformationOnForm.id_certificate,
+      nationalityValue:
+        nationalityValue || submitedInformationOnForm.nationality_id,
+      nationalityIdValue:
+        nationalityIdValue || submitedInformationOnForm.national_code,
+      phoneNumberValue: phoneNumberValue || submitedInformationOnForm.cell_phone
     };
     submitInformationHandlerAction(formData);
-    history.push("/card/confirm");
   };
 
   getValidatedValue(value, name) {
@@ -56,17 +57,17 @@ class SubmitInformationPagePresentation extends React.Component {
 
   render() {
     const {
-      navBarSteps,
       handleNameChange,
       handleFamilyChange,
       handleCertificateIdChange,
       handleNationalityChange,
       handleNationalityIdChange,
-      phoneNumberChange
+      phoneNumberChange,
+      submitedInformationOnForm
     } = this.props;
     return (
       <div className="layout-wrapper">
-        <MultiStepNavBar steps={navBarSteps} />
+        <NavBarWithSteps />
         <Container>
           <Accordion title="کارت اعتباری">
             <p className="c-red">
@@ -89,6 +90,9 @@ class SubmitInformationPagePresentation extends React.Component {
                 title="نام"
                 name="nameValue"
                 getValidatedValue={this.getValidatedValue}
+                value={
+                  submitedInformationOnForm && submitedInformationOnForm.name
+                }
               />
               <Input
                 onChange={handleFamilyChange}
@@ -97,6 +101,10 @@ class SubmitInformationPagePresentation extends React.Component {
                 name="familyValue"
                 validation="onlyPersianValidation"
                 getValidatedValue={this.getValidatedValue}
+                value={
+                  submitedInformationOnForm &&
+                  submitedInformationOnForm.last_name
+                }
               />
             </div>
             <div className="inputs-wrapper">
@@ -107,12 +115,20 @@ class SubmitInformationPagePresentation extends React.Component {
                 title="شماره شناسنامه"
                 name="certificateIdValue"
                 validation="certificateIdValidation"
+                value={
+                  submitedInformationOnForm &&
+                  submitedInformationOnForm.id_certificate
+                }
                 getValidatedValue={this.getValidatedValue}
               />
               <Input
                 onChange={handleNationalityChange}
                 name="nationalityValue"
                 bgGray
+                value={
+                  submitedInformationOnForm &&
+                  submitedInformationOnForm.nationality_id
+                }
                 title="تابعیت"
                 getValidatedValue={this.getValidatedValue}
               />
@@ -123,6 +139,10 @@ class SubmitInformationPagePresentation extends React.Component {
                 bgGray
                 type="tel"
                 title="کد ملی"
+                value={
+                  submitedInformationOnForm &&
+                  submitedInformationOnForm.national_code
+                }
                 validation="nationalityIdValidation"
                 name="nationalityIdValue"
                 getValidatedValue={this.getValidatedValue}
@@ -134,18 +154,21 @@ class SubmitInformationPagePresentation extends React.Component {
                 validation="phoneNumberValidation"
                 name="phoneNumberValue"
                 title="شماره تلفن همراه"
+                value={
+                  submitedInformationOnForm &&
+                  submitedInformationOnForm.cell_phone
+                }
                 getValidatedValue={this.getValidatedValue}
               />
             </div>
           </Accordion>
           <div className="call-to-actions">
-            <div className="call-to-action-button-wrapper">
+            <div className="call-to-action-button">
               <Button blueBg onClick={() => this.submitInformationHandler()}>
                 مرحله بعد
               </Button>
             </div>
-
-            <div className="call-to-action-button-wrapper">
+            <div className="call-to-action-button">
               <Link to="/card/buy">
                 <Button blueBorder>مرحله قبل</Button>
               </Link>

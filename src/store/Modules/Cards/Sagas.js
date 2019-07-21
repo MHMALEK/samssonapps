@@ -1,4 +1,4 @@
-import { put, call, select, takeLatest, delay } from "redux-saga/effects";
+import { put, call, select, takeLatest } from "redux-saga/effects";
 import {
   getCardsFromServer,
   confirmInformationFromServer,
@@ -31,17 +31,31 @@ import {
   GET_PURCHASED_CARD_DATA_SUCCESS,
   GET_PURCHASED_CARD_DATA_FAILD
 } from "./ActionTypes";
+import { NAVIGATION_ACTION } from "../App/ActionTypes";
+import {
+  SHOW_NOTIFICATION_ACTION,
+  UPDATE_NAV_BAR_STEP
+} from "../UI/ActionTypes";
 
 function* getCardsRequest() {
-  const _response = yield call(getCardsFromServer);
-  const response = cardSelector(_response);
-  yield put({
-    type: GET_CARDS_STARTED
-  });
-  yield put({
-    type: GET_CARDS_SUCCEED,
-    payload: response
-  });
+  try {
+    const _response = yield call(getCardsFromServer);
+    const response = cardSelector(_response);
+    yield put({
+      type: GET_CARDS_STARTED
+    });
+    yield put({
+      type: GET_CARDS_SUCCEED,
+      payload: response
+    });
+  } catch (err) {
+    yield put({
+      type: SHOW_NOTIFICATION_ACTION,
+      payload: {
+        text: "دریافت کارت‌ها با خطا مواجه شد. مجددا تکرار نمایید."
+      }
+    });
+  }
 }
 
 function* goToCardList() {
@@ -73,9 +87,28 @@ function* submitInformationSaga(data) {
       type: SUBMIT_INFORMATION_SUCCEED,
       payload
     });
+    yield put({
+      type: UPDATE_NAV_BAR_STEP,
+      payload: {
+        currentStep: 1
+      }
+    });
+    yield put({
+      type: NAVIGATION_ACTION,
+      payload: {
+        path: "/card/confirm"
+      }
+    });
   } catch {
     yield put({
       type: SUBMIT_INFORMATION_FAILD
+    });
+    yield put({
+      type: SHOW_NOTIFICATION_ACTION,
+      payload: {
+        text:
+          "خطا در ارسال اطلاعات. از صحت اطلاعات وارد شده مطمین شده و سپس دوباره اقدام فرمایید."
+      }
     });
   }
 }
@@ -95,9 +128,21 @@ function* confirmInformationSaga() {
       type: CONFIRM_CARD_SUCCEED,
       payload
     });
+    yield put({
+      type: UPDATE_NAV_BAR_STEP,
+      payload: {
+        currentStep: 2
+      }
+    });
   } catch {
     yield put({
       type: CONFIRM_CARD_FAILD
+    });
+    yield put({
+      type: SHOW_NOTIFICATION_ACTION,
+      payload: {
+        text: "دریافت کارت‌ها با خطا مواجه شد. مجددا تکرار نمایید."
+      }
     });
   }
 }
@@ -117,6 +162,12 @@ function* getPurchasedCardDataSaga(transactionId) {
   } catch {
     yield put({
       type: GET_PURCHASED_CARD_DATA_FAILD
+    });
+    yield put({
+      type: SHOW_NOTIFICATION_ACTION,
+      payload: {
+        text: "دریافت کارت‌ها با خطا مواجه شد. مجددا تکرار نمایید."
+      }
     });
   }
 }

@@ -13,6 +13,14 @@ class Input extends React.Component {
     };
   }
 
+  componentWillReceiveProps(props) {
+    if (props.value) {
+      this.setState({
+        value: props.value
+      });
+    }
+  }
+
   checkPersianValidation(string) {
     var regex = /^[\u0600-\u06FF\uFB8A\u067E\u0686\u06AF7\u200C\u200F ]+$/;
     if (string.match(regex)) {
@@ -202,7 +210,7 @@ class Input extends React.Component {
                 ? e => this.onChangeWithValidation(e)
                 : e => this.onChange(e)
             }
-            value={this.state.value}
+            defaultValue={this.props.value}
             placeholder={placeHolder}
             disabled={disabled}
             pattern={type === "phone" ? "[0-9]{3}-[0-9]{3}-[0-9]{4}" : null}

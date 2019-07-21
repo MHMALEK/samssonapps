@@ -1,7 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect
+} from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { ConnectedRouter } from "connected-react-router";
 
+import { connect } from "react-redux";
 import PrivateRoute from "./PrivateRoute";
 // import page componentes;
 import HomePage from "../components/Pages/HomePage/HomePage.container";
@@ -14,15 +21,19 @@ import RestoreCardsPage from "../components/Pages/RestoreCardsPage/RestoreCardsP
 import SignInSSO from "../components/Pages/SSO/SignIn/SignIn.container";
 import SSOVerify from "../components/Pages/SSO/Verify/Verify.container";
 import PurchasedCardPage from "../components/Pages/BuyCard/PurchasedCardPage";
+import customHistory from "./CustomHistory";
+import AboutPage from "../components/Pages/AboutPage";
 
 function AppRouter(props) {
   return (
-    <Router>
+    <ConnectedRouter history={customHistory}>
       <Route
         render={({ location }) => (
           <TransitionGroup>
             <CSSTransition key={location.key} classNames="fade" timeout={300}>
               <Switch location={location}>
+                <Route path="/test" exact component={AboutPage} />
+
                 <Route path="/sso/signin" exact component={SignInSSO} />
                 <Route path="/sso/verify" exact component={SSOVerify} />
                 <Route path="/" exact component={HomePage} />
@@ -50,8 +61,7 @@ function AppRouter(props) {
                   ComponentName={ConfirmInformationPage}
                   shouldRefresh={true}
                 />
-                <PrivateRoute
-                  shouldRefresh={true}
+                <Route
                   path="/card/success"
                   exact
                   ComponentName={PurchasedCardPage}
@@ -67,8 +77,11 @@ function AppRouter(props) {
           </TransitionGroup>
         )}
       />
-    </Router>
+    </ConnectedRouter>
   );
 }
 
-export default AppRouter;
+export default connect(
+  null,
+  null
+)(AppRouter);

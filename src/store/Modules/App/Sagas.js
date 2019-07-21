@@ -1,12 +1,17 @@
 import { put, takeEvery, call, delay } from "redux-saga/effects";
+import { push } from "connected-react-router";
+
 import { getGeneralSettings } from "./HttpRequests";
 import { configSelector } from "./Selector";
+import customHistory from "../../../Router/CustomHistory";
 import {
   START_APP,
   GET_SETTING_STARTED,
   GET_SETTINGS_SUCCEED,
-  GET_SETTINGS_FAILD
+  GET_SETTINGS_FAILD,
+  NAVIGATION_ACTION
 } from "./ActionTypes";
+console.log(customHistory);
 
 function* startAppSaga() {
   yield call(getConfig);
@@ -24,4 +29,11 @@ function* getConfig() {
   });
 }
 
-export default [takeEvery(START_APP, startAppSaga)];
+function* navigationActionSaga(action) {
+  const path = action.payload.path;
+  yield put(push(path));
+}
+export default [
+  takeEvery(START_APP, startAppSaga),
+  takeEvery(NAVIGATION_ACTION, navigationActionSaga)
+];

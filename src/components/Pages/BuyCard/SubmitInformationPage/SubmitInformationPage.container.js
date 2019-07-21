@@ -53,7 +53,11 @@ class SubmitInformationPage extends React.Component {
     });
   }
   render() {
-    const { history, submitInformationHandlerAction } = this.props;
+    const {
+      history,
+      submitInformationHandlerAction,
+      submitedInformationOnForm
+    } = this.props;
     const navBarStepsData = [
       {
         id: 1,
@@ -101,6 +105,7 @@ class SubmitInformationPage extends React.Component {
         phoneNumberChange={e => this.handlePhoneNumberChange(e)}
         phoneNumberValue={phoneNumberValue}
         submitInformationHandlerAction={submitInformationHandlerAction}
+        submitedInformationOnForm={submitedInformationOnForm}
       />
     );
   }
@@ -112,9 +117,15 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
+const mapStateToProps = state => {
+  return {
+    submitedInformationOnForm: state.Cards.submitedInformationOnForm
+  };
+};
+
 export default withRouter(
   connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
   )(SubmitInformationPage)
 );

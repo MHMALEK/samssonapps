@@ -11,6 +11,7 @@ $orange: #e6402e;
 $gray: #97a3a8;
 $gray-font: #999999;
 $bg-color: #f1f3f3;
+$green: #1ea778;
 
 body {
   margin: 0;
@@ -101,6 +102,7 @@ img {
 @import "./components/UI/Loading/style.scss";
 @import "./components/UI/Header/style.scss";
 @import "./components/UI/Footer/style.scss";
+@import "./components/UI/InputPlaceholder/style.scss";
 
 @import "./components/Layout/AuthLayout/style.scss";
 @import "./components/Layout/AuthLayout/AuthHeader/style.scss";

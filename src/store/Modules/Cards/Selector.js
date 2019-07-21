@@ -1,5 +1,3 @@
-
-
 const cardSelector = state => {
   const data = state.data.data;
   const CardsList = data.map(item => {
@@ -26,10 +24,10 @@ const getCardDataSelector = state => {
 };
 
 const getPurchasedCardId = state => {
-  return state.Cards.boughtCard.card.id
-}
+  return state.Cards.purchasedCard.card.id;
+};
 
-const createCardDataSelector = (data) => {
+const createCardDataSelector = data => {
   const dataToSaveInReduxStore = {
     educationSystemId: data.education_system_id,
     teachingInstitutionId: data.teaching_institution_id,
@@ -37,7 +35,7 @@ const createCardDataSelector = (data) => {
     password: data.password,
     card: {
       id: data.card.id,
-      title: data.card.title,
+      title: data.card.title
     },
     buyer: {
       id: data.buyer.id,
@@ -50,15 +48,14 @@ const createCardDataSelector = (data) => {
       phoneNumber: data.buyer.cell_phone,
       confirm: data.buyer.confirm,
       active: data.buyer.active
-    },
-
-  }
-  return dataToSaveInReduxStore
-}
+    }
+  };
+  return dataToSaveInReduxStore;
+};
 
 export {
   cardSelector,
   getCardDataSelector,
   getPurchasedCardId,
-  createCardDataSelector,
+  createCardDataSelector
 };

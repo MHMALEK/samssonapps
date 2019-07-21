@@ -1,4 +1,4 @@
-import { SHOW_NOTIFICATION_ACTION } from "./ActionTypes";
+import { SHOW_NOTIFICATION_ACTION, UPDATE_NAV_BAR_STEP } from "./ActionTypes";
 import initialState from "./InitialState";
 
 const UIReducer = function(state = initialState, action) {
@@ -6,6 +6,12 @@ const UIReducer = function(state = initialState, action) {
     case SHOW_NOTIFICATION_ACTION: {
       return {
         ...state
+      };
+    }
+    case UPDATE_NAV_BAR_STEP: {
+      return {
+        ...state,
+        currentStep: action.payload.currentStep
       };
     }
 

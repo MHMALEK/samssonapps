@@ -10,7 +10,8 @@ import {
   CONFIRM_INFORMATION_STARTED,
   CONFIRM_INFORMATION_FAILD,
   CONFIRM_INFORMATION_SUCCESS,
-  GET_PURCHASED_CARD_DATA_ACTION
+  GET_PURCHASED_CARD_DATA_ACTION,
+  BACK_FROM_CONFIRM_INFORMATION
 } from "./ActionTypes";
 
 export const getCardsAction = () => {
@@ -68,5 +69,11 @@ export const inquryPurchasedCardAction = transactionId => {
   return {
     type: GET_PURCHASED_CARD_DATA_ACTION,
     payload: transactionId
+  };
+};
+
+export const backFromConfirmInformationAction = () => {
+  return {
+    type: BACK_FROM_CONFIRM_INFORMATION
   };
 };

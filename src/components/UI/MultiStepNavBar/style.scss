@@ -22,4 +22,9 @@
     justify-content: center;
     align-items: center;
   }
+  .active-step {
+    border: 2px solid $green;
+    color: $green;
+    background: transparent;
+  }
 }
