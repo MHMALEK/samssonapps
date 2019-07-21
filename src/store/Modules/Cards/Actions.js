@@ -51,7 +51,8 @@ export const submitInformationHandlerAction = data => {
     last_name: data.familyValue,
     name: data.nameValue,
     national_code: data.nationalityIdValue,
-    cell_phone: data.phoneNumberValue
+    cell_phone: data.phoneNumberValue,
+    foreigners_code: data.foreignersCodeValue
   };
   return {
     type: SUBMIT_INFORMATION_ACTION,

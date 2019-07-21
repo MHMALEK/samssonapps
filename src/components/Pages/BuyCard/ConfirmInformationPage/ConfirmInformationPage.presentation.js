@@ -53,9 +53,16 @@ const ConfirmInformationPagePresentation = props => {
             </InputPlaceholder>
           </div>
           <div className="inputs-wrapper">
-            <InputPlaceholder title="کد ملی">
-              {data ? data.nationalCode : null}
-            </InputPlaceholder>
+            {data && data.nationalityId == 1 ? (
+              <InputPlaceholder title="کد ملی">
+                {data ? data.nationalCode : null}
+              </InputPlaceholder>
+            ) : (
+              <InputPlaceholder title="کد اتباع خارجی">
+                {data ? data.foreignersCode : null}
+              </InputPlaceholder>
+            )}
+
             <InputPlaceholder title="شماره تلفن همراه" r>
               {data ? data.phoneNumber : null}
             </InputPlaceholder>

@@ -21,6 +21,9 @@ class SubmitInformationPage extends React.Component {
     this.handleNationalityChange = this.handleNationalityChange.bind(this);
     this.handleNationalityIdChange = this.handleNationalityIdChange.bind(this);
     this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
+    this.handleForeignersCodeChange = this.handleForeignersCodeChange.bind(
+      this
+    );
   }
   handleNameChange(e) {
     this.setState({
@@ -52,32 +55,17 @@ class SubmitInformationPage extends React.Component {
       phoneNumberValue: e.target.value
     });
   }
+  handleForeignersCodeChange(e) {
+    this.setState({
+      foreignersCodeValue: e.target.value
+    });
+  }
   render() {
     const {
       history,
       submitInformationHandlerAction,
       submitedInformationOnForm
     } = this.props;
-    const navBarStepsData = [
-      {
-        id: 1,
-        index: 1,
-        title: "ثبت اطلاعات فردی",
-        done: true
-      },
-      {
-        id: 2,
-        index: 2,
-        title: "تایید اطلاعات",
-        done: false
-      },
-      {
-        id: 3,
-        index: 3,
-        title: "دریافت کارت اعتباری",
-        done: false
-      }
-    ];
 
     const {
       nameValue,
@@ -85,12 +73,12 @@ class SubmitInformationPage extends React.Component {
       certificateIdValue,
       NationalityValue,
       nationalityIdValue,
-      phoneNumberValue
+      phoneNumberValue,
+      foreignersCodeValue
     } = this.state;
 
     return (
       <SubmitInformationPagePresentation
-        navBarSteps={navBarStepsData}
         history={history}
         handleNameChange={e => this.handleNameChange(e)}
         nameValue={nameValue}
@@ -100,6 +88,8 @@ class SubmitInformationPage extends React.Component {
         certificateIdValue={certificateIdValue}
         handleNationalityChange={e => this.handleNationalityChange(e)}
         NationalityValue={NationalityValue}
+        handleForeignersCodeChange={e => this.handleForeignersCodeChange(e)}
+        foreignersCodeValue={foreignersCodeValue}
         handleNationalityIdChange={e => this.handleNationalityIdChange(e)}
         nationalityIdValue={nationalityIdValue}
         phoneNumberChange={e => this.handlePhoneNumberChange(e)}

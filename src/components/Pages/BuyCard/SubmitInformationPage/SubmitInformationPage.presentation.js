@@ -5,6 +5,7 @@ import Accordion from "../../../UI/Accordion";
 import Input from "../../../UI/Input";
 import Button from "../../../UI/Button";
 import NavBarWithSteps from "../../../Layout/\u0654NavBarWithSteps";
+import RadioButton from "../../../UI/RadioButton";
 
 class SubmitInformationPagePresentation extends React.Component {
   constructor(props) {
@@ -13,14 +14,18 @@ class SubmitInformationPagePresentation extends React.Component {
       nameValue: null,
       familyValue: null,
       certificateIdValue: null,
-      nationalityValue: null,
+      nationalityValue: 1,
       nationalityIdValue: null,
       phoneNumberValue: null
     };
     this.getValidatedValue = this.getValidatedValue.bind(this);
     this.submitInformationHandler = this.submitInformationHandler.bind(this);
+    this.handleNationalityChange = this.handleNationalityChange.bind(this);
   }
 
+  foreiginOrNational() {
+    const { nationalityValue } = this.state;
+  }
   submitInformationHandler = () => {
     const {
       submitInformationHandlerAction,
@@ -32,20 +37,41 @@ class SubmitInformationPagePresentation extends React.Component {
       certificateIdValue,
       nationalityValue,
       nationalityIdValue,
-      phoneNumberValue
+      phoneNumberValue,
+      foreignersCodeValue
     } = this.state;
 
-    const formData = {
-      nameValue: nameValue || submitedInformationOnForm.name,
-      familyValue: familyValue || submitedInformationOnForm.last_name,
-      certificateIdValue:
-        certificateIdValue || submitedInformationOnForm.id_certificate,
-      nationalityValue:
-        nationalityValue || submitedInformationOnForm.nationality_id,
-      nationalityIdValue:
-        nationalityIdValue || submitedInformationOnForm.national_code,
-      phoneNumberValue: phoneNumberValue || submitedInformationOnForm.cell_phone
-    };
+    let formData = {};
+    if (nationalityValue == 1) {
+      formData = {
+        nameValue: nameValue || submitedInformationOnForm.name,
+        familyValue: familyValue || submitedInformationOnForm.last_name,
+        certificateIdValue:
+          certificateIdValue || submitedInformationOnForm.id_certificate,
+        nationalityValue:
+          nationalityValue || submitedInformationOnForm.nationality_id,
+        nationalityIdValue:
+          nationalityIdValue || submitedInformationOnForm.national_code,
+        phoneNumberValue:
+          phoneNumberValue || submitedInformationOnForm.cell_phone
+      };
+    } else {
+      formData = {
+        nameValue: nameValue || submitedInformationOnForm.name,
+        familyValue: familyValue || submitedInformationOnForm.last_name,
+        certificateIdValue:
+          certificateIdValue || submitedInformationOnForm.id_certificate,
+        nationalityValue:
+          nationalityValue || submitedInformationOnForm.nationality_id,
+        foreignersCodeValue:
+          foreignersCodeValue || submitedInformationOnForm.foreigners_code,
+        phoneNumberValue:
+          phoneNumberValue || submitedInformationOnForm.cell_phone
+      };
+    }
+
+    console.log(formData);
+
     submitInformationHandlerAction(formData);
   };
 
@@ -55,15 +81,21 @@ class SubmitInformationPagePresentation extends React.Component {
     });
   }
 
+  handleNationalityChange(e) {
+    this.setState({
+      nationalityValue: e.target.value
+    });
+  }
+
   render() {
     const {
       handleNameChange,
       handleFamilyChange,
       handleCertificateIdChange,
-      handleNationalityChange,
       handleNationalityIdChange,
       phoneNumberChange,
-      submitedInformationOnForm
+      submitedInformationOnForm,
+      handleForeignersCodeChange
     } = this.props;
     return (
       <div className="layout-wrapper">
@@ -121,32 +153,60 @@ class SubmitInformationPagePresentation extends React.Component {
                 }
                 getValidatedValue={this.getValidatedValue}
               />
-              <Input
-                onChange={handleNationalityChange}
+              <RadioButton
                 name="nationalityValue"
-                bgGray
-                value={
-                  submitedInformationOnForm &&
-                  submitedInformationOnForm.nationality_id
+                value={1}
+                defaultChecked={
+                  this.state.nationalityValue == 1 ||
+                  submitedInformationOnForm.nationality_id == 1
                 }
-                title="تابعیت"
-                getValidatedValue={this.getValidatedValue}
-              />
+                onChange={this.handleNationalityChange}
+              >
+                ایرانی
+              </RadioButton>
+              <RadioButton
+                name="nationalityValue"
+                value={2}
+                defaultChecked={
+                  this.state.nationalityValue == 2 ||
+                  submitedInformationOnForm.nationality_id == 2
+                }
+                onChange={this.handleNationalityChange}
+              >
+                اتباع خارجی
+              </RadioButton>
             </div>
             <div className="inputs-wrapper">
-              <Input
-                onChange={handleNationalityIdChange}
-                bgGray
-                type="tel"
-                title="کد ملی"
-                value={
-                  submitedInformationOnForm &&
-                  submitedInformationOnForm.national_code
-                }
-                validation="nationalityIdValidation"
-                name="nationalityIdValue"
-                getValidatedValue={this.getValidatedValue}
-              />
+              {this.state.nationalityValue == 1 ||
+              submitedInformationOnForm.nationality_id == 1 ? (
+                <Input
+                  onChange={handleNationalityIdChange}
+                  bgGray
+                  type="tel"
+                  title="کد ملی"
+                  value={
+                    submitedInformationOnForm &&
+                    submitedInformationOnForm.national_code
+                  }
+                  validation="nationalityIdValidation"
+                  name="nationalityIdValue"
+                  getValidatedValue={this.getValidatedValue}
+                />
+              ) : (
+                <Input
+                  onChange={handleForeignersCodeChange}
+                  bgGray
+                  type="tel"
+                  title="کد اتباع خارجی"
+                  value={
+                    submitedInformationOnForm &&
+                    submitedInformationOnForm.foreigners_code
+                  }
+                  validation="ForeignersCodeValidation"
+                  name="foreignersCodeValue"
+                  getValidatedValue={this.getValidatedValue}
+                />
+              )}
               <Input
                 onChange={phoneNumberChange}
                 bgGray

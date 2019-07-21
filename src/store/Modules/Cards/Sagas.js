@@ -66,17 +66,35 @@ function* goToCardList() {
 
 function* submitInformationSaga(data) {
   const cardData = yield select(getCardDataSelector);
-  const params = {
-    name: data.payload.name,
-    last_name: data.payload.last_name,
-    id_certificate: data.payload.id_certificate,
-    national_code: data.payload.national_code,
-    cell_phone: data.payload.cell_phone,
-    nationality_id: Number(data.payload.nationality_id),
-    card_id: cardData.card_id,
-    education_system_id: Number(cardData.education_system_id),
-    teaching_institution_id: Number(cardData.teaching_institution_id)
-  };
+  let params = {};
+  console.log("data", data);
+  if (data.payload.nationality_id == 1) {
+    params = {
+      name: data.payload.name,
+      last_name: data.payload.last_name,
+      id_certificate: data.payload.id_certificate,
+      national_code: data.payload.national_code,
+      cell_phone: data.payload.cell_phone,
+      nationality_id: Number(data.payload.nationality_id),
+      card_id: cardData.card_id,
+      education_system_id: Number(cardData.education_system_id),
+      teaching_institution_id: Number(cardData.teaching_institution_id)
+    };
+  } else {
+    params = {
+      name: data.payload.name,
+      last_name: data.payload.last_name,
+      id_certificate: data.payload.id_certificate,
+      foreigners_code: data.payload.foreigners_code,
+      cell_phone: data.payload.cell_phone,
+      nationality_id: Number(data.payload.nationality_id),
+      card_id: cardData.card_id,
+      education_system_id: Number(cardData.education_system_id),
+      teaching_institution_id: Number(cardData.teaching_institution_id)
+    };
+  }
+
+  console.log(params);
   yield put({
     type: SUBMIT_INFORMATION_STARTED
   });
