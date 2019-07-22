@@ -418,27 +418,176 @@ class RegisterWithCardPage extends React.Component {
                 />
               </div>
             </Accordion>
-            <Accordion title="اطلاعات نظام وظیفه">
-              <p className="c-red">
-                ثبت‌نام و انتخاب رشته دوره دکتری تخصصی بدون آزمون (ویژه
-                استعداد‌های درخشان) سال ۱۳۹۸
-              </p>
-              <p className="c-blue">
-                داوطلب گرامی، با خرید این کارت شما مجاز خواهید بود تنها در
-                مجموعه آموزشی سم‌شناسی در دوره بدون آزمون (ویژه استعدادهای
-                درخشان) ثبت‌نام نمایید.
-              </p>
-            </Accordion>
-            <Accordion title="اطلاعات تحصیلی">
-              <p className="c-red">
-                ثبت‌نام و انتخاب رشته دوره دکتری تخصصی بدون آزمون (ویژه
-                استعداد‌های درخشان) سال ۱۳۹۸
-              </p>
-              <p className="c-blue">
-                داوطلب گرامی، با خرید این کارت شما مجاز خواهید بود تنها در
-                مجموعه آموزشی سم‌شناسی در دوره بدون آزمون (ویژه استعدادهای
-                درخشان) ثبت‌نام نمایید.
-              </p>
+
+            <Accordion title="دیپلم نظام جدید">
+              <div className="inputs-wrapper">
+                <ListWithModal
+                  systemName="eductaionSystem"
+                  name="استان محل تولد"
+                  data={[
+                    {
+                      id: 1,
+                      name: "علوم ریاضی و فنی",
+                      pivot: {
+                        scheme_id: 1,
+                        teaching_institution_id: 1
+                      }
+                    },
+                    {
+                      id: 2,
+                      name: "علوم تجربی",
+                      pivot: {
+                        scheme_id: 1,
+                        teaching_institution_id: 2
+                      }
+                    }
+                  ]}
+                  getSelectedValue={this.getSelectedValue}
+                />
+                <Input
+                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  bgGray
+                  type="text"
+                  validation="phoneNumberValidation"
+                  name="birthday"
+                  title="عنوان دیپلم"
+                />
+              </div>
+              <div className="inputs-wrapper">
+                <ListWithModal
+                  systemName="eductaionSystem"
+                  name="استان اخذ دیپلم"
+                  data={[
+                    {
+                      id: 1,
+                      name: "علوم ریاضی و فنی",
+                      pivot: {
+                        scheme_id: 1,
+                        teaching_institution_id: 1
+                      }
+                    },
+                    {
+                      id: 2,
+                      name: "علوم تجربی",
+                      pivot: {
+                        scheme_id: 1,
+                        teaching_institution_id: 2
+                      }
+                    }
+                  ]}
+                  getSelectedValue={this.getSelectedValue}
+                />
+                <ListWithModal
+                  systemName="eductaionSystem"
+                  name="وضعیت تحصیلی در آموزش عالی"
+                  data={[
+                    {
+                      id: 1,
+                      name: "علوم ریاضی و فنی",
+                      pivot: {
+                        scheme_id: 1,
+                        teaching_institution_id: 1
+                      }
+                    },
+                    {
+                      id: 2,
+                      name: "علوم تجربی",
+                      pivot: {
+                        scheme_id: 1,
+                        teaching_institution_id: 2
+                      }
+                    }
+                  ]}
+                  getSelectedValue={this.getSelectedValue}
+                />
+              </div>
+              <div className="inputs-wrapper">
+                <Input
+                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  bgGray
+                  type="text"
+                  validation="phoneNumberValidation"
+                  name="birthday"
+                  title="کد دانش آموزی"
+                />
+                <Input
+                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  bgGray
+                  type="text"
+                  validation="phoneNumberValidation"
+                  name="birthday"
+                  title="تاریخ اخذ مدرک دیپلم"
+                />
+              </div>
+              <div className="inputs-wrapper">
+                <Input
+                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  bgGray
+                  type="text"
+                  validation="phoneNumberValidation"
+                  name="birthday"
+                  title="معدل کل دوره پیش دانشگاهی"
+                />
+                <Input
+                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  bgGray
+                  type="text"
+                  validation="phoneNumberValidation"
+                  name="birthday"
+                  title="معدل کتبی دیپلم"
+                />
+              </div>
+              <div className="inputs-wrapper">
+                <Input
+                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  bgGray
+                  type="text"
+                  validation="phoneNumberValidation"
+                  name="birthday"
+                  title="معدل کل دیپلم"
+                />
+                <Input
+                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  bgGray
+                  type="text"
+                  validation="phoneNumberValidation"
+                  name="birthday"
+                  title="معدل کل دوره کاردانی "
+                />
+              </div>
+              <div className="inputs-wrapper">
+                <ListWithModal
+                  systemName="eductaionSystem"
+                  name="استان محل اخذ دیپلم"
+                  data={[
+                    {
+                      id: 1,
+                      name: "علوم ریاضی و فنی",
+                      pivot: {
+                        scheme_id: 1,
+                        teaching_institution_id: 1
+                      }
+                    },
+                    {
+                      id: 2,
+                      name: "علوم تجربی",
+                      pivot: {
+                        scheme_id: 1,
+                        teaching_institution_id: 2
+                      }
+                    }
+                  ]}
+                  getSelectedValue={this.getSelectedValue}
+                />
+                <Input
+                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  bgGray
+                  type="text"
+                  validation="phoneNumberValidation"
+                  name="birthday"
+                  title="تاریخ اخذ مدرک دیپلم "
+                />
+              </div>
             </Accordion>
           </AccordionList>
         </Container>
