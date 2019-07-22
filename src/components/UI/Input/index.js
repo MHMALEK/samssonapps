@@ -64,6 +64,7 @@ class Input extends React.Component {
   onChangeWithValidation(e) {
     const value = e.target.value;
     const { validation, getValidatedValue, name } = this.props;
+    const { onChange } = this.props;
 
     switch (validation) {
       case "onlyPersianValidation": {
@@ -75,7 +76,8 @@ class Input extends React.Component {
               errorMsg: ""
             },
             () => {
-              getValidatedValue(this.state.value, name);
+              onChange(e);
+              // getValidatedValue(this.state.value, name);
             }
           );
         } else {
@@ -99,7 +101,8 @@ class Input extends React.Component {
               value
             },
             () => {
-              getValidatedValue(this.state.value, name);
+              onChange(e);
+              // getValidatedValue(this.state.value, name);
             }
           );
         } else {
@@ -123,7 +126,8 @@ class Input extends React.Component {
                   errorMsg: ""
                 },
                 () => {
-                  getValidatedValue(this.state.value, name);
+                  onChange(e);
+                  // getValidatedValue(this.state.value, name);
                 }
               );
             } else {
@@ -140,7 +144,8 @@ class Input extends React.Component {
                 errorMsg: ""
               },
               () => {
-                getValidatedValue(this.state.value, name);
+                onChange(e);
+                // getValidatedValue(this.state.value, name);
               }
             );
           }
@@ -153,7 +158,8 @@ class Input extends React.Component {
             value
           },
           () => {
-            getValidatedValue(value, name);
+            onChange(e);
+            // getValidatedValue(value, name);
           }
         );
         break;
@@ -164,7 +170,8 @@ class Input extends React.Component {
             value
           },
           () => {
-            getValidatedValue(value, name);
+            onChange(e);
+            // getValidatedValue(value, name);
           }
         );
         break;
@@ -172,15 +179,9 @@ class Input extends React.Component {
   }
 
   onChange(e) {
-    const { getValidatedValue, name } = this.props;
-    this.setState(
-      {
-        value: e.target.value
-      },
-      () => {
-        getValidatedValue(this.state.value, name);
-      }
-    );
+    console.log(e);
+    const { onChange } = this.props;
+    onChange(e);
   }
 
   render() {
@@ -192,7 +193,8 @@ class Input extends React.Component {
       disabled,
       validation,
       type,
-      getValidatedValue
+      getValidatedValue,
+      onChange
     } = this.props;
     const { hasError, errorMsg } = this.state;
     return (
@@ -205,18 +207,14 @@ class Input extends React.Component {
             name={name}
             type={type}
             className={`input ${bgGray ? " bg-gray " : ""}`}
-            onChange={
-              validation
-                ? e => this.onChangeWithValidation(e)
-                : e => this.onChange(e)
-            }
+            onChange={e => onChange(e)}
             defaultValue={this.props.value}
             placeholder={placeHolder}
             disabled={disabled}
             pattern={type === "phone" ? "[0-9]{3}-[0-9]{3}-[0-9]{4}" : null}
           />
+          {hasError && <div className="error-input">{errorMsg}</div>}
         </div>
-        {hasError && <div className="error-input">{errorMsg}</div>}
       </>
     );
   }

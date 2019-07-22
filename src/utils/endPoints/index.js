@@ -3,8 +3,8 @@ const SIGN_IN_WITH_PHONE_REQUEST = "/sso/check-operator";
 const VERIFY_WITH_PHONE_REQUEST = "/sso/verify";
 const CARDS_INDEX_REQUEST = "/card";
 const CARDS_CREATE_REQUEST = "/card/create";
-const CARDS_CONFIRM_REQUEST = "/card/confirm"
-const GET_CARD_INFO_REQUEST = "/card/inquiry"
+const CARDS_CONFIRM_REQUEST = "/card/confirm";
+const CARDS_INQUIRY_REQUEST = "/card/inquiry";
 
 export {
   GENERAL_SETTINGS_REQUEST,
@@ -13,5 +13,5 @@ export {
   VERIFY_WITH_PHONE_REQUEST,
   CARDS_CREATE_REQUEST,
   CARDS_CONFIRM_REQUEST,
-  GET_CARD_INFO_REQUEST
+  CARDS_INQUIRY_REQUEST
 };

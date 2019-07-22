@@ -41,30 +41,34 @@ const ConfirmInformationPagePresentation = props => {
               {data ? data.name : null}
             </InputPlaceholder>
             <InputPlaceholder title=" نام خانوادگی">
-              {data ? data.lastName : null}
+              {data ? data.last_name : null}
             </InputPlaceholder>
           </div>
           <div className="inputs-wrapper">
             <InputPlaceholder title="شماره شناسنامه">
-              {data ? data.certificateId : null}
+              {data ? data.id_certificate : null}
             </InputPlaceholder>
             <InputPlaceholder title="تابعیت">
-              {data ? data.nationalityId : null}
+              {data
+                ? data.nationality_id == 1
+                  ? "ایرانی"
+                  : "غیر ایرانی"
+                : null}
             </InputPlaceholder>
           </div>
           <div className="inputs-wrapper">
-            {data && data.nationalityId == 1 ? (
+            {data && data.nationality_id == 1 ? (
               <InputPlaceholder title="کد ملی">
-                {data ? data.nationalCode : null}
+                {data ? data.national_code : null}
               </InputPlaceholder>
             ) : (
               <InputPlaceholder title="کد اتباع خارجی">
-                {data ? data.foreignersCode : null}
+                {data ? data.foreigners_code : null}
               </InputPlaceholder>
             )}
 
             <InputPlaceholder title="شماره تلفن همراه" r>
-              {data ? data.phoneNumber : null}
+              {data ? data.cell_phone : null}
             </InputPlaceholder>
           </div>
         </Accordion>

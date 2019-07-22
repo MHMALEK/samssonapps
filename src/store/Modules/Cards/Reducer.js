@@ -58,14 +58,13 @@ const CardsReducer = function(state = initialState, action) {
     }
     case SUBMIT_INFORMATION_ACTION: {
       return {
-        ...state,
-        submitedInformationOnForm: action.payload
+        ...state
       };
     }
     case SUBMIT_INFORMATION_SUCCEED: {
       return {
         ...state,
-        purchasedCard: action.payload
+        purchasedCard: action.purchasedCardData
       };
     }
     case SUBMIT_INFORMATION_FAILD: {

@@ -1,15 +1,14 @@
-.inputs-wrapper {
+.inputs-wrapper-full-width {
+  width: 100%;
+  position: relative;
+}
+
+.radio-buttons-wrapper {
   display: flex;
-  margin-bottom: 20px;
-  &.full-width {
-    .input-wrapper {
-      width: 100%;
-    }
-  }
-  .input-wrapper {
-    width: 50%;
-    &:last-child {
-      margin-right: 10px;
-    }
+  align-items: center;
+  position: absolute;
+  left: 0;
+  .radio-button {
+    padding-left: 10px;
   }
 }

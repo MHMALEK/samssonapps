@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import Container from "../../../UI/Container";
 import Accordion from "../../../UI/Accordion";
-import Input from "../../../UI/Input";
 import Button from "../../../UI/Button";
 import { inquryPurchasedCardAction } from "../../../../store/Modules/Cards/Actions";
 import NavBarWithSteps from "../../../Layout/\u0654NavBarWithSteps";
@@ -12,13 +11,11 @@ import ReadOnlyInput from "../../../UI/ReadOnlyInput";
 class PurchasedCardPage extends React.Component {
   constructor(props) {
     super(props);
-    console.log("sadasdasd");
   }
   componentDidMount() {
-    console.log("sda");
     const { inquryPurchasedCard, match } = this.props;
-    const transActionId = match.params.transaction_id;
-    inquryPurchasedCard(transActionId);
+    const transactionId = match.params.transactionId;
+    inquryPurchasedCard(transactionId);
   }
 
   render() {
@@ -48,7 +45,6 @@ class PurchasedCardPage extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  console.log(state.Cards);
   return {
     userName: state.Cards.purchasedCardInfo.userName,
     password: state.Cards.purchasedCardInfo.password
@@ -56,8 +52,8 @@ const mapStateToProps = state => {
 };
 const mapDipatchToProps = dispatch => {
   return {
-    inquryPurchasedCard: transActionId => {
-      dispatch(inquryPurchasedCardAction(transActionId));
+    inquryPurchasedCard: transactionId => {
+      dispatch(inquryPurchasedCardAction(transactionId));
     }
   };
 };

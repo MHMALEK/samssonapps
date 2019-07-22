@@ -15,58 +15,9 @@ class SubmitInformationPage extends React.Component {
       nationalityIdValue: "",
       phoneNumberValue: ""
     };
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleFamilyChange = this.handleFamilyChange.bind(this);
-    this.handleCertificateIdChange = this.handleCertificateIdChange.bind(this);
-    this.handleNationalityChange = this.handleNationalityChange.bind(this);
-    this.handleNationalityIdChange = this.handleNationalityIdChange.bind(this);
-    this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
-    this.handleForeignersCodeChange = this.handleForeignersCodeChange.bind(
-      this
-    );
   }
-  handleNameChange(e) {
-    this.setState({
-      nameValue: e.target.value
-    });
-  }
-  handleFamilyChange(e) {
-    this.setState({
-      familyValue: e.target.value
-    });
-  }
-  handleCertificateIdChange(e) {
-    this.setState({
-      certificateIdValue: e.target.value
-    });
-  }
-  handleNationalityChange(e) {
-    this.setState({
-      NationalityValue: e.target.value
-    });
-  }
-  handleNationalityIdChange(e) {
-    this.setState({
-      nationalityIdValue: e.target.value
-    });
-  }
-  handlePhoneNumberChange(e) {
-    this.setState({
-      phoneNumberValue: e.target.value
-    });
-  }
-  handleForeignersCodeChange(e) {
-    this.setState({
-      foreignersCodeValue: e.target.value
-    });
-  }
-  render() {
-    const {
-      history,
-      submitInformationHandlerAction,
-      submitedInformationOnForm
-    } = this.props;
 
+  allDataIsValid() {
     const {
       nameValue,
       familyValue,
@@ -76,24 +27,31 @@ class SubmitInformationPage extends React.Component {
       phoneNumberValue,
       foreignersCodeValue
     } = this.state;
+    if (
+      nameValue &&
+      familyValue &&
+      certificateIdValue &&
+      nationalityIdValue &&
+      (NationalityValue || foreignersCodeValue) &&
+      phoneNumberValue
+    ) {
+      this.setState({
+        allDataIsValid: true
+      });
+    } else {
+      this.setState({
+        allDataIsValid: false
+      });
+    }
+  }
+  render() {
+    const {
+      submitInformationHandlerAction,
+      submitedInformationOnForm
+    } = this.props;
 
     return (
       <SubmitInformationPagePresentation
-        history={history}
-        handleNameChange={e => this.handleNameChange(e)}
-        nameValue={nameValue}
-        handleFamilyChange={e => this.handleFamilyChange(e)}
-        familyValue={familyValue}
-        handleCertificateIdChange={e => this.handleCertificateIdChange(e)}
-        certificateIdValue={certificateIdValue}
-        handleNationalityChange={e => this.handleNationalityChange(e)}
-        NationalityValue={NationalityValue}
-        handleForeignersCodeChange={e => this.handleForeignersCodeChange(e)}
-        foreignersCodeValue={foreignersCodeValue}
-        handleNationalityIdChange={e => this.handleNationalityIdChange(e)}
-        nationalityIdValue={nationalityIdValue}
-        phoneNumberChange={e => this.handlePhoneNumberChange(e)}
-        phoneNumberValue={phoneNumberValue}
         submitInformationHandlerAction={submitInformationHandlerAction}
         submitedInformationOnForm={submitedInformationOnForm}
       />
@@ -109,7 +67,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => {
   return {
-    submitedInformationOnForm: state.Cards.submitedInformationOnForm
+    submitedInformationOnForm: state.Cards.purchasedCard.buyer
   };
 };
 

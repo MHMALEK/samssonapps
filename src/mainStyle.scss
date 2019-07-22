@@ -53,6 +53,11 @@ img {
 .text-center {
   text-align: center;
 }
+
+.text-left {
+  text-align: left;
+}
+
 .c-blue {
   color: $primary-blue;
 }
@@ -84,10 +89,18 @@ img {
   opacity: 1;
   transition: opacity 250ms ease-in;
 }
+
+.margin-20 {
+  margin: 20px;
+}
+.margin-top-bottom-20 {
+  margin: 20px 0;
+}
 // ToDo: import reset CSS;
 
 // ToDo: better way to import CSS;
 @import "../node_modules/react-toastify/dist/ReactToastify.min.css";
+@import "../node_modules/react-persian-calendar-date-picker/lib/DatePicker.css";
 
 @import "./components/UI/Container/style.scss";
 @import "./components/UI/Card/style.scss";
@@ -120,3 +133,5 @@ img {
 
 @import "./components/Pages/SSO/SignIn/style.scss";
 @import "./components/Pages/SSO/Verify/style.scss";
+
+@import "./components/Pages/Course/Login/style.scss";

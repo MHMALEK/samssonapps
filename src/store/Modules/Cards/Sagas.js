@@ -64,46 +64,32 @@ function* goToCardList() {
   });
 }
 
-function* submitInformationSaga(data) {
-  const cardData = yield select(getCardDataSelector);
-  let params = {};
-  console.log("data", data);
-  if (data.payload.nationality_id == 1) {
-    params = {
-      name: data.payload.name,
-      last_name: data.payload.last_name,
-      id_certificate: data.payload.id_certificate,
-      national_code: data.payload.national_code,
-      cell_phone: data.payload.cell_phone,
-      nationality_id: Number(data.payload.nationality_id),
-      card_id: cardData.card_id,
-      education_system_id: Number(cardData.education_system_id),
-      teaching_institution_id: Number(cardData.teaching_institution_id)
-    };
-  } else {
-    params = {
-      name: data.payload.name,
-      last_name: data.payload.last_name,
-      id_certificate: data.payload.id_certificate,
-      foreigners_code: data.payload.foreigners_code,
-      cell_phone: data.payload.cell_phone,
-      nationality_id: Number(data.payload.nationality_id),
-      card_id: cardData.card_id,
-      education_system_id: Number(cardData.education_system_id),
-      teaching_institution_id: Number(cardData.teaching_institution_id)
-    };
-  }
+function* submitInformationSaga(action) {
+  const selectedCardData = yield select(getCardDataSelector);
+  let paramsToSendToServer = action.data;
 
-  console.log(params);
+  console.log(action.data);
+
+  paramsToSendToServer.card_id = selectedCardData.card_id;
+  paramsToSendToServer.education_system_id =
+    selectedCardData.education_system_id;
+  paramsToSendToServer.teaching_institution_id =
+    selectedCardData.teaching_institution_id;
+
   yield put({
     type: SUBMIT_INFORMATION_STARTED
   });
   try {
-    const response = yield call(submitInformationFromServer, params);
-    const payload = createCardDataSelector(response.data.data);
+    const response = yield call(
+      submitInformationFromServer,
+      paramsToSendToServer
+    );
+
+    const purchasedCardData = createCardDataSelector(response.data.data);
+
     yield put({
       type: SUBMIT_INFORMATION_SUCCEED,
-      payload
+      purchasedCardData
     });
     yield put({
       type: UPDATE_NAV_BAR_STEP,
@@ -164,13 +150,13 @@ function* confirmInformationSaga() {
     });
   }
 }
-function* getPurchasedCardDataSaga(transactionId) {
+function* getPurchasedCardDataSaga(action) {
   yield put({
     type: GET_PURCHASED_CARD_DATA_STARTED
   });
   try {
     const response = yield call(getPurchasedCardDataFromServer, {
-      transaction_id: transactionId
+      transaction_id: action.payload
     });
     const payload = response.data.data;
     yield put({

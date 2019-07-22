@@ -1,23 +1,22 @@
 .input-wrapper {
-   
-    .input-lable {
-        display: block;
-        font-size: 13px;
-        color: $light-gray;
-        margin-bottom: 10px;
-        padding-right: 5px;
-    }
-    .input {
-        border: 1px solid #E6E6E6;
-        border-radius: 6px;
-        background-color: transparent;
-        padding: 10px 0;
-        width: 100%;
-    }
-    .bg-gray {
-        background-color: #FAFAFA 
-    }
+  .input-lable {
+    display: block;
+    font-size: 13px;
+    color: $light-gray;
+    margin-bottom: 10px;
+    padding-right: 5px;
+  }
+  .input {
+    border: 1px solid #e6e6e6;
+    border-radius: 6px;
+    background-color: transparent;
+    padding: 10px 0;
+    width: 100%;
+  }
+  .bg-gray {
+    background-color: #fafafa;
+  }
+  .error-input {
+    color: $red;
+  }
 }
-
-
-

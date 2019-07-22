@@ -23,6 +23,8 @@ import SSOVerify from "../components/Pages/SSO/Verify/Verify.container";
 import PurchasedCardPage from "../components/Pages/BuyCard/PurchasedCardPage";
 import customHistory from "./CustomHistory";
 import AboutPage from "../components/Pages/AboutPage";
+import LoginWithCardPage from "../components/Pages/Course/Login";
+import RegisterWithCardPage from "../components/Pages/Course/Register/RegisterPage";
 
 function AppRouter(props) {
   return (
@@ -62,8 +64,7 @@ function AppRouter(props) {
                   shouldRefresh={true}
                 />
                 <Route
-                  path="/card/success"
-                  exact
+                  path="/card/success/:transactionId"
                   component={PurchasedCardPage}
                 />
                 <PrivateRoute
@@ -71,6 +72,16 @@ function AppRouter(props) {
                   exact
                   ComponentName={RestoreCardsPage}
                   shouldRefresh={false}
+                />
+                <Route
+                  path="/course/login"
+                  exact
+                  component={LoginWithCardPage}
+                />
+                <Route
+                  path="/course/register"
+                  exact
+                  component={RegisterWithCardPage}
                 />
               </Switch>
             </CSSTransition>

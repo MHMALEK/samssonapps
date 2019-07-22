@@ -11,92 +11,124 @@ class SubmitInformationPagePresentation extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nameValue: null,
-      familyValue: null,
-      certificateIdValue: null,
-      nationalityValue: 1,
-      nationalityIdValue: null,
-      phoneNumberValue: null
+      name: null,
+      last_name: null,
+      id_certificate: null,
+      nationality_id: null,
+      national_code: null,
+      cell_phone: null,
+      foreigners_code: null,
+      allDataIsValid: false
     };
-    this.getValidatedValue = this.getValidatedValue.bind(this);
+    // this.getValidatedValue = this.getValidatedValue.bind(this);
     this.submitInformationHandler = this.submitInformationHandler.bind(this);
-    this.handleNationalityChange = this.handleNationalityChange.bind(this);
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleFamilyChange = this.handleFamilyChange.bind(this);
+    this.handleCertificateIdChange = this.handleCertificateIdChange.bind(this);
+    this.handleNationalityIdChange = this.handleNationalityIdChange.bind(this);
+    this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
+    this.handleForeignersCodeChange = this.handleForeignersCodeChange.bind(
+      this
+    );
+  }
+  handleNameChange(e) {
+    this.setState({
+      name: e.target.value
+    });
+  }
+  handleFamilyChange(e) {
+    this.setState({
+      family: e.target.value
+    });
+  }
+  handleCertificateIdChange(e) {
+    this.setState({
+      id_certificate: e.target.value
+    });
   }
 
-  foreiginOrNational() {
-    const { nationalityValue } = this.state;
+  handleNationalityCodeChange(e) {
+    this.setState({
+      national_code: e.target.value
+    });
   }
+  handlePhoneNumberChange(e) {
+    console.log(e);
+    this.setState({
+      cell_phone: e.target.value
+    });
+  }
+  handleForeignersCodeChange(e) {
+    this.setState({
+      foreigners_code: e.target.value
+    });
+  }
+
+  // getValidatedValue(value, stateName) {
+  //   this.setState({
+  //     [stateName]: value
+  //   });
+  // }
+
+  handleNationalityIdChange(e) {
+    this.setState({
+      nationality_id: e.target.value
+    });
+  }
+
+  componentWillReceiveProps(props) {
+    const { submitedInformationOnForm } = props;
+    // when user submited information before and hit back button on
+    // last page We will show him the last data he/she has been entered
+    if (props.submitedInformationOnForm) {
+      this.setState({
+        name: submitedInformationOnForm.name,
+        last_name: submitedInformationOnForm.last_name,
+        id_certificate: submitedInformationOnForm.id_certificate,
+        cell_phone: submitedInformationOnForm.cell_phone,
+        nationality_id: null,
+        national_code: null,
+        foreigners_code: null
+      });
+    }
+  }
+
   submitInformationHandler = () => {
+    const { submitInformationHandlerAction } = this.props;
+
     const {
-      submitInformationHandlerAction,
-      submitedInformationOnForm
-    } = this.props;
-    const {
-      nameValue,
-      familyValue,
-      certificateIdValue,
-      nationalityValue,
-      nationalityIdValue,
-      phoneNumberValue,
-      foreignersCodeValue
+      name,
+      last_name,
+      id_certificate,
+      nationality_id,
+      national_code,
+      cell_phone,
+      foreigners_code
     } = this.state;
 
-    let formData = {};
-    if (nationalityValue == 1) {
-      formData = {
-        nameValue: nameValue || submitedInformationOnForm.name,
-        familyValue: familyValue || submitedInformationOnForm.last_name,
-        certificateIdValue:
-          certificateIdValue || submitedInformationOnForm.id_certificate,
-        nationalityValue:
-          nationalityValue || submitedInformationOnForm.nationality_id,
-        nationalityIdValue:
-          nationalityIdValue || submitedInformationOnForm.national_code,
-        phoneNumberValue:
-          phoneNumberValue || submitedInformationOnForm.cell_phone
-      };
+    let formData = {
+      name,
+      last_name,
+      id_certificate,
+      nationality_id,
+      national_code,
+      cell_phone,
+      foreigners_code
+    };
+
+    if (nationality_id == 1) {
+      formData.national_code = national_code;
+      formData.foreigners_code = undefined;
     } else {
-      formData = {
-        nameValue: nameValue || submitedInformationOnForm.name,
-        familyValue: familyValue || submitedInformationOnForm.last_name,
-        certificateIdValue:
-          certificateIdValue || submitedInformationOnForm.id_certificate,
-        nationalityValue:
-          nationalityValue || submitedInformationOnForm.nationality_id,
-        foreignersCodeValue:
-          foreignersCodeValue || submitedInformationOnForm.foreigners_code,
-        phoneNumberValue:
-          phoneNumberValue || submitedInformationOnForm.cell_phone
-      };
+      formData.foreigners_code = foreigners_code;
+      formData.national_code = undefined;
     }
-
-    console.log(formData);
-
     submitInformationHandlerAction(formData);
   };
 
-  getValidatedValue(value, name) {
-    this.setState({
-      [name]: value
-    });
-  }
-
-  handleNationalityChange(e) {
-    this.setState({
-      nationalityValue: e.target.value
-    });
-  }
-
   render() {
-    const {
-      handleNameChange,
-      handleFamilyChange,
-      handleCertificateIdChange,
-      handleNationalityIdChange,
-      phoneNumberChange,
-      submitedInformationOnForm,
-      handleForeignersCodeChange
-    } = this.props;
+    const { submitedInformationOnForm, allDataIsValid } = this.props;
+
     return (
       <div className="layout-wrapper">
         <NavBarWithSteps />
@@ -116,23 +148,21 @@ class SubmitInformationPagePresentation extends React.Component {
           <Accordion title="اطلاعات فردی و شناسنامه‌ای">
             <div className="inputs-wrapper">
               <Input
-                onChange={handleNameChange}
+                onChange={this.handleNameChange}
                 validation="onlyPersianValidation"
                 bgGray
                 title="نام"
-                name="nameValue"
-                getValidatedValue={this.getValidatedValue}
+                name="name"
                 value={
                   submitedInformationOnForm && submitedInformationOnForm.name
                 }
               />
               <Input
-                onChange={handleFamilyChange}
+                onChange={this.handleFamilyChange}
                 bgGray
                 title="نام خانوادگی"
-                name="familyValue"
+                name="last_name"
                 validation="onlyPersianValidation"
-                getValidatedValue={this.getValidatedValue}
                 value={
                   submitedInformationOnForm &&
                   submitedInformationOnForm.last_name
@@ -141,85 +171,65 @@ class SubmitInformationPagePresentation extends React.Component {
             </div>
             <div className="inputs-wrapper">
               <Input
-                onChange={handleCertificateIdChange}
+                onChange={this.handleCertificateIdChange}
                 bgGray
                 type="tel"
                 title="شماره شناسنامه"
-                name="certificateIdValue"
+                name="id_certificate"
                 validation="certificateIdValidation"
                 value={
                   submitedInformationOnForm &&
                   submitedInformationOnForm.id_certificate
                 }
-                getValidatedValue={this.getValidatedValue}
               />
-              <RadioButton
-                name="nationalityValue"
-                value={1}
-                defaultChecked={
-                  this.state.nationalityValue == 1 ||
-                  submitedInformationOnForm.nationality_id == 1
-                }
-                onChange={this.handleNationalityChange}
-              >
-                ایرانی
-              </RadioButton>
-              <RadioButton
-                name="nationalityValue"
-                value={2}
-                defaultChecked={
-                  this.state.nationalityValue == 2 ||
-                  submitedInformationOnForm.nationality_id == 2
-                }
-                onChange={this.handleNationalityChange}
-              >
-                اتباع خارجی
-              </RadioButton>
-            </div>
-            <div className="inputs-wrapper">
-              {this.state.nationalityValue == 1 ||
-              submitedInformationOnForm.nationality_id == 1 ? (
-                <Input
-                  onChange={handleNationalityIdChange}
-                  bgGray
-                  type="tel"
-                  title="کد ملی"
-                  value={
-                    submitedInformationOnForm &&
-                    submitedInformationOnForm.national_code
-                  }
-                  validation="nationalityIdValidation"
-                  name="nationalityIdValue"
-                  getValidatedValue={this.getValidatedValue}
-                />
-              ) : (
-                <Input
-                  onChange={handleForeignersCodeChange}
-                  bgGray
-                  type="tel"
-                  title="کد اتباع خارجی"
-                  value={
-                    submitedInformationOnForm &&
-                    submitedInformationOnForm.foreigners_code
-                  }
-                  validation="ForeignersCodeValidation"
-                  name="foreignersCodeValue"
-                  getValidatedValue={this.getValidatedValue}
-                />
-              )}
               <Input
-                onChange={phoneNumberChange}
+                onChange={this.handlePhoneNumberChange}
                 bgGray
                 type="tel"
                 validation="phoneNumberValidation"
-                name="phoneNumberValue"
+                name="cell_phone"
                 title="شماره تلفن همراه"
                 value={
                   submitedInformationOnForm &&
                   submitedInformationOnForm.cell_phone
                 }
-                getValidatedValue={this.getValidatedValue}
               />
+            </div>
+            <div className="inputs-wrapper-full-width">
+              <div className="radio-buttons-wrapper">
+                <RadioButton
+                  name="nationality_id"
+                  value={1}
+                  onChange={this.handleNationalityIdChange}
+                >
+                  ایرانی
+                </RadioButton>
+                <RadioButton
+                  name="nationality_id"
+                  value={2}
+                  onChange={this.handleNationalityIdChange}
+                >
+                  اتباع خارجی
+                </RadioButton>
+              </div>
+              {this.state.nationality_id == 1 ||
+              this.state.nationality_id == null ? (
+                <Input
+                  onChange={this.handleNationalityCodeChange}
+                  bgGray
+                  type="tel"
+                  title="کد ملی"
+                  name="national_code"
+                />
+              ) : (
+                <Input
+                  onChange={this.handleForeignersCodeChange}
+                  bgGray
+                  type="tel"
+                  title="کد اتباع خارجی"
+                  name="foreigners_code"
+                />
+              )}
             </div>
           </Accordion>
           <div className="call-to-actions">

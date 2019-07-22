@@ -29,8 +29,8 @@ const getPurchasedCardId = state => {
 
 const createCardDataSelector = data => {
   const dataToSaveInReduxStore = {
-    educationSystemId: data.education_system_id,
-    teachingInstitutionId: data.teaching_institution_id,
+    education_system_id: data.education_system_id,
+    teaching_institution_id: data.teaching_institution_id,
     userName: data.username,
     password: data.password,
     card: {
@@ -40,12 +40,12 @@ const createCardDataSelector = data => {
     buyer: {
       id: data.buyer.id,
       name: data.buyer.name,
-      lastName: data.buyer.last_name,
-      certificateId: data.buyer.id_certificate,
-      nationalityId: data.buyer.nationality_id,
-      nationalCode: data.buyer.national_code,
-      foreignersCode: data.buyer.foreigners_code,
-      phoneNumber: data.buyer.cell_phone,
+      last_name: data.buyer.last_name,
+      id_certificate: data.buyer.id_certificate,
+      nationality_id: data.buyer.nationality_id,
+      national_code: data.buyer.national_code,
+      foreigners_code: data.buyer.foreigners_code,
+      cell_phone: data.buyer.cell_phone,
       confirm: data.buyer.confirm,
       active: data.buyer.active
     }

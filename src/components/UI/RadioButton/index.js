@@ -1,7 +1,7 @@
 import React from "react";
 
 const RadioButton = props => {
-  const { children, name, value, defaultChecked, onChange, onClick } = props;
+  const { children, name, value, defaultChecked, onChange } = props;
   return (
     <>
       <label className="radio-button">
@@ -11,8 +11,11 @@ const RadioButton = props => {
           name={name}
           value={value}
           defaultChecked={defaultChecked}
-          onChange={onChange ? (e) => onChange(e, e.currentTarget.parentNode.textContent) : null}
-          onClick={onClick ? onClick : null}
+          onChange={
+            onChange
+              ? e => onChange(e, e.currentTarget.parentNode.textContent)
+              : null
+          }
         />
         <span className="checkmark" />
       </label>
