@@ -35,7 +35,6 @@ class RegisterWithCardPage extends React.Component {
             (صرفا بر اساس سوابق تحصیلی) نظام آموزشی تمام‌وقت مجموعه آزمایشی علوم
             ریاضی و فنی شرکت نموده‌اید.
           </p>
-          <CalanderDatePicker />
 
           <AccordionList>
             <Accordion title="اطلاعات فردی و شناسنامه‌ای">
