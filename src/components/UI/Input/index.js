@@ -63,21 +63,18 @@ class Input extends React.Component {
 
   onChangeWithValidation(e) {
     const value = e.target.value;
-    const { validation, getValidatedValue, name } = this.props;
-    const { onChange } = this.props;
+    const { validation, onChange } = this.props;
 
     switch (validation) {
       case "onlyPersianValidation": {
         if (this.checkPersianValidation(value) || value == " " || value == "") {
           this.setState(
             {
-              value,
               hasError: false,
               errorMsg: ""
             },
             () => {
-              onChange(e);
-              // getValidatedValue(this.state.value, name);
+              onChange(value);
             }
           );
         } else {
@@ -101,7 +98,7 @@ class Input extends React.Component {
               value
             },
             () => {
-              onChange(e);
+              onChange(value);
               // getValidatedValue(this.state.value, name);
             }
           );
@@ -126,7 +123,7 @@ class Input extends React.Component {
                   errorMsg: ""
                 },
                 () => {
-                  onChange(e);
+                  onChange(value);
                   // getValidatedValue(this.state.value, name);
                 }
               );
@@ -144,7 +141,7 @@ class Input extends React.Component {
                 errorMsg: ""
               },
               () => {
-                onChange(e);
+                onChange(value);
                 // getValidatedValue(this.state.value, name);
               }
             );
@@ -158,7 +155,7 @@ class Input extends React.Component {
             value
           },
           () => {
-            onChange(e);
+            onChange(value);
             // getValidatedValue(value, name);
           }
         );
@@ -170,7 +167,7 @@ class Input extends React.Component {
             value
           },
           () => {
-            onChange(e);
+            onChange(value);
             // getValidatedValue(value, name);
           }
         );
@@ -179,9 +176,8 @@ class Input extends React.Component {
   }
 
   onChange(e) {
-    console.log(e);
     const { onChange } = this.props;
-    onChange(e);
+    onChange(e.target.value);
   }
 
   render() {
@@ -207,7 +203,9 @@ class Input extends React.Component {
             name={name}
             type={type}
             className={`input ${bgGray ? " bg-gray " : ""}`}
-            onChange={e => onChange(e)}
+            onChange={e =>
+              !validation ? onChange(e) : this.onChangeWithValidation(e)
+            }
             defaultValue={this.props.value}
             placeholder={placeHolder}
             disabled={disabled}

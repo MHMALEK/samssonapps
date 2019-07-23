@@ -12,9 +12,7 @@ const RadioButton = props => {
           value={value}
           defaultChecked={defaultChecked}
           onChange={
-            onChange
-              ? e => onChange(e, e.currentTarget.parentNode.textContent)
-              : null
+            onChange ? e => onChange(e, e.target.parentNode.textContent) : null
           }
         />
         <span className="checkmark" />
