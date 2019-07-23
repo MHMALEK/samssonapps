@@ -22,53 +22,15 @@ class SubmitInformationPagePresentation extends React.Component {
     };
     // this.getValidatedValue = this.getValidatedValue.bind(this);
     this.submitInformationHandler = this.submitInformationHandler.bind(this);
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleFamilyChange = this.handleFamilyChange.bind(this);
-    this.handleCertificateIdChange = this.handleCertificateIdChange.bind(this);
     this.handleNationalityIdChange = this.handleNationalityIdChange.bind(this);
-    this.handlePhoneNumberChange = this.handlePhoneNumberChange.bind(this);
-    this.handleForeignersCodeChange = this.handleForeignersCodeChange.bind(
-      this
-    );
-  }
-  handleNameChange(e) {
-    this.setState({
-      name: e.target.value
-    });
-  }
-  handleFamilyChange(e) {
-    this.setState({
-      family: e.target.value
-    });
-  }
-  handleCertificateIdChange(e) {
-    this.setState({
-      id_certificate: e.target.value
-    });
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleNationalityCodeChange(e) {
+  handleInputChange(e, name) {
     this.setState({
-      national_code: e.target.value
+      [name]: e.target.value
     });
   }
-  handlePhoneNumberChange(e) {
-    console.log(e);
-    this.setState({
-      cell_phone: e.target.value
-    });
-  }
-  handleForeignersCodeChange(e) {
-    this.setState({
-      foreigners_code: e.target.value
-    });
-  }
-
-  // getValidatedValue(value, stateName) {
-  //   this.setState({
-  //     [stateName]: value
-  //   });
-  // }
 
   handleNationalityIdChange(e) {
     this.setState({
@@ -148,7 +110,7 @@ class SubmitInformationPagePresentation extends React.Component {
           <Accordion title="اطلاعات فردی و شناسنامه‌ای">
             <div className="inputs-wrapper">
               <Input
-                onChange={this.handleNameChange}
+                onChange={e => this.handleInputChange(e, "name")}
                 validation="onlyPersianValidation"
                 bgGray
                 title="نام"
@@ -158,7 +120,7 @@ class SubmitInformationPagePresentation extends React.Component {
                 }
               />
               <Input
-                onChange={this.handleFamilyChange}
+                onChange={e => this.handleInputChange(e, "last_name")}
                 bgGray
                 title="نام خانوادگی"
                 name="last_name"
@@ -171,7 +133,7 @@ class SubmitInformationPagePresentation extends React.Component {
             </div>
             <div className="inputs-wrapper">
               <Input
-                onChange={this.handleCertificateIdChange}
+                onChange={e => this.handleInputChange(e, "id_certificate")}
                 bgGray
                 type="tel"
                 title="شماره شناسنامه"
@@ -183,7 +145,7 @@ class SubmitInformationPagePresentation extends React.Component {
                 }
               />
               <Input
-                onChange={this.handlePhoneNumberChange}
+                onChange={e => this.handleInputChange(e, "cell_phone")}
                 bgGray
                 type="tel"
                 validation="phoneNumberValidation"
@@ -215,7 +177,7 @@ class SubmitInformationPagePresentation extends React.Component {
               {this.state.nationality_id == 1 ||
               this.state.nationality_id == null ? (
                 <Input
-                  onChange={this.handleNationalityCodeChange}
+                  onChange={e => this.handleInputChange(e, "national_code")}
                   bgGray
                   type="tel"
                   title="کد ملی"
@@ -223,7 +185,7 @@ class SubmitInformationPagePresentation extends React.Component {
                 />
               ) : (
                 <Input
-                  onChange={this.handleForeignersCodeChange}
+                  onChange={e => this.handleInputChange(e, "foreigners_code")}
                   bgGray
                   type="tel"
                   title="کد اتباع خارجی"
