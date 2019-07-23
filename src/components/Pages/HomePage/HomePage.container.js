@@ -3,8 +3,8 @@ import HomePagePresentation from "./HomePage.presentation";
 
 class HomePage extends React.Component {
   render() {
-    const { history } = this.props;
-    return <HomePagePresentation history={history} />;
+    const { history, hasNavBar } = this.props;
+    return <HomePagePresentation history={history} hasNavBar={hasNavBar} />;
   }
 }
 

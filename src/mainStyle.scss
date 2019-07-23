@@ -98,6 +98,13 @@ img {
   margin: 20px 0;
 }
 
+.Toastify__toast {
+  font-family: inherit;
+  text-align: right;
+}
+.Toastify__close-button {
+  margin: 0 10px;
+}
 @media only screen and (max-width: 480px) {
   .Toastify__toast-container {
     width: 93%;

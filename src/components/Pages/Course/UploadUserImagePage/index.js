@@ -6,12 +6,8 @@ import NavBarWithSteps from "../../../Layout/\u0654NavBarWithSteps";
 import Button from "../../../UI/Button";
 import ImageUploader from "../../../UI/ImageUploader";
 
-const UploadUserImagePage = () => {
-  let image = null;
-
-  const getFinalResult = imageFile => {
-    console.log(imageFile);
-  };
+const UploadUserImagePage = props => {
+  const getFinalResult = imageFile => {};
 
   return (
     <div className="layout-wrapper">
@@ -33,9 +29,9 @@ const UploadUserImagePage = () => {
           </Accordion>
           <div className="call-to-actions">
             <div className="call-to-action-button">
-              <Link to="/card/buy">
+              <div onClick={() => props.history.goBack()}>
                 <Button blueBorder>مرحله قبل</Button>
-              </Link>
+              </div>
             </div>
             <div className="call-to-action-button">
               <Button blueBg onClick={() => this.submitInformationHandler()}>

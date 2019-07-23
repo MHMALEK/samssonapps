@@ -30,16 +30,16 @@ export const goToCardListAction = () => {
 };
 
 export const selectCardToBuyAction = (
-  selectedCardId,
-  educationSystemId,
-  teachingInstitutionId
+  card_id,
+  education_system_id,
+  teaching_institution_id
 ) => {
   return {
     type: SELECT_CARD_TO_BUY_ACTION,
     payload: {
-      selectedCardId,
-      educationSystemId,
-      teachingInstitutionId
+      card_id,
+      education_system_id,
+      teaching_institution_id
     }
   };
 };

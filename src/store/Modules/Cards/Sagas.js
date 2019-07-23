@@ -1,4 +1,4 @@
-import { put, call, select, takeLatest } from "redux-saga/effects";
+import { put, call, select, takeLatest, take } from "redux-saga/effects";
 import {
   getCardsFromServer,
   confirmInformationFromServer,
@@ -22,6 +22,9 @@ import {
   CONFIRM_CARD_STARTED,
   CONFIRM_CARD_SUCCEED,
   CONFIRM_CARD_FAILD,
+  SELECT_CARD_TO_BUY_ACTION,
+  SELECT_CARD_TO_BUY_FAILD,
+  SELECT_CARD_TO_BUY_SUCCESS,
   SUBMIT_INFORMATION_ACTION,
   SUBMIT_INFORMATION_SUCCEED,
   SUBMIT_INFORMATION_FAILD,
@@ -52,7 +55,8 @@ function* getCardsRequest() {
     yield put({
       type: SHOW_NOTIFICATION_ACTION,
       payload: {
-        text: "دریافت کارت‌ها با خطا مواجه شد. مجددا تکرار نمایید."
+        text: "دریافت کارت‌ها با خطا مواجه شد. مجددا تکرار نمایید.",
+        type: "error"
       }
     });
   }
@@ -67,9 +71,6 @@ function* goToCardList() {
 function* submitInformationSaga(action) {
   const selectedCardData = yield select(getCardDataSelector);
   let paramsToSendToServer = action.data;
-
-  console.log(action.data);
-
   paramsToSendToServer.card_id = selectedCardData.card_id;
   paramsToSendToServer.education_system_id =
     selectedCardData.education_system_id;
@@ -111,7 +112,8 @@ function* submitInformationSaga(action) {
       type: SHOW_NOTIFICATION_ACTION,
       payload: {
         text:
-          "خطا در ارسال اطلاعات. از صحت اطلاعات وارد شده مطمین شده و سپس دوباره اقدام فرمایید."
+          "خطا در ارسال اطلاعات. از صحت اطلاعات وارد شده مطمین شده و سپس دوباره اقدام فرمایید.",
+        type: "error"
       }
     });
   }
@@ -145,7 +147,8 @@ function* confirmInformationSaga() {
     yield put({
       type: SHOW_NOTIFICATION_ACTION,
       payload: {
-        text: "دریافت کارت‌ها با خطا مواجه شد. مجددا تکرار نمایید."
+        text: "ثبت مشخصات  با خطا مواجه شد. مجددا تکرار نمایید.",
+        type: "error"
       }
     });
   }
@@ -170,7 +173,45 @@ function* getPurchasedCardDataSaga(action) {
     yield put({
       type: SHOW_NOTIFICATION_ACTION,
       payload: {
-        text: "دریافت کارت‌ها با خطا مواجه شد. مجددا تکرار نمایید."
+        text: "دریافت اطلاعات با خطا مواجه شد. مجددا تکرار نمایید.",
+        type: "error"
+      }
+    });
+  }
+}
+
+function* selectCardToBuySaga(action) {
+  const {
+    education_system_id,
+    teaching_institution_id,
+    card_id
+  } = action.payload;
+
+  if (education_system_id && teaching_institution_id) {
+    yield put({
+      type: SELECT_CARD_TO_BUY_SUCCESS,
+      payload: {
+        education_system_id,
+        teaching_institution_id,
+        card_id
+      }
+    });
+    yield put({
+      type: NAVIGATION_ACTION,
+      payload: {
+        path: "/card/user-info"
+      }
+    });
+  } else {
+    yield put({
+      type: SELECT_CARD_TO_BUY_FAILD
+    });
+    yield put({
+      type: SHOW_NOTIFICATION_ACTION,
+      payload: {
+        text:
+          "لطفا سیستم آموزشی و نظام آزمایشی کارت مورد نظر را انتخاب نمایید.",
+        type: "error"
       }
     });
   }
@@ -179,6 +220,7 @@ function* getPurchasedCardDataSaga(action) {
 export default [
   takeLatest(GET_CARDS_ACTION, getCardsRequest),
   takeLatest(GO_TO_CARD_LIST_ACTION, goToCardList),
+  takeLatest(SELECT_CARD_TO_BUY_ACTION, selectCardToBuySaga),
   takeLatest(SUBMIT_INFORMATION_ACTION, submitInformationSaga),
   takeLatest(CONFIRM_INFORMATION_ACTION, confirmInformationSaga),
   takeLatest(GET_PURCHASED_CARD_DATA_ACTION, getPurchasedCardDataSaga)

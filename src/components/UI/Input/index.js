@@ -29,6 +29,7 @@ class Input extends React.Component {
       return false;
     }
   }
+
   checkPhoneNumberValidation(string) {
     var phoneRegex = /^[0-9]{7,15}$/;
     var numberRegex = new RegExp("^[0-9]+$");
@@ -95,8 +96,7 @@ class Input extends React.Component {
           this.setState(
             {
               hasError: false,
-              errorMsg: "",
-              value
+              errorMsg: ""
             },
             () => {
               onChange(value, name);
@@ -118,13 +118,11 @@ class Input extends React.Component {
             if (this.checkIranianNationalCode(value)) {
               this.setState(
                 {
-                  value,
                   hasError: false,
                   errorMsg: ""
                 },
                 () => {
                   onChange(value, name);
-                  // getValidatedValue(this.state.value, name);
                 }
               );
             } else {
@@ -136,13 +134,11 @@ class Input extends React.Component {
           } else {
             this.setState(
               {
-                value,
                 hasError: false,
                 errorMsg: ""
               },
               () => {
                 onChange(value, name);
-                // getValidatedValue(this.state.value, name);
               }
             );
           }
@@ -150,27 +146,15 @@ class Input extends React.Component {
         break;
       }
       case "certificateIdValidation": {
-        this.setState(
-          {
-            value
-          },
-          () => {
-            onChange(value, name);
-            // getValidatedValue(value, name);
-          }
-        );
+        this.setState({}, () => {
+          onChange(value, name);
+        });
         break;
       }
       default:
-        this.setState(
-          {
-            value
-          },
-          () => {
-            onChange(value, name);
-            // getValidatedValue(value, name);
-          }
-        );
+        this.setState({}, () => {
+          onChange(value, name);
+        });
         break;
     }
   }
@@ -188,9 +172,7 @@ class Input extends React.Component {
       placeHolder,
       disabled,
       validation,
-      type,
-      getValidatedValue,
-      onChange
+      type
     } = this.props;
     const { hasError, errorMsg } = this.state;
     return (
@@ -204,7 +186,7 @@ class Input extends React.Component {
             type={type}
             className={`input ${bgGray ? " bg-gray " : ""}`}
             onChange={e =>
-              !validation ? onChange(e) : this.onChangeWithValidation(e)
+              !validation ? this.onChange(e) : this.onChangeWithValidation(e)
             }
             defaultValue={this.props.value}
             placeholder={placeHolder}

@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import MainLayout from "../../Layout/MainLayout";
 import Container from "../../UI/Container";
 const HomePagePresentation = props => {
+  const { hasNavBar } = props;
   return (
-    <MainLayout>
+    <MainLayout hasNavBar={hasNavBar}>
       <Container>
         <div className="registration-form">
           <Link className="registration-element" to="/card/list">

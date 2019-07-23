@@ -1,11 +1,15 @@
 .buy-card-main-page {
-    .price-wrapper {
-        text-align:center;
-        font-weight: bold;
-        font-size: 1.5rem;
-    }
-    .select-without-option-lable {
-        font-size: 0.8rem;
-        text-align: right;
-    }
+  .price-wrapper {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .select-without-option-lable {
+    font-size: 0.8rem;
+    text-align: right;
+  }
+}
+
+.card-price {
+  font-size: 1.2rem;
 }

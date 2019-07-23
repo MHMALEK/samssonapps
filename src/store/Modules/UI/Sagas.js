@@ -3,7 +3,9 @@ import { SHOW_NOTIFICATION_ACTION } from "./ActionTypes";
 import { toast } from "react-toastify";
 
 function* showNotificationActionSaga(action) {
-  yield toast(action.payload.text);
+  const toastType = action.payload.type || "error";
+  const toastMessage = action.payload.text;
+  yield toast[toastType](toastMessage);
 }
 
 export default [

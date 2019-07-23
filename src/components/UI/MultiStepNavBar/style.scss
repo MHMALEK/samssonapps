@@ -8,16 +8,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 0.7rem;
   }
   .step-icon {
     margin-left: 10px;
+    img.step-done {
+      margin-top: 5px;
+    }
   }
   .step-icon-circle {
     background: rgba(255, 255, 255, 0.2);
     // padding: 10px;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;

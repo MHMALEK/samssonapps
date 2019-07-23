@@ -10,22 +10,17 @@ class BuyCardItem extends React.Component {
     super(props);
     this.state = {
       modalIsOpen: false,
-      educationSystem: null,
-      teachingInstitution: null
+      education_system_id: null,
+      teaching_institution_id: null
     };
     this.selectCardToBuy = this.selectCardToBuy.bind(this);
     this.getSelectedValue = this.getSelectedValue.bind(this);
   }
 
-  selectCardToBuy(cardId) {
-    const { selectCardToBuy, history, onErrorCallBack } = this.props;
-    const { eductaionSystem, teachingInstitution } = this.state;
-    if (eductaionSystem && teachingInstitution) {
-      selectCardToBuy(cardId, eductaionSystem, teachingInstitution);
-      history.push("/card/user-info");
-    } else {
-      onErrorCallBack("malekkkk");
-    }
+  selectCardToBuy(card_id) {
+    const { selectCardToBuy } = this.props;
+    const { education_system_id, teaching_institution_id } = this.state;
+    selectCardToBuy(card_id, education_system_id, teaching_institution_id);
   }
 
   getSelectedValue(value, name) {
@@ -42,13 +37,15 @@ class BuyCardItem extends React.Component {
           <p> ثبت نام و انتخاب رشته دوره {cardData.title} </p>
           <p>({cardData.description})</p>
           <div className="text-bold">
-            {cardData.price && <Price>{cardData.price}</Price>}
+            {cardData.price && (
+              <Price className="card-price">{cardData.price}</Price>
+            )}
           </div>
           <div className="select-wrapper">
             {cardData.educationSystem &&
               cardData.educationSystem.length > 0 && (
                 <ListWithModal
-                  systemName="eductaionSystem"
+                  systemName="education_system_id"
                   name="نظام آموزشی"
                   data={cardData.educationSystem}
                   getSelectedValue={this.getSelectedValue}
@@ -59,7 +56,7 @@ class BuyCardItem extends React.Component {
             {cardData.teachingInstitution &&
               cardData.teachingInstitution.length > 0 && (
                 <ListWithModal
-                  systemName="teachingInstitution"
+                  systemName="teaching_institution_id"
                   name="مجموعه آزمایشی"
                   data={cardData.teachingInstitution}
                   getSelectedValue={this.getSelectedValue}

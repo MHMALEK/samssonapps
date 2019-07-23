@@ -27,6 +27,7 @@ class SubmitInformationPagePresentation extends React.Component {
   }
 
   handleInputChange(value, name) {
+    console.log(value, name);
     this.setState({
       [name]: value
     });
@@ -49,8 +50,12 @@ class SubmitInformationPagePresentation extends React.Component {
         id_certificate: submitedInformationOnForm.id_certificate,
         cell_phone: submitedInformationOnForm.cell_phone,
         nationality_id: null,
-        national_code: null,
-        foreigners_code: null
+        national_code: submitedInformationOnForm.national_code
+          ? submitedInformationOnForm.national_code
+          : null,
+        foreigners_code: submitedInformationOnForm.foreigners_code
+          ? submitedInformationOnForm.foreigners_code
+          : null
       });
     }
   }
@@ -85,11 +90,12 @@ class SubmitInformationPagePresentation extends React.Component {
       formData.foreigners_code = foreigners_code;
       formData.national_code = undefined;
     }
+    console.log(formData, national_code);
     submitInformationHandlerAction(formData);
   };
 
   render() {
-    const { submitedInformationOnForm, allDataIsValid } = this.props;
+    const { submitedInformationOnForm, allDataIsValid, history } = this.props;
 
     return (
       <div className="layout-wrapper">
@@ -201,9 +207,9 @@ class SubmitInformationPagePresentation extends React.Component {
               </Button>
             </div>
             <div className="call-to-action-button">
-              <Link to="/card/buy">
+              <div onClick={() => history.goBack()}>
                 <Button blueBorder>مرحله قبل</Button>
-              </Link>
+              </div>
             </div>
           </div>
         </Container>

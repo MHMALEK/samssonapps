@@ -16,9 +16,10 @@ const cardSelector = state => {
 
 const getCardDataSelector = state => {
   const cardData = {
-    card_id: state.Cards.selectedCardData.selectedCardId,
-    education_system_id: state.Cards.selectedCardData.educationSystemId,
-    teaching_institution_id: state.Cards.selectedCardData.teachingInstitutionId
+    card_id: state.Cards.selectedCardData.card_id,
+    education_system_id: state.Cards.selectedCardData.education_system_id,
+    teaching_institution_id:
+      state.Cards.selectedCardData.teaching_institution_id
   };
   return cardData;
 };

@@ -26,6 +26,7 @@ import AboutPage from "../components/Pages/AboutPage";
 import LoginWithCardPage from "../components/Pages/Course/Login";
 import RegisterWithCardPage from "../components/Pages/Course/Register/RegisterPage";
 import UploadUserImagePage from "../components/Pages/Course/UploadUserImagePage";
+import NotFoundPage from "../components/Pages/NotFoundPage";
 
 function AppRouter(props) {
   return (
@@ -39,7 +40,13 @@ function AppRouter(props) {
 
                 <Route path="/sso/signin" exact component={SignInSSO} />
                 <Route path="/sso/verify" exact component={SSOVerify} />
-                <Route path="/" exact component={HomePage} />
+
+                <Route
+                  path="/"
+                  exact
+                  render={props => <HomePage hasNavBar={false} {...props} />}
+                />
+
                 <PrivateRoute
                   path="/card/list"
                   exact
@@ -89,6 +96,8 @@ function AppRouter(props) {
                   exact
                   component={UploadUserImagePage}
                 />
+
+                <Route path="*" exact component={NotFoundPage} />
               </Switch>
             </CSSTransition>
           </TransitionGroup>

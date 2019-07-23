@@ -3,16 +3,23 @@ import { connect } from "react-redux";
 
 import Header from "../../UI/Header";
 import Footer from "../../UI/Footer";
-import Card from '../../UI/Card';
-import Container from '../../UI/Container';
-import Button from '../../UI/Button';
+import Card from "../../UI/Card";
+import Container from "../../UI/Container";
+import Button from "../../UI/Button";
 import NavBar from "../NavBar";
 import Loading from "../../UI/Loading";
 
 const MainLayout = props => {
-  const { children, contactInformation, history, title, showLoading } = props;
-  const  renderFooter = () => {
-    return  (
+  const {
+    children,
+    contactInformation,
+    history,
+    title,
+    showLoading,
+    hasNavBar
+  } = props;
+  const renderFooter = () => {
+    return (
       <>
         <h4>ارتباط با ما</h4>
         <div className="desc">
@@ -26,11 +33,9 @@ const MainLayout = props => {
         <div className="cards-wrapper">
           {contactInformation &&
             contactInformation.map(item => {
-              return (
-                showLoading ?
+              return showLoading ? (
                 <Loading />
-                :
-                (
+              ) : (
                 <Card
                   withOutShadow
                   key={item.id}
@@ -50,16 +55,17 @@ const MainLayout = props => {
                   }
                 >
                   <p>{item.description}</p>
-                </Card>)
+                </Card>
               );
             })}
         </div>
-    </>)
-  }
+      </>
+    );
+  };
   return (
     <div className="main-app-layout">
       <Header />
-      <NavBar title={title} history={history} />
+      {hasNavBar === false ? null : <NavBar title={title} history={history} />}
       {children}
       <Footer content={renderFooter()} />
     </div>
@@ -69,7 +75,7 @@ const MainLayout = props => {
 const mapStateToProps = state => {
   return {
     contactInformation: state.App.contactUs,
-    showLoading: state.App.getSettingsLoading,
+    showLoading: state.App.getSettingsLoading
   };
 };
 export default connect(

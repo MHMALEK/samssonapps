@@ -4,7 +4,8 @@ import {
   GET_CARDS_FAILD,
   GO_TO_CARD_LIST_ACTION,
   GO_TO_CARD_LIST_SUCCEED,
-  SELECT_CARD_TO_BUY_ACTION,
+  SELECT_CARD_TO_BUY_SUCCESS,
+  SELECT_CARD_TO_BUY_FAILD,
   SUBMIT_INFORMATION_ACTION,
   SUBMIT_INFORMATION_SUCCEED,
   SUBMIT_INFORMATION_FAILD,
@@ -50,10 +51,15 @@ const CardsReducer = function(state = initialState, action) {
         ...state
       };
     }
-    case SELECT_CARD_TO_BUY_ACTION: {
+    case SELECT_CARD_TO_BUY_SUCCESS: {
       return {
         ...state,
         selectedCardData: action.payload
+      };
+    }
+    case SELECT_CARD_TO_BUY_FAILD: {
+      return {
+        ...state
       };
     }
     case SUBMIT_INFORMATION_ACTION: {

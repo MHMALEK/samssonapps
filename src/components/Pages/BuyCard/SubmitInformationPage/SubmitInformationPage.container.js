@@ -47,13 +47,15 @@ class SubmitInformationPage extends React.Component {
   render() {
     const {
       submitInformationHandlerAction,
-      submitedInformationOnForm
+      submitedInformationOnForm,
+      history
     } = this.props;
 
     return (
       <SubmitInformationPagePresentation
         submitInformationHandlerAction={submitInformationHandlerAction}
         submitedInformationOnForm={submitedInformationOnForm}
+        history={history}
       />
     );
   }
