@@ -11,9 +11,7 @@ function* incrementAsync(action) {
     yield put({
       type: "ADD_USER_S"
     });
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 }
 
 export default [takeEvery("ADD_USER", incrementAsync)];

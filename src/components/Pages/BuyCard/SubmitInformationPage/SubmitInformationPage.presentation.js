@@ -24,13 +24,43 @@ class SubmitInformationPagePresentation extends React.Component {
     this.submitInformationHandler = this.submitInformationHandler.bind(this);
     this.handleNationalityIdChange = this.handleNationalityIdChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.checkIfAllDataIsValid = this.checkIfAllDataIsValid.bind(this);
   }
 
-  handleInputChange(value, name) {
-    console.log(value, name);
+  handleInputChange(value, stateName) {
     this.setState({
-      [name]: value
+      [stateName]: value
     });
+    this.checkIfAllDataIsValid();
+  }
+  checkIfAllDataIsValid() {
+    const {
+      name,
+      last_name,
+      id_certificate,
+      nationality_id,
+      national_code,
+      cell_phone,
+      foreigners_code
+    } = this.state;
+    console.log();
+    if (
+      name &&
+      last_name &&
+      id_certificate &&
+      nationality_id &&
+      national_code &&
+      cell_phone &&
+      foreigners_code
+    ) {
+      this.setState({
+        allDataIsValid: true
+      });
+    } else {
+      this.setState({
+        allDataIsValid: false
+      });
+    }
   }
 
   handleNationalityIdChange(e) {
@@ -90,12 +120,12 @@ class SubmitInformationPagePresentation extends React.Component {
       formData.foreigners_code = foreigners_code;
       formData.national_code = undefined;
     }
-    console.log(formData, national_code);
     submitInformationHandlerAction(formData);
   };
 
   render() {
-    const { submitedInformationOnForm, allDataIsValid, history } = this.props;
+    const { submitedInformationOnForm, history } = this.props;
+    const { allDataIsValid } = this.state;
 
     return (
       <div className="layout-wrapper">
@@ -116,22 +146,22 @@ class SubmitInformationPagePresentation extends React.Component {
           <Accordion title="اطلاعات فردی و شناسنامه‌ای">
             <div className="inputs-wrapper">
               <Input
-                onChange={this.handleInputChange}
+                getInputValue={this.handleInputChange}
                 validation="onlyPersianValidation"
                 bgGray
                 title="نام"
                 name="name"
-                value={
+                defaultValue={
                   submitedInformationOnForm && submitedInformationOnForm.name
                 }
               />
               <Input
-                onChange={this.handleInputChange}
+                getInputValue={this.handleInputChange}
                 bgGray
                 title="نام خانوادگی"
                 name="last_name"
                 validation="onlyPersianValidation"
-                value={
+                defaultValue={
                   submitedInformationOnForm &&
                   submitedInformationOnForm.last_name
                 }
@@ -139,25 +169,25 @@ class SubmitInformationPagePresentation extends React.Component {
             </div>
             <div className="inputs-wrapper">
               <Input
-                onChange={this.handleInputChange}
+                getInputValue={this.handleInputChange}
                 bgGray
                 type="tel"
                 title="شماره شناسنامه"
                 name="id_certificate"
                 validation="certificateIdValidation"
-                value={
+                defaultValue={
                   submitedInformationOnForm &&
                   submitedInformationOnForm.id_certificate
                 }
               />
               <Input
-                onChange={this.handleInputChange}
+                getInputValue={this.handleInputChange}
                 bgGray
                 type="tel"
                 validation="phoneNumberValidation"
                 name="cell_phone"
                 title="شماره تلفن همراه"
-                value={
+                defaultValue={
                   submitedInformationOnForm &&
                   submitedInformationOnForm.cell_phone
                 }
@@ -183,7 +213,7 @@ class SubmitInformationPagePresentation extends React.Component {
               {this.state.nationality_id == 1 ||
               this.state.nationality_id == null ? (
                 <Input
-                  onChange={this.handleInputChange}
+                  getInputValue={this.handleInputChange}
                   bgGray
                   type="tel"
                   title="کد ملی"
@@ -191,7 +221,7 @@ class SubmitInformationPagePresentation extends React.Component {
                 />
               ) : (
                 <Input
-                  onChange={this.handleInputChange}
+                  getInputValue={this.handleInputChange}
                   bgGray
                   type="tel"
                   title="کد اتباع خارجی"
@@ -202,7 +232,11 @@ class SubmitInformationPagePresentation extends React.Component {
           </Accordion>
           <div className="call-to-actions">
             <div className="call-to-action-button">
-              <Button blueBg onClick={() => this.submitInformationHandler()}>
+              <Button
+                disabled={allDataIsValid}
+                blueBg
+                onClick={() => this.submitInformationHandler()}
+              >
                 مرحله بعد
               </Button>
             </div>

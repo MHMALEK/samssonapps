@@ -40,14 +40,14 @@ class RegisterWithCardPage extends React.Component {
             <Accordion title="اطلاعات فردی و شناسنامه‌ای">
               <div className="inputs-wrapper">
                 <Input
-                  onChange={e => this.handleInputChange(e, "name")}
+                  getInputValue={e => this.handleInputChange(e, "name")}
                   validation="onlyPersianValidation"
                   bgGray
                   title="نام"
                   name="name"
                 />
                 <Input
-                  onChange={e => this.handleInputChange(e, "last_name")}
+                  getInputValue={e => this.handleInputChange(e, "last_name")}
                   bgGray
                   title="نام خانوادگی"
                   name="last_name"
@@ -57,7 +57,9 @@ class RegisterWithCardPage extends React.Component {
 
               <div className="inputs-wrapper">
                 <Input
-                  onChange={e => this.handleInputChange(e, "id_certificate")}
+                  getInputValue={e =>
+                    this.handleInputChange(e, "id_certificate")
+                  }
                   bgGray
                   type="text"
                   title="نام پدر"
@@ -65,7 +67,7 @@ class RegisterWithCardPage extends React.Component {
                   validation="certificateIdValidation"
                 />
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"
@@ -75,7 +77,9 @@ class RegisterWithCardPage extends React.Component {
               </div>
               <div className="inputs-wrapper">
                 <Input
-                  onChange={e => this.handleInputChange(e, "id_certificate")}
+                  getInputValue={e =>
+                    this.handleInputChange(e, "id_certificate")
+                  }
                   bgGray
                   type="text"
                   title="شماره شناسنامه"
@@ -83,7 +87,7 @@ class RegisterWithCardPage extends React.Component {
                   validation="certificateIdValidation"
                 />
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="tel"
                   validation="phoneNumberValidation"
@@ -116,7 +120,9 @@ class RegisterWithCardPage extends React.Component {
               </div>
               <div className="inputs-wrapper">
                 <Input
-                  onChange={e => this.handleInputChange(e, "id_certificate")}
+                  getInputValue={e =>
+                    this.handleInputChange(e, "id_certificate")
+                  }
                   bgGray
                   type="text"
                   title="شماره ملی"
@@ -197,7 +203,7 @@ class RegisterWithCardPage extends React.Component {
               </div>
               <div className="margin-top-bottom-20 inputs-wrapper-full-width">
                 <Input
-                  onChange={this.handleNationalityCodeChange}
+                  getInputValue={this.handleNationalityCodeChange}
                   bgGray
                   type="tel"
                   title="کد پیگیری ۱۲ رقمی"
@@ -303,7 +309,7 @@ class RegisterWithCardPage extends React.Component {
               </div>
               <div className="inputs-wrapper-full-width">
                 <Input
-                  onChange={this.handleNationalityCodeChange}
+                  getInputValue={this.handleNationalityCodeChange}
                   bgGray
                   type="tel"
                   title="کد پیگیری ۱۲ رقمی"
@@ -315,14 +321,14 @@ class RegisterWithCardPage extends React.Component {
             <Accordion title="اطلاعات تماس">
               <div className="inputs-wrapper">
                 <Input
-                  onChange={e => this.handleInputChange(e, "name")}
+                  getInputValue={e => this.handleInputChange(e, "name")}
                   validation="onlyPersianValidation"
                   bgGray
                   title="شماره تلفن ثابت"
                   name="name"
                 />
                 <Input
-                  onChange={e => this.handleInputChange(e, "last_name")}
+                  getInputValue={e => this.handleInputChange(e, "last_name")}
                   bgGray
                   title="پیش شماره شهرستان"
                   name="last_name"
@@ -332,7 +338,9 @@ class RegisterWithCardPage extends React.Component {
 
               <div className="inputs-wrapper">
                 <Input
-                  onChange={e => this.handleInputChange(e, "id_certificate")}
+                  getInputValue={e =>
+                    this.handleInputChange(e, "id_certificate")
+                  }
                   bgGray
                   type="text"
                   title="شماره تلفن همراه"
@@ -340,7 +348,7 @@ class RegisterWithCardPage extends React.Component {
                   validation="certificateIdValidation"
                 />
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"
@@ -398,7 +406,9 @@ class RegisterWithCardPage extends React.Component {
               </div>
               <div className="inputs-wrapper-full-width margin-top-bottom-20">
                 <Input
-                  onChange={e => this.handleInputChange(e, "id_certificate")}
+                  getInputValue={e =>
+                    this.handleInputChange(e, "id_certificate")
+                  }
                   bgGray
                   type="text"
                   title="کد پستی"
@@ -408,7 +418,7 @@ class RegisterWithCardPage extends React.Component {
               </div>
               <div className="inputs-wrapper-full-width margin-top-bottom-20">
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"
@@ -444,7 +454,7 @@ class RegisterWithCardPage extends React.Component {
                   getSelectedValue={this.getSelectedValue}
                 />
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"
@@ -502,7 +512,7 @@ class RegisterWithCardPage extends React.Component {
               </div>
               <div className="inputs-wrapper">
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"
@@ -510,7 +520,7 @@ class RegisterWithCardPage extends React.Component {
                   title="کد دانش آموزی"
                 />
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"
@@ -520,7 +530,7 @@ class RegisterWithCardPage extends React.Component {
               </div>
               <div className="inputs-wrapper">
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"
@@ -528,7 +538,7 @@ class RegisterWithCardPage extends React.Component {
                   title="معدل کل دوره پیش دانشگاهی"
                 />
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"
@@ -538,7 +548,7 @@ class RegisterWithCardPage extends React.Component {
               </div>
               <div className="inputs-wrapper">
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"
@@ -546,7 +556,7 @@ class RegisterWithCardPage extends React.Component {
                   title="معدل کل دیپلم"
                 />
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"
@@ -579,7 +589,7 @@ class RegisterWithCardPage extends React.Component {
                   getSelectedValue={this.getSelectedValue}
                 />
                 <Input
-                  onChange={e => this.handleInputChange(e, "cell_phone")}
+                  getInputValue={e => this.handleInputChange(e, "cell_phone")}
                   bgGray
                   type="text"
                   validation="phoneNumberValidation"

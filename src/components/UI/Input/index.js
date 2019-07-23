@@ -1,84 +1,68 @@
 import React from "react";
-
+import {
+  persianCharacterValidation,
+  phoneNumberValidation,
+  nationalCodeValidation
+} from "./validations";
 class Input extends React.Component {
   constructor(props) {
     super(props);
-    this.checkPersianValidation = this.checkPersianValidation.bind(this);
-    this.onChangeWithValidation = this.onChangeWithValidation.bind(this);
-    this.onChange = this.onChange.bind(this);
     this.state = {
       value: "",
-      hasError: false,
-      errorMsg: ""
+      hasError: false
     };
+    this.handleOnChange = this.handleOnChange.bind(this);
+    this.validatedAndPassToParent = this.validatedAndPassToParent.bind(this);
+    this.hasNoError = this.hasNoError.bind(this);
+    this.checkIfDataIsValid = this.checkIfDataIsValid.bind(this);
   }
 
-  componentWillReceiveProps(props) {
-    if (props.value) {
+  componentDidMount() {
+    if (this.props.defaultValue) {
       this.setState({
-        value: props.value
+        value: this.props.defaultValue
       });
     }
   }
 
-  checkPersianValidation(string) {
-    var regex = /^[\u0600-\u06FF\uFB8A\u067E\u0686\u06AF7\u200C\u200F ]+$/;
-    if (string.match(regex)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  checkPhoneNumberValidation(string) {
-    var phoneRegex = /^[0-9]{7,15}$/;
-    var numberRegex = new RegExp("^[0-9]+$");
-
-    if (string.length > 11 || !string.match(numberRegex)) {
-      return false;
-    } else {
-      if (string.length === 11) {
-        if (!string.match(phoneRegex)) {
-          return false;
-        } else {
-          return true;
-        }
-      }
-      return true;
-    }
-  }
-
-  checkIranianNationalCode(input) {
-    if (!/^\d{10}$/.test(input)) return false;
-
-    var check = parseInt(input[9]);
-    var sum = 0;
-    var i;
-    for (i = 0; i < 9; ++i) {
-      sum += parseInt(input[i]) * (10 - i);
-    }
-    sum %= 11;
-
-    return (sum < 2 && check == sum) || (sum >= 2 && check + sum == 11);
-  }
-
-  onChangeWithValidation(e) {
-    e.persist();
+  handleOnChange(e) {
     const value = e.target.value;
-    const { validation, onChange, name } = this.props;
+    const { validation } = this.props;
+    if (validation) {
+      this.onChangeWithValidation(value);
+    } else {
+      this.hasNoError();
+      this.validatedAndPassToParent(value);
+    }
+  }
 
+  checkIfDataIsValid() {
+    if (this.state.hasError === false) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  hasNoError() {
+    this.setState({
+      hasError: false,
+      errorMsg: ""
+    });
+  }
+  validatedAndPassToParent(value) {
+    const { getInputValue, name } = this.props;
+    this.setState({ value }, () => {
+      getInputValue(this.state.value, name);
+    });
+  }
+  onChangeWithValidation(value) {
+    const { validation } = this.props;
     switch (validation) {
       case "onlyPersianValidation": {
-        if (this.checkPersianValidation(value) || value == " " || value == "") {
-          this.setState(
-            {
-              hasError: false,
-              errorMsg: ""
-            },
-            () => {
-              onChange(value, name);
-            }
-          );
+        if (persianCharacterValidation(value) || value == " " || value == "") {
+          this.hasNoError();
+          this.validatedAndPassToParent(value);
         } else {
           this.setState({
             hasError: true,
@@ -88,21 +72,9 @@ class Input extends React.Component {
         break;
       }
       case "phoneNumberValidation": {
-        if (
-          this.checkPhoneNumberValidation(value) ||
-          value == " " ||
-          value == ""
-        ) {
-          this.setState(
-            {
-              hasError: false,
-              errorMsg: ""
-            },
-            () => {
-              onChange(value, name);
-              // getValidatedValue(this.state.value, name);
-            }
-          );
+        if (phoneNumberValidation(value) || value == " " || value == "") {
+          this.hasNoError();
+          this.validatedAndPassToParent(value);
         } else {
           this.setState({
             hasError: true,
@@ -115,16 +87,9 @@ class Input extends React.Component {
       case "nationalityIdValidation": {
         if (value.length < 11) {
           if (value.length === 10) {
-            if (this.checkIranianNationalCode(value)) {
-              this.setState(
-                {
-                  hasError: false,
-                  errorMsg: ""
-                },
-                () => {
-                  onChange(value, name);
-                }
-              );
+            if (nationalCodeValidation(value)) {
+              this.hasNoError();
+              this.validatedAndPassToParent(value);
             } else {
               this.setState({
                 hasError: true,
@@ -132,36 +97,24 @@ class Input extends React.Component {
               });
             }
           } else {
-            this.setState(
-              {
-                hasError: false,
-                errorMsg: ""
-              },
-              () => {
-                onChange(value, name);
-              }
-            );
+            this.hasNoError();
+            this.validatedAndPassToParent(value);
           }
         }
         break;
       }
       case "certificateIdValidation": {
-        this.setState({}, () => {
-          onChange(value, name);
-        });
+        this.hasNoError();
+        this.validatedAndPassToParent(value);
         break;
       }
       default:
         this.setState({}, () => {
-          onChange(value, name);
+          this.hasNoError();
+          this.validatedAndPassToParent(value);
         });
         break;
     }
-  }
-
-  onChange(e) {
-    const { onChange, name } = this.props;
-    onChange(e.target.value, name);
   }
 
   render() {
@@ -171,10 +124,10 @@ class Input extends React.Component {
       bgGray,
       placeHolder,
       disabled,
-      validation,
-      type
+      type,
+      pattern
     } = this.props;
-    const { hasError, errorMsg } = this.state;
+    const { hasError, errorMsg, value } = this.state;
     return (
       <>
         <div className="input-wrapper">
@@ -183,15 +136,13 @@ class Input extends React.Component {
           </label>
           <input
             name={name}
-            type={type}
+            type={type || "text"}
+            pattern={pattern}
             className={`input ${bgGray ? " bg-gray " : ""}`}
-            onChange={e =>
-              !validation ? this.onChange(e) : this.onChangeWithValidation(e)
-            }
-            defaultValue={this.props.value}
+            onChange={e => this.handleOnChange(e)}
             placeholder={placeHolder}
             disabled={disabled}
-            pattern={type === "phone" ? "[0-9]{3}-[0-9]{3}-[0-9]{4}" : null}
+            value={value}
           />
           {hasError && <div className="error-input">{errorMsg}</div>}
         </div>

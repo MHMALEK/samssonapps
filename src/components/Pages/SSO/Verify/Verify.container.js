@@ -54,7 +54,7 @@ class VerifySSO extends React.PureComponent {
               <div className="sign-in-input-wrapper">
                 <Input
                   title="کد ورود"
-                  onChange={event => this.verifyCodeHandler(event)}
+                  getInputValue={event => this.verifyCodeHandler(event)}
                   value={verifyCode}
                 />
               </div>

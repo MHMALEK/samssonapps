@@ -32,7 +32,7 @@ const VerifySSOPresentation = props => {
             <div className="sign-in-input-wrapper">
               <Input
                 title="کد ورود"
-                onChange={event => verifyCodeHandler(event)}
+                getInputValue={event => verifyCodeHandler(event)}
                 value={verifyCodeValue}
               />
             </div>

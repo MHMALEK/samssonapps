@@ -38,7 +38,7 @@ const LoginWithCardPage = props => {
                 <Input bgGray type="tel" title="کد ملی" name="national_code" />
               ) : (
                 <Input
-                  onChange={this.handleForeignersCodeChange}
+                  getInputValue={this.handleForeignersCodeChange}
                   bgGray
                   type="tel"
                   title="کد اتباع خارجی"

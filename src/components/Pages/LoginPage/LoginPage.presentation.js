@@ -16,9 +16,7 @@ const LoginPagePresentation = props => {
             <Logo className="signup-logo-wrapper" />
             <p className="c-blue"> ثبت‌نام و انتخاب رشته دوره کارشناسی</p>
             <p className="c-blue">(صرفا بر اساس سوابق تحصیلی)</p>
-            <Input />
-            <Input />
-            <Input />
+
             <RadioButton />
             <Button blueBg>ورود</Button>
             <Button blueBorder>دریافت دفترچه راهنمای ثبت‌نام</Button>

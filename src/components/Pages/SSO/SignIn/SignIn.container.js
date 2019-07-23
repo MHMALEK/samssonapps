@@ -39,7 +39,7 @@ class SignInSSO extends React.Component {
               <div className="sign-in-input-wrapper">
                 <Input
                   title="شماره تلفن همراه"
-                  onChange={event => this.phoneNumberHandler(event)}
+                  getInputValue={event => this.phoneNumberHandler(event)}
                   value={phoneNumber}
                 />
               </div>

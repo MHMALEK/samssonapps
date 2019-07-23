@@ -11,7 +11,6 @@ import {
   GET_SETTINGS_FAILD,
   NAVIGATION_ACTION
 } from "./ActionTypes";
-console.log(customHistory);
 
 function* startAppSaga() {
   yield call(getConfig);
