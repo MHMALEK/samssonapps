@@ -1,0 +1,36 @@
+.upload-image-container {
+  text-align: center;
+  padding: 50px 0;
+  .before-upload-preview {
+    width: 160px;
+    height: 200px;
+    border: 1px dashed $border-color;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    background-color: $bg-gray;
+  }
+  .upload-image-button-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 160px;
+    margin: 0 auto;
+    input[type="file"] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+    }
+  }
+  .final-uploaded-image {
+    width: 160px;
+    margin: 0 auto;
+  }
+  .upload-image-button {
+    width: 160px;
+    margin: 20px auto;
+  }
+}

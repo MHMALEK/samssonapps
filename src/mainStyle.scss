@@ -14,6 +14,7 @@ $bg-color: #f1f3f3;
 $green: #1ea778;
 $border-color: #e6e6e6;
 $default-border-radius: 6px;
+$bg-gray: #fafafa;
 
 body {
   margin: 0;
@@ -119,6 +120,7 @@ img {
 @import "./components/UI/Footer/style.scss";
 @import "./components/UI/InputPlaceholder/style.scss";
 @import "./components/UI/ReadOnlyInput/style.scss";
+@import "./components/UI/ImageUploader/style.scss";
 
 @import "./components/Layout/AuthLayout/style.scss";
 @import "./components/Layout/AuthLayout/AuthHeader/style.scss";

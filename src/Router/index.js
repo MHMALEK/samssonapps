@@ -25,6 +25,7 @@ import customHistory from "./CustomHistory";
 import AboutPage from "../components/Pages/AboutPage";
 import LoginWithCardPage from "../components/Pages/Course/Login";
 import RegisterWithCardPage from "../components/Pages/Course/Register/RegisterPage";
+import UploadUserImagePage from "../components/Pages/Course/UploadUserImagePage";
 
 function AppRouter(props) {
   return (
@@ -82,6 +83,11 @@ function AppRouter(props) {
                   path="/course/register"
                   exact
                   component={RegisterWithCardPage}
+                />
+                <Route
+                  path="/course/upload-image"
+                  exact
+                  component={UploadUserImagePage}
                 />
               </Switch>
             </CSSTransition>
