@@ -62,8 +62,9 @@ class Input extends React.Component {
   }
 
   onChangeWithValidation(e) {
+    e.persist();
     const value = e.target.value;
-    const { validation, onChange } = this.props;
+    const { validation, onChange, name } = this.props;
 
     switch (validation) {
       case "onlyPersianValidation": {
@@ -74,7 +75,7 @@ class Input extends React.Component {
               errorMsg: ""
             },
             () => {
-              onChange(value);
+              onChange(value, name);
             }
           );
         } else {
@@ -98,7 +99,7 @@ class Input extends React.Component {
               value
             },
             () => {
-              onChange(value);
+              onChange(value, name);
               // getValidatedValue(this.state.value, name);
             }
           );
@@ -114,7 +115,6 @@ class Input extends React.Component {
       case "nationalityIdValidation": {
         if (value.length < 11) {
           if (value.length === 10) {
-            console.log(value);
             if (this.checkIranianNationalCode(value)) {
               this.setState(
                 {
@@ -123,7 +123,7 @@ class Input extends React.Component {
                   errorMsg: ""
                 },
                 () => {
-                  onChange(value);
+                  onChange(value, name);
                   // getValidatedValue(this.state.value, name);
                 }
               );
@@ -141,7 +141,7 @@ class Input extends React.Component {
                 errorMsg: ""
               },
               () => {
-                onChange(value);
+                onChange(value, name);
                 // getValidatedValue(this.state.value, name);
               }
             );
@@ -155,7 +155,7 @@ class Input extends React.Component {
             value
           },
           () => {
-            onChange(value);
+            onChange(value, name);
             // getValidatedValue(value, name);
           }
         );
@@ -167,7 +167,7 @@ class Input extends React.Component {
             value
           },
           () => {
-            onChange(value);
+            onChange(value, name);
             // getValidatedValue(value, name);
           }
         );
@@ -176,8 +176,8 @@ class Input extends React.Component {
   }
 
   onChange(e) {
-    const { onChange } = this.props;
-    onChange(e.target.value);
+    const { onChange, name } = this.props;
+    onChange(e.target.value, name);
   }
 
   render() {

@@ -26,9 +26,9 @@ class SubmitInformationPagePresentation extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleInputChange(e, name) {
+  handleInputChange(value, name) {
     this.setState({
-      [name]: e.target.value
+      [name]: value
     });
   }
 
@@ -110,7 +110,7 @@ class SubmitInformationPagePresentation extends React.Component {
           <Accordion title="اطلاعات فردی و شناسنامه‌ای">
             <div className="inputs-wrapper">
               <Input
-                onChange={e => this.handleInputChange(e, "name")}
+                onChange={this.handleInputChange}
                 validation="onlyPersianValidation"
                 bgGray
                 title="نام"
@@ -120,7 +120,7 @@ class SubmitInformationPagePresentation extends React.Component {
                 }
               />
               <Input
-                onChange={e => this.handleInputChange(e, "last_name")}
+                onChange={this.handleInputChange}
                 bgGray
                 title="نام خانوادگی"
                 name="last_name"
@@ -133,7 +133,7 @@ class SubmitInformationPagePresentation extends React.Component {
             </div>
             <div className="inputs-wrapper">
               <Input
-                onChange={e => this.handleInputChange(e, "id_certificate")}
+                onChange={this.handleInputChange}
                 bgGray
                 type="tel"
                 title="شماره شناسنامه"
@@ -145,7 +145,7 @@ class SubmitInformationPagePresentation extends React.Component {
                 }
               />
               <Input
-                onChange={e => this.handleInputChange(e, "cell_phone")}
+                onChange={this.handleInputChange}
                 bgGray
                 type="tel"
                 validation="phoneNumberValidation"
@@ -177,7 +177,7 @@ class SubmitInformationPagePresentation extends React.Component {
               {this.state.nationality_id == 1 ||
               this.state.nationality_id == null ? (
                 <Input
-                  onChange={e => this.handleInputChange(e, "national_code")}
+                  onChange={this.handleInputChange}
                   bgGray
                   type="tel"
                   title="کد ملی"
@@ -185,7 +185,7 @@ class SubmitInformationPagePresentation extends React.Component {
                 />
               ) : (
                 <Input
-                  onChange={e => this.handleInputChange(e, "foreigners_code")}
+                  onChange={this.handleInputChange}
                   bgGray
                   type="tel"
                   title="کد اتباع خارجی"
