@@ -8,22 +8,32 @@ const persianCharacterValidation = string => {
 };
 
 const phoneNumberValidation = string => {
-  var phoneRegex = /^[0-9]{7,15}$/;
+  var phoneRegex = /^(\+98|0)?9\d{9}$/g;
   var numberRegex = new RegExp("^[0-9]+$");
 
-  if (string.length > 11 || !string.match(numberRegex)) {
+  if (!string.match(numberRegex)) {
+    // if the entered data wasn't number
     return false;
   } else {
-    if (string.length === 11) {
-      if (!string.match(phoneRegex)) {
-        return false;
-      } else {
-        return true;
-      }
+    if (string.length === 11 && !string.match(phoneRegex)) {
+      return false;
+    } else if (string.length > 11) {
+      return false;
     }
     return true;
   }
 };
+
+
+const maxLengthValidation = (string, length) => {
+  if (string.length > length) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+
 
 const nationalCodeValidation = input => {
   if (!/^\d{10}$/.test(input)) return false;
@@ -42,5 +52,6 @@ const nationalCodeValidation = input => {
 export {
   persianCharacterValidation,
   phoneNumberValidation,
-  nationalCodeValidation
+  nationalCodeValidation,
+  maxLengthValidation
 };

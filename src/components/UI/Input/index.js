@@ -2,7 +2,8 @@ import React from "react";
 import {
   persianCharacterValidation,
   phoneNumberValidation,
-  nationalCodeValidation
+  nationalCodeValidation,
+  maxLengthValidation
 } from "./validations";
 class Input extends React.Component {
   constructor(props) {
@@ -78,34 +79,55 @@ class Input extends React.Component {
         } else {
           this.setState({
             hasError: true,
-            errorMsg: "شماره تلفن وارد شده صحیح نیست"
+            errorMsg: "شماره تلفن وارد شده نمی‌تواند بیشتر از ۱۱ رقم باشد و یا حاوی حرف و عدد فارسی  باشد"
           });
         }
         break;
       }
-
-      case "nationalityIdValidation": {
-        if (value.length < 11) {
-          if (value.length === 10) {
-            if (nationalCodeValidation(value)) {
-              this.hasNoError();
-              this.validatedAndPassToParent(value);
-            } else {
-              this.setState({
-                hasError: true,
-                errorMsg: "شماره ملی وارد شده صحیح نیست"
-              });
-            }
-          } else {
-            this.hasNoError();
-            this.validatedAndPassToParent(value);
-          }
+      case "certificateIdValidation": {
+        if(maxLengthValidation(value, 10)) {
+          this.hasNoError();
+          this.validatedAndPassToParent(value);
+        } else {
+          this.setState({
+            hasError: true,
+            errorMsg: "شماره شناسنامه وارد شده صحیح نیست"
+          });
         }
         break;
       }
-      case "certificateIdValidation": {
-        this.hasNoError();
-        this.validatedAndPassToParent(value);
+      case "foreignersCodeValidation": {
+          if(maxLengthValidation(value, 13)) {
+            this.hasNoError();
+            this.validatedAndPassToParent(value);
+          } else {
+            this.setState({
+              hasError: true,
+              errorMsg: "کد اتباع خارجی  وارد شده صحیح نیست"
+            });
+          }
+          break;
+      }
+      case "nationalCodeValidation" : {
+        if(maxLengthValidation(value, 10)) {
+          if(value.length === 10 && nationalCodeValidation()) {
+            this.hasNoError();
+            this.validatedAndPassToParent(value);
+          } else {
+            this.setState({
+              hasError: true,
+              errorMsg: "شماره ملی وارد شده صحیح نیست"
+            });
+          }
+          this.hasNoError();
+          this.validatedAndPassToParent(value);
+          
+        } else {
+          this.setState({
+            hasError: true,
+            errorMsg: "شماره ملی وارد شده صحیح نیست"
+          });
+        }
         break;
       }
       default:
@@ -131,7 +153,7 @@ class Input extends React.Component {
     return (
       <>
         <div className="input-wrapper">
-          <label htmlFor={name} className="input-lable">
+          <label htmlFor={name} className={`input-lable ${disabled ? 'disable' : ''}`}>
             {title}
           </label>
           <input

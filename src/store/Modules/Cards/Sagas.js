@@ -71,11 +71,11 @@ function* goToCardList() {
 function* submitInformationSaga(action) {
   const selectedCardData = yield select(getCardDataSelector);
   let paramsToSendToServer = action.data;
-  paramsToSendToServer.card_id = selectedCardData.card_id;
-  paramsToSendToServer.education_system_id =
-    selectedCardData.education_system_id;
-  paramsToSendToServer.teaching_institution_id =
-    selectedCardData.teaching_institution_id;
+  paramsToSendToServer.card_id =  1// selectedCardData.card_id;
+  paramsToSendToServer.education_system_id = 1 
+    // selectedCardData.education_system_id;
+  paramsToSendToServer.teaching_institution_id = 2
+    // selectedCardData.teaching_institution_id;
 
   yield put({
     type: SUBMIT_INFORMATION_STARTED

@@ -14,7 +14,7 @@ class SubmitInformationPagePresentation extends React.Component {
       name: null,
       last_name: null,
       id_certificate: null,
-      nationality_id: null,
+      nationality_id: 1,
       national_code: null,
       cell_phone: null,
       foreigners_code: null,
@@ -31,7 +31,6 @@ class SubmitInformationPagePresentation extends React.Component {
     this.setState({
       [stateName]: value
     });
-    this.checkIfAllDataIsValid();
   }
   checkIfAllDataIsValid() {
     const {
@@ -64,6 +63,7 @@ class SubmitInformationPagePresentation extends React.Component {
   }
 
   handleNationalityIdChange(e) {
+    console.log('sdas', e.target.value)
     this.setState({
       nationality_id: e.target.value
     });
@@ -79,7 +79,7 @@ class SubmitInformationPagePresentation extends React.Component {
         last_name: submitedInformationOnForm.last_name,
         id_certificate: submitedInformationOnForm.id_certificate,
         cell_phone: submitedInformationOnForm.cell_phone,
-        nationality_id: null,
+        nationality_id: submitedInformationOnForm.nationality_id,
         national_code: submitedInformationOnForm.national_code
           ? submitedInformationOnForm.national_code
           : null,
@@ -119,6 +119,7 @@ class SubmitInformationPagePresentation extends React.Component {
     } else {
       formData.foreigners_code = foreigners_code;
       formData.national_code = undefined;
+      formData.id_certificate = undefined;
     }
     submitInformationHandlerAction(formData);
   };
@@ -175,6 +176,7 @@ class SubmitInformationPagePresentation extends React.Component {
                 title="شماره شناسنامه"
                 name="id_certificate"
                 validation="certificateIdValidation"
+                disabled={this.state.nationality_id == 2}
                 defaultValue={
                   submitedInformationOnForm &&
                   submitedInformationOnForm.id_certificate
@@ -199,6 +201,8 @@ class SubmitInformationPagePresentation extends React.Component {
                   name="nationality_id"
                   value={1}
                   onChange={this.handleNationalityIdChange}
+                  checked={this.state.nationality_id == 1} 
+                  defaultChecked={submitedInformationOnForm && submitedInformationOnForm.nationality_id == 1}
                 >
                   ایرانی
                 </RadioButton>
@@ -206,34 +210,48 @@ class SubmitInformationPagePresentation extends React.Component {
                   name="nationality_id"
                   value={2}
                   onChange={this.handleNationalityIdChange}
+                  checked={this.state.nationality_id == 2}
+                  defaultChecked={submitedInformationOnForm && submitedInformationOnForm.nationality_id == 2} 
                 >
                   اتباع خارجی
                 </RadioButton>
               </div>
-              {this.state.nationality_id == 1 ||
-              this.state.nationality_id == null ? (
+              {this.state.nationality_id == 1 && (
                 <Input
                   getInputValue={this.handleInputChange}
                   bgGray
                   type="tel"
                   title="کد ملی"
                   name="national_code"
+                  defaultValue={
+                    submitedInformationOnForm &&
+                    submitedInformationOnForm.national_code
+                  }
+                  validation="nationalCodeValidation"
+                 
                 />
-              ) : (
+              )}
+              {this.state.nationality_id == 2 && (
                 <Input
                   getInputValue={this.handleInputChange}
                   bgGray
                   type="tel"
                   title="کد اتباع خارجی"
                   name="foreigners_code"
+                  defaultValue={
+                    submitedInformationOnForm &&
+                    submitedInformationOnForm.foreigners_code
+                  }
+                  validation="foreignersCodeValidation"
+                 
                 />
               )}
+              {console.log(submitedInformationOnForm)}
             </div>
           </Accordion>
           <div className="call-to-actions">
             <div className="call-to-action-button">
               <Button
-                disabled={allDataIsValid}
                 blueBg
                 onClick={() => this.submitInformationHandler()}
               >

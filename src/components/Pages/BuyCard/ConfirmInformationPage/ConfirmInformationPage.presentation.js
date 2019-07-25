@@ -44,6 +44,7 @@ const ConfirmInformationPagePresentation = props => {
               {data ? data.last_name : null}
             </InputPlaceholder>
           </div>
+        
           <div className="inputs-wrapper">
             <InputPlaceholder title="شماره شناسنامه">
               {data ? data.id_certificate : null}
